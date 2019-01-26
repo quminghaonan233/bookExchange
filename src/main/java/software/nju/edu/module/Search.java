@@ -16,7 +16,8 @@ public class Search {
 	// 模糊搜索
 	// 标题搜索
 	
-	
+	// need a Parser 
+	// how about HanLP 
 	
 	
 	
