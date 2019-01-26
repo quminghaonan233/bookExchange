@@ -9,7 +9,13 @@ public class Search {
 	String titleField = "BOOK_TITLE";
 	//Query query = null;
 	
-	int method = 0;
+	String strMethod = "";
+	int method = Integer.valueOf(strMethod);
+	
+	// 全文搜索
+	// 模糊搜索
+	// 标题搜索
+	
 	
 	
 	
