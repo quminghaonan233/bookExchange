@@ -5,12 +5,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import software.nju.edu.bean.UserInfo;
+
 @RestController
-public class helloworldController {
+public class indexController {
 	
-	@RequestMapping("/welcome")
-	public ModelAndView hello(Model model){
-	    return new ModelAndView("welcome","welcomeModel",model);
+	@RequestMapping("/index")
+	public ModelAndView hello(UserInfo u){
+		ModelAndView mav = new ModelAndView("index");
+	    return mav;
 	}
 
 }

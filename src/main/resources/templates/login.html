@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}"/>
+    <link rel="stylesheet" type="text/css" th:href="@{css/login.css}"/>
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">Login</div>
+    <form role="form" action="#" th:action="@{/loginValidate}" th:object="${LoginMessage}" th:method="post">
+        <ul>
+            <li>
+                <div class="text">
+                    <span class="user"></span>
+                    <input type="text" th:field="*{userName}" placeholder="请输入用户名">
+                </div>
+            </li>
+            <li>
+                <div class="password">
+                    <span class="secret"></span>
+                    <input type="password" th:field="*{password}" placeholder="请输入密码">
+                </div>
+            </li>
+            <a class="register" href="/register">注册新账号</a>
+            <li>
+                <button type="submit">登陆</button>
+            </li>
+        </ul>
+    </form>
+</div>
+</body>
+</html>
