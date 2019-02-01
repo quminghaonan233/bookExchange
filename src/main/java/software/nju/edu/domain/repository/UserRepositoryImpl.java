@@ -1,6 +1,11 @@
 package software.nju.edu.domain.repository;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
+
+import org.springframework.stereotype.Repository;
 
 import software.nju.edu.domain.entity.User;
 
@@ -9,8 +14,7 @@ public class UserRepositoryImpl {
 	
 	private static String uuid = createUuid();
 	
-	private final ConcurrentMap<String, User> userConcurrentMap =
-			new ConcurrentMap<String, User>();
+	private static final ConcurrentMap<String, User> userConcurrentMap = new ConcurrentHashMap<String, User>();
 	
 	
 	public User saveOrUpdateUser(User user) {

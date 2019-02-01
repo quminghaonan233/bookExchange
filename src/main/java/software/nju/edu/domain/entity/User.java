@@ -10,6 +10,12 @@ public class User {
 	public User() {
 		
 	}
+	
+	public User(String uid, String uname, int upoints) {
+		this.uid = uid;
+		this.uname = uname;
+		this.upoints = upoints;
+	}
 
 	public String getUid() {
 		return uid;

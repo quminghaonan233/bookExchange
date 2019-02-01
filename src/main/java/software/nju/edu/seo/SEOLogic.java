@@ -5,8 +5,8 @@ import software.nju.edu.bean.SearchBean;
 
 public class SEOLogic {
 	
-	private static Searcher searcher = null;
-	private static Analyzer analyzer = null;
+	//private static Searcher searcher = null;
+	//private static Analyzer analyzer = null;
 	private int maxBufferedDocs = 100;
 	
 	public List<SearchBean> getResult(String query) throws Exception {
@@ -25,15 +25,8 @@ public class SEOLogic {
 		
 	}
 	
-	/**
-	 * search index
-	 * @return
-	 */
-	private TopDocs searchIndex() {
-		
-		//TopDocs topDocs = 
-		return topDocs;
-	}
+	
+
 
 	
 }
