@@ -2,22 +2,25 @@ package software.nju.edu.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.serviceimpl.bookServiceImpl;
 
-@RestController
+@Controller
 public class HotBookController {
 	
+	@Autowired
 	private bookServiceImpl bookService;
 	
-	@RequestMapping("/hotbook")
-	public List<Book> showHotBooks() {
+	@GetMapping("/")
+	public String showHotBooks(Model model) {
 		List<Book> list = bookService.findHotBookList();
-		
-		return list;
+		model.addAttribute("hotBookList",list);
+		return "index";
 		
 	}
 

@@ -21,6 +21,17 @@
 				<span th:text="'Message: ' + ${message}"></span>
 			</h2>
 		</div>
+		
+		<div class="starter-template">
+			<h1>Hot Book List</h1>
+			
+			<p th:text="'Top1: ' + ${hotBookList[0].getBookName()}"></p>
+			<p th:text="'Top2: ' + ${hotBookList[1].getBookName()}"></p>
+			<p th:text="'Top3: ' + ${hotBookList[2].getBookName()}"></p>
+			<p th:text="'Top4: ' + ${hotBookList[3].getBookName()}"></p>
+			<p th:text="'Top5: ' + ${hotBookList[4].getBookName()}"></p>
+			
+		</div>
 
 	</div>
 
