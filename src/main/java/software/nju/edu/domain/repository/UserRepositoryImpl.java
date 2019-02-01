@@ -12,26 +12,26 @@ import software.nju.edu.domain.entity.User;
 @Repository
 public class UserRepositoryImpl {
 	
-	private static String uuid = createUuid();
+	private static int uuid = createUuid();
 	
-	private static final ConcurrentMap<String, User> userConcurrentMap = new ConcurrentHashMap<String, User>();
+	private static final ConcurrentMap<Integer, User> userConcurrentMap = new ConcurrentHashMap<Integer, User>();
 	
 	
 	public User saveOrUpdateUser(User user) {
-		String uid = user.getUid();
-		if (uid == null) {
+		int uid = user.getuId();
+		if (uid == 0) {
 			uid = uuid;
 		}
 		this.userConcurrentMap.put(uid, user);
 		return user;
 	}
 	
-	public void deleteUser(String uid) {
+	public void deleteUser(int uid) {
 		this.userConcurrentMap.remove(uid);
 		
 	}
 	
-	public User getUserById(String uid) {
+	public User getUserById(int uid) {
 		return this.userConcurrentMap.get(uid);
 		
 	}
@@ -40,9 +40,9 @@ public class UserRepositoryImpl {
 		return new ArrayList<User> (this.userConcurrentMap.values());
 	}
 	
-	public static String createUuid() {
+	public static int createUuid() {
 		// create unique uid
-		return "";
+		return 1000;
 	}
 	
 

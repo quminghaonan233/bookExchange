@@ -2,59 +2,74 @@ package software.nju.edu.domain.entity;
 
 public class User {
 	
-	private String uid; // user_id 唯一标识
-	private String uname; // user_name
-	private String passwd; // password
-	private int upoints; // user points
+	private int uId; // user id 唯一标识
+	private String userName; // user name
+	private String password; // password
+	private int score; // user score
+	private int credit; // user credit
 	
 	public User() {
 		
 	}
 	
-	public User(String uid, String uname, int upoints) {
-		this.uid = uid;
-		this.uname = uname;
-		this.upoints = upoints;
-	}
-
-	public String getUid() {
-		return uid;
-	}
-
-	public void setUid(String uid) {
-		this.uid = uid;
-	}
-
-	public String getUname() {
-		return uname;
-	}
-
-	public void setUname(String uname) {
-		this.uname = uname;
-	}
-
-	public String getPasswd() {
-		return passwd;
-	}
-
-	public void setPasswd(String passwd) {
-		this.passwd = passwd;
-	}
-
-	public int getUpoints() {
-		return upoints;
-	}
-
-	public void setUpoints(int upoints) {
-		this.upoints = upoints;
+	public User(int uId, String userName, int score, int credit) {
+		this.uId = uId;
+		this.userName = userName;
+		this.score = score;
+		this.credit = credit;
 	}
 	
+	/**
+	 * getters and setters
+	 * 
+	 */
+	public int getuId() {
+		return uId;
+	}
+
+	public void setuId(int uId) {
+		this.uId = uId;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
+	public int getCredit() {
+		return credit;
+	}
+
+	public void setCredit(int credit) {
+		this.credit = credit;
+	}
+
 	@Override
 	public String toString() {
 		return "User{" +
-				"uid=" + uid +
-				"uname=" + uname +
-				"upoints=" + upoints +
+				"userId=" + uId +
+				"userName=" + userName +
+				"score=" + score +
+				"credit=" + credit +
 				"}";
 	}
 	

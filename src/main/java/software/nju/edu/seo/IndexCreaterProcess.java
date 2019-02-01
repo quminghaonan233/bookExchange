@@ -30,31 +30,55 @@ public class IndexCreaterProcess {
 		for (Book book: bookList) {
 			document = new Document();
 			// book id
-			Field bid = new TextField("bid", book.getBid(), Field.Store.YES);
-			// book title
-			Field title = new TextField("title", book.getTitle(), Field.Store.YES);
+			Field bId = new TextField("bid", book.getbId(), Field.Store.YES);
+			
+			// book name
+			Field bookName = new TextField("title", book.getBookName(), Field.Store.YES);
+			
+			// book owner
+			Field owner = new TextField("title", book.getOwner(), Field.Store.YES);
+			
+			// book class
+			Field bookClass = new TextField("bookClass", book.getBookClass(), Field.Store.YES);
+			
+			// publisher
+			Field publisher = new TextField("publisher", book.getPublisher(), Field.Store.YES);
+			
 			// book author
 			Field author = new TextField("author", book.getAuthor(), Field.Store.YES);
+			
+			// new percent
+			Field newPercent = new TextField("newPercent", book.getNewPercent(), Field.Store.YES);
+			
+			// address
+			Field address = new TextField("address", book.getAddress(), Field.Store.YES);
+			
+			// onsale
+			Field onsale = new TextField("onsale", Integer.toString(book.getOnsale()), Field.Store.YES);
+			
+			// isDel
+			Field isDel = new TextField("isDel", Integer.toString(book.getIsDel()), Field.Store.YES);
+			
 			// book price
-			Field price = new TextField("price", Float.toString(book.getPrice()), Field.Store.YES);
-			// book exchange points
-			Field points = new TextField("points", Integer.toString(book.getPoints()), Field.Store.YES);
-			// book discount
-			Field discount = new TextField("discount", Float.toString(book.getDiscount()), Field.Store.YES);
+			Field price = new TextField("price", Integer.toString(book.getPrice()), Field.Store.YES);
+
 			// book picture name
-			Field picname = new TextField("picname", book.getPicname(), Field.Store.YES);
-			// book description
-			Field desc = new TextField("desc", book.getDesc(), Field.Store.YES);
+			Field img = new TextField("img", book.getImg(), Field.Store.YES);
+			
 			
 			// add field into document
-			document.add(bid);
-			document.add(title);
+			document.add(bId);
+			document.add(bookName);
+			document.add(owner);
+			document.add(bookClass);
+			document.add(publisher);
 			document.add(author);
+			document.add(newPercent);
+			document.add(address);
+			document.add(onsale);
+			document.add(isDel);
 			document.add(price);
-			document.add(points);
-			document.add(discount);
-			document.add(picname);
-			document.add(desc);
+			document.add(img);
 			
 			// add document into doc list
 			docList.add(document);
