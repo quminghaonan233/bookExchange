@@ -30,16 +30,16 @@ public class IndexCreaterProcess {
 		for (Book book: bookList) {
 			document = new Document();
 			// book id
-			Field bId = new TextField("bid", book.getbId(), Field.Store.YES);
+			Field bId = new TextField("bid", Integer.toString(book.getbId()), Field.Store.YES);
 			
 			// book name
 			Field bookName = new TextField("title", book.getBookName(), Field.Store.YES);
 			
 			// book owner
-			Field owner = new TextField("title", book.getOwner(), Field.Store.YES);
+			Field book_owner = new TextField("title", book.getBook_owner(), Field.Store.YES);
 			
 			// book class
-			Field bookClass = new TextField("bookClass", book.getBookClass(), Field.Store.YES);
+			Field bookType = new TextField("bookType", book.getBookType(), Field.Store.YES);
 			
 			// publisher
 			Field publisher = new TextField("publisher", book.getPublisher(), Field.Store.YES);
@@ -48,7 +48,7 @@ public class IndexCreaterProcess {
 			Field author = new TextField("author", book.getAuthor(), Field.Store.YES);
 			
 			// new percent
-			Field newPercent = new TextField("newPercent", book.getNewPercent(), Field.Store.YES);
+			Field newDegree = new TextField("newPercent", book.getNewDegree(), Field.Store.YES);
 			
 			// address
 			Field address = new TextField("address", book.getAddress(), Field.Store.YES);
@@ -69,11 +69,11 @@ public class IndexCreaterProcess {
 			// add field into document
 			document.add(bId);
 			document.add(bookName);
-			document.add(owner);
-			document.add(bookClass);
+			document.add(book_owner);
+			document.add(bookType);
 			document.add(publisher);
 			document.add(author);
-			document.add(newPercent);
+			document.add(newDegree);
 			document.add(address);
 			document.add(onsale);
 			document.add(isDel);

@@ -4,7 +4,7 @@ public class User {
 	
 	private int uId; // user id 唯一标识
 	private String userName; // user name
-	private String password; // password
+	private String passwd; // password
 	private int score; // user score
 	private int credit; // user credit
 	
@@ -39,12 +39,12 @@ public class User {
 		this.userName = userName;
 	}
 
-	public String getPassword() {
-		return password;
+	public String getPasswd() {
+		return passwd;
 	}
 
-	public void setPassword(String password) {
-		this.password = password;
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
 	}
 
 	public int getScore() {
@@ -62,7 +62,7 @@ public class User {
 	public void setCredit(int credit) {
 		this.credit = credit;
 	}
-
+	
 	@Override
 	public String toString() {
 		return "User{" +
@@ -72,8 +72,6 @@ public class User {
 				"credit=" + credit +
 				"}";
 	}
-	
-	
 	
 	
 	

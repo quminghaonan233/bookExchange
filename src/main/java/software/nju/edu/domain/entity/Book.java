@@ -1,27 +1,34 @@
 package software.nju.edu.domain.entity;
 
 public class Book {	
-	private String bId; // 书的id
+	private int bId; // 书的id
 	private String bookName; // book name
-	private String owner; // FK uId
-	private String bookClass; // book class
+	private String book_owner; // FK uId
+	private String bookType; // book class
 	private String publisher; 
 	private String author;
-	private String newPercent;
+	private String newDegree;
 	private String address;
 	private int onsale;
 	private int isDel;
 	private int price;
 	private String img;
 	
+	public Book(int bId, String bookName, String book_owner) {
+		this.bId = bId;
+		this.bookName = bookName;
+		this.book_owner = book_owner;
+		
+		 
+	}
 	/**
 	 * getters and setters
 	 * 
 	**/
-	public String getbId() {
+	public int getbId() {
 		return bId;
 	}
-	public void setbId(String bId) {
+	public void setbId(int bId) {
 		this.bId = bId;
 	}
 	public String getBookName() {
@@ -30,17 +37,17 @@ public class Book {
 	public void setBookName(String bookName) {
 		this.bookName = bookName;
 	}
-	public String getOwner() {
-		return owner;
+	public String getBook_owner() {
+		return book_owner;
 	}
-	public void setOwner(String owner) {
-		this.owner = owner;
+	public void setBook_owner(String book_owner) {
+		this.book_owner = book_owner;
 	}
-	public String getBookClass() {
-		return bookClass;
+	public String getBookType() {
+		return bookType;
 	}
-	public void setBookClass(String bookClass) {
-		this.bookClass = bookClass;
+	public void setBookType(String bookType) {
+		this.bookType = bookType;
 	}
 	public String getPublisher() {
 		return publisher;
@@ -54,11 +61,11 @@ public class Book {
 	public void setAuthor(String author) {
 		this.author = author;
 	}
-	public String getNewPercent() {
-		return newPercent;
+	public String getNewDegree() {
+		return newDegree;
 	}
-	public void setNewPercent(String newPercent) {
-		this.newPercent = newPercent;
+	public void setNewDegree(String newDegree) {
+		this.newDegree = newDegree;
 	}
 	public String getAddress() {
 		return address;
