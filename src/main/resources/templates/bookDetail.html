@@ -10,6 +10,12 @@
 <body>
 <div class="wrapper">
     <div class="header">hhh</div>
+    
+    <p class="bookId" th:text="${book.getbId()}"></p>
+    <p class="bookName" th:text="${book.getBookName()}"></p>
+    <p class="bookOwner" th:text="${book.getBook_owner()}"></p>
+    <p class="bookType" th:text="${book.getBookType()}"></p>
+
 </div>
 </body>
 </html>

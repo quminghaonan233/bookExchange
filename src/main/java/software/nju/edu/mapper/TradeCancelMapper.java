@@ -18,16 +18,16 @@ public interface TradeCancelMapper {
 			+ "VALUES (#{tId}, #{initiate}, #{description}, #{status})")
 	void addNewTradeCancel();
 	
-	@Update("UPDATE trade_cancel SET status = 0 WHERE tId = {#tId} AND initiate = {#initiate}")
+	@Update("UPDATE trade_cancel SET status = 0 WHERE tId = #{tId} AND initiate = #{initiate}")
 	void alterStatusAsApplying(TradeCancel tradeCancel);
 	
-	@Update("UPDATE trade_cancel SET status = 1 WHERE tId = {#tId} AND initiate = {#initiate}")
+	@Update("UPDATE trade_cancel SET status = 1 WHERE tId = #{tId} AND initiate = #{initiate}")
 	void alterStatusAsApplicationSuccess(TradeCancel tradeCancel);
 	
-	@Update("UPDATE trade_cancel SET status = 2 WHERE tId = {#tId} AND initiate = {#initiate}")
+	@Update("UPDATE trade_cancel SET status = 2 WHERE tId = #{tId} AND initiate = #{initiate}")
 	void alterStatusAsApplicationRefuse(TradeCancel tradeCancel);
 	
-	@Delete("DELETE FROM trade_cancel WHERE tId = {#tId} AND initiate = {#initiate}")
+	@Delete("DELETE FROM trade_cancel WHERE tId = #{tId} AND initiate = #{initiate}")
 	void deleteTradeCancel(TradeCancel tradeCancel);
 	
 }

@@ -24,6 +24,9 @@ public interface BookMapper {
 	})
 	List<Book> getAllBooks();
 	
+	@Select("SELECT * FROM book WHERE bId = #{bId}")
+	Book getBookDetail(int bId);
+	
 	/**
 	 * Select and Sort(Order By)
 	 * @return
@@ -57,15 +60,15 @@ public interface BookMapper {
 	 */
 	@Update("UPDATE book SET userName = #{userName} "
 			+ "book_owner = #{book_owner}, "
-			+ "bookType = {#bookType}, "
-			+ "publisher = {#publisher}, "
-			+ "author = {#author}, "
-			+ "newDegree = {#newDegree}, "
-			+ "address = {#address}, "
-			+ "onsale = {#onsale}, "
-			+ "isDel = {#isDel}, "
-			+ "price = {#price}, "
-			+ "img = {#img} "
+			+ "bookType = #{bookType}, "
+			+ "publisher = #{publisher}, "
+			+ "author = #{author}, "
+			+ "newDegree = #{newDegree}, "
+			+ "address = #{address}, "
+			+ "onsale = #{onsale}, "
+			+ "isDel = #{isDel}, "
+			+ "price = #{price}, "
+			+ "img = #{img} "
 			+ "WHERE bId = #{bId}")
 	void updateBookDetail(Book book);
 	

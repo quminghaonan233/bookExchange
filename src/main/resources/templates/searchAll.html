@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <title>Insert title here</title>
 </head>
 <body>
+
+<div th:each="book:${queryResultBookList}">
+<p th:text=${book.bookName}"></p>
+</th:each>
+</div>
+
 
 </body>
 </html>
