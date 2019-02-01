@@ -1,6 +1,13 @@
 package software.nju.edu.domain.entity;
 
-public class Book {	
+import java.io.Serializable;
+
+public class Book implements Serializable {	
+	/**
+	 * version
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private int bId; // 书的id
 	private String bookName; // book name
 	private String book_owner; // FK uId
@@ -14,17 +21,20 @@ public class Book {
 	private int price;
 	private String img;
 	
+	// constructor without argument.
+	public Book() {
+		
+	}
+	
+	// constructor with several arguments.
 	public Book(int bId, String bookName, String book_owner) {
 		this.bId = bId;
 		this.bookName = bookName;
 		this.book_owner = book_owner;
-		
 		 
 	}
-	/**
-	 * getters and setters
-	 * 
-	**/
+	
+	//getters and setters
 	public int getbId() {
 		return bId;
 	}
@@ -97,6 +107,25 @@ public class Book {
 	public void setImg(String img) {
 		this.img = img;
 	}
-		
+	
+	@Override
+	public String toString() {
+		return "Book{" +
+			   "bId=" + bId +
+			   "bookName=" + bookName +
+			   "book_owner=" + book_owner +
+			   "bookType=" + bookType +
+			   "publisher=" + publisher +
+			   "author=" + author +
+			   "newDegree=" + newDegree +
+			   "address=" + address +
+			   "onsale=" + onsale +
+			   "isDel=" + isDel +
+			   "price=" + price +
+			   "img=" + img +
+			   "}";
+			   
+	}
+	
 
 }

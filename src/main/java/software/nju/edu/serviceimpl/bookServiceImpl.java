@@ -16,7 +16,7 @@ public class bookServiceImpl implements bookService {
 		// TODO Auto-generated method stub
 		
 		List<Book> list = new ArrayList<Book>();
-		Book b1 = new Book(10000, "Java编程", "alice");
+		Book b1 = new Book(10000, "Java基础编程", "alice");
 		Book b2 = new Book(10001, "Java入门", "bob");
 		Book b3 = new Book(10002, "Java精通", "cici");
 		Book b4 = new Book(10001, "Java高手", "bob");
@@ -34,7 +34,7 @@ public class bookServiceImpl implements bookService {
 	public List<Book> findBookListWithKey(String key) {
 		// TODO Auto-generated method stub
 		List<Book> list = new ArrayList<Book>();
-		Book b1 = new Book(10000, "Java编程", "alice");
+		Book b1 = new Book(10000, "Java基础编程", "alice");
 		Book b2 = new Book(10001, "Java入门", "bob");
 		Book b3 = new Book(10002, "Java精通", "cici");
 		Book b4 = new Book(10001, "Java高手", "bob");

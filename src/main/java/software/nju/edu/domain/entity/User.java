@@ -1,6 +1,12 @@
 package software.nju.edu.domain.entity;
 
-public class User {
+import java.io.Serializable;
+
+public class User implements Serializable {
+	/**
+	 * version
+	 */
+	private static final long serialVersionUID = 1L;
 	
 	private int uId; // user id 唯一标识
 	private String userName; // user name
@@ -8,10 +14,12 @@ public class User {
 	private int score; // user score
 	private int credit; // user credit
 	
+	// constructor without argument.
 	public User() {
 		
 	}
 	
+	// constructor with several arguments.
 	public User(int uId, String userName, int score, int credit) {
 		this.uId = uId;
 		this.userName = userName;
@@ -19,10 +27,7 @@ public class User {
 		this.credit = credit;
 	}
 	
-	/**
-	 * getters and setters
-	 * 
-	 */
+	// getters and setters
 	public int getuId() {
 		return uId;
 	}
@@ -68,12 +73,11 @@ public class User {
 		return "User{" +
 				"userId=" + uId +
 				"userName=" + userName +
+				"passwd=" + "******" +
 				"score=" + score +
 				"credit=" + credit +
 				"}";
+	
 	}
-	
-	
-	
 
 }

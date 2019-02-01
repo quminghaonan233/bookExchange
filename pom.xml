@@ -89,6 +89,21 @@
 		
 		<!-- mybatis end -->
 		
+		<!-- spring boot 避免修改后重启 start-->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>springloaded</artifactId>
+			<version>1.2.6.RELEASE</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+			</dependency>
+			
+		
+		<!-- spring boot 避免修改后重启 end -->
+		
 	</dependencies>
 	
 	
