@@ -13,10 +13,23 @@ public interface BookMapper {
 	
 	@Select("SELECT * FROM book")
 	@Results({
-		@Result(property = "bookId", column = "bId"),
+		@Result(property = "bId", column = "bId"),
 		@Result(property = "bookName", column = "bookName")
 	})
 	List<Book> getAllBooks();
+	
+	@Select("SELECT * FROM book ORDER BY newDegree DESC")
+	List<Book> getAllBooksOrderByNewDegreeDesc();
+	
+	@Select("SELECT * FROM book ORDER BY newDegree ASC")
+	List<Book> getAllBooksOrderByNewDegreeAsc();
+	
+	@Select("SELECT * FROM book ORDER BY price DESC ")
+	List<Book> getAllBooksOrderByPriceDesc();
+	
+	@Select("SELECT * FROM book ORDER BY price ASC")
+	List<Book> getAllBooksOrderByPriceAsc();
+	
 	
 
 }

@@ -2,6 +2,8 @@ package software.nju.edu.seo;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.lucene.analysis.Analyzer;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
@@ -16,15 +18,17 @@ import org.apache.lucene.search.TopDocs;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
+import software.nju.edu.domain.entity.Book;
+
 public class IndexSearcherProcess {
 	
 	
 	private int query_result_max_count = 10;
 	
-	private void startSearchProcess(Query query) {
+	private List<Book> startSearchProcess(Query query) {
 		try {
 			// create Directory
-			Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("your_index_path"));
+			Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("/Users/huanghj/Desktop/LuceneIndex"));
 			IndexReader reader = DirectoryReader.open(directory);
 			IndexSearcher searcher = new IndexSearcher(reader);
 			// 
@@ -34,36 +38,61 @@ public class IndexSearcherProcess {
 			System.out.println("hit records counts = " + hitCounts);
 			ScoreDoc[] scoreDocs = topDocs.scoreDocs;
 			
+			if (hitCounts > 0)
+				return null;
+			
+			List<Book> queryResultBookList = new ArrayList<Book>();
+			
 			for (ScoreDoc scoreDoc : scoreDocs) {
 				int docId = scoreDoc.doc;
 				
 				Document doc = searcher.doc(docId);
 				
-				System.out.println("book id :" + doc.get("bid"));
-				System.out.println("book title :" + doc.get("title"));
+				Book resultBook = new Book();
+				System.out.println("book id :" + doc.get("bId"));
+				System.out.println("book name :" + doc.get("bookName"));
 				
+				// set attribute for result book.
+				resultBook.setbId(Integer.valueOf(doc.get("bId")));
+				resultBook.setBookName(doc.get("bookName"));
+				resultBook.setBook_owner(doc.get("book_owner"));	
+				resultBook.setBookType(doc.get("bookType"));
+				resultBook.setPublisher(doc.get("publisher"));
+				resultBook.setAuthor(doc.get("author"));
+				resultBook.setNewDegree(doc.get("newDegree"));
+				resultBook.setAddress(doc.get("address"));
+				resultBook.setOnsale(Integer.valueOf(doc.get("onsale")));
+				resultBook.setIsDel(Integer.valueOf(doc.get("isdel")));
+				resultBook.setPrice(Integer.valueOf(doc.get("price")));
+				resultBook.setImg(doc.get("img"));
 				
+				// add result book into result book list
+				queryResultBookList.add(resultBook);
 				
 			}
 			
 			reader.close();
 			
+			return queryResultBookList;
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
+		return null;
 	}
 	
-	public void indexSearch() throws Exception {
+	public List<Book> indexSearch(String key) throws Exception {
 		Analyzer analyzer = new StandardAnalyzer();
 		
-		QueryParser parser = new QueryParser("title", analyzer);
+		QueryParser parser = new QueryParser("bookName", analyzer);
 		
+		// lucene query, extend new parse method.
+		Query query = parser.parse(key);
 		
-		// lucene query
-		Query query = parser.parse("title:key1 AND key2");
+		List<Book> queryResultBookList = startSearchProcess(query);
 		
-		startSearchProcess(query);
-		
+		return queryResultBookList;
 		
 		
 	}

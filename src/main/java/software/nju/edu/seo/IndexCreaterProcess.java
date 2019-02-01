@@ -13,30 +13,29 @@ import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
-
-import software.nju.edu.domain.dao.BookDao;
 import software.nju.edu.domain.entity.Book;
-import software.nju.edu.domain.impl.BookDaoImpl;
 
 public class IndexCreaterProcess {
-	
-	public void createIndex() throws Exception {
-		// query book list
-		BookDao bookdao = new BookDaoImpl();
-		List<Book> bookList = bookdao.queryBookList();
 		
+	public void createIndex(List<Book> bookList) throws Exception {
+		
+		//List<Book> bookList = BookMapper.getAllBooksOrderByNewDegreeDesc();
+		
+		System.out.println("booklistsize=" + bookList.size());
+		System.out.println("booklistsize=" + bookList.get(0).getBookName());
 		List<Document> docList = new ArrayList<Document>();
 		Document document;
+		
 		for (Book book: bookList) {
 			document = new Document();
 			// book id
-			Field bId = new TextField("bid", Integer.toString(book.getbId()), Field.Store.YES);
+			Field bId = new TextField("bId", Integer.toString(book.getbId()), Field.Store.YES);
 			
 			// book name
-			Field bookName = new TextField("title", book.getBookName(), Field.Store.YES);
+			Field bookName = new TextField("bookName", book.getBookName(), Field.Store.YES);
 			
 			// book owner
-			Field book_owner = new TextField("title", book.getBook_owner(), Field.Store.YES);
+			Field book_owner = new TextField("book_owner", book.getBook_owner(), Field.Store.YES);
 			
 			// book class
 			Field bookType = new TextField("bookType", book.getBookType(), Field.Store.YES);
@@ -92,7 +91,7 @@ public class IndexCreaterProcess {
 		IndexWriterConfig cfg = new IndexWriterConfig(analyzer);
 		
 		// path is the lib store your created index
-		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("your_index_path"));
+		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("/Users/huanghj/Desktop/LuceneIndex"));
 		
 		IndexWriter writer = new IndexWriter(directory, cfg);
 		writer.deleteAll();

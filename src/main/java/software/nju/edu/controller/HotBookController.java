@@ -19,7 +19,7 @@ public class HotBookController {
 	@GetMapping("/")
 	public String showHotBooks(Model model) {
 		List<Book> list = bookService.findHotBookList();
-		model.addAttribute("hotBookList",list);
+		model.addAttribute("hotBookList", list);
 		return "index";
 		
 	}
