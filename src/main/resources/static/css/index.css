@@ -298,16 +298,16 @@ img[Attributes Style] {
 .Topstory-container {
     display: flex;
     align-items: flex-start;
-    width: 1000px;
+    width: 1240px;
     padding: 0 16px;
     margin: 10px auto;
 }
 
 .Topstory-mainColumn {
     flex-shrink: 0;
-    margin-right: 10px;
+    margin-right: 20%;
     margin-bottom: 0;
-    width: 694px;
+    width: 80%;
 }
 
 
@@ -358,4 +358,12 @@ img[Attributes Style] {
     box-sizing: border-box;
 }
 
+.bookImg{
+	width:25%;
+}
+.bookDescription{
+	width:70%;
+	float:right;
+	margin-top:35px;
+}
 

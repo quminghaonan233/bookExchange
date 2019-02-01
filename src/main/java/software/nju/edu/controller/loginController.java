@@ -28,12 +28,11 @@ public class loginController {
     @PostMapping("/loginValidate")
     public String postForm(@ModelAttribute LoginMessage lm,BindingResult bindingresult, Model model) {
 
-//        Context context = new Context();
 		String userName = lm.getUserName();
 		//TODO 用户鉴权
 		System.out.println(userName);
 		model.addAttribute("message", userName);
-        return "index";
+        return "redirect:/index";
     }
     
 }
