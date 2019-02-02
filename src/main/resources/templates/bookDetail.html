@@ -87,23 +87,53 @@
 							<div class="">
 								<div class="Card TopstoryItem TopstoryItem-isRecommend">
 									<img class="bookImg" src="/img/book1.jpg">
-									<div class="bookDescription">
-										<p class="bookName" th:text="${book.bookName}"></a>
-										<p class="bookType" th:text="'书籍类型：'+${book.bookType}"></a>
-										<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
-										<p class="bookPublisher" th:text="'出版商：'+${book.publisher}"></p>
-										<p class="bookNewDegree" th:text="'新旧程度：'+${book.newDegree}"></p>	
-										<label>当前状态：</label>	
-										<td th:switch="${book.onsale}">
-											<span th:case="0">挂起</span>
-											<span th:case="1">在售</span>
-											<span th:case="2">售出</span>
-										</td>
-										<p class="bookAddress" th:text="'所在地：'+${book.address}"></p>														
-										<p class="bookPrice" th:text="'所需积分：'+${book.price}"></p>
+									<div  style="float:right;width:70%">
+										<div class="bookDescription">
+											<input type="hidden" id="hidden_bId" th:attr="value=${book.bId}"/>
+											<input type="hidden" id="hidden_isDel" th:attr="value=${book.isDel}"/>
+											<div class="contentDiv">
+												<p id="bookName"  th:text="${book.bookName}"></p>
+											</div>
+											<div class="contentDiv">
+												<label>书籍类型：</label>
+												<p class = "contentp" id="bookType" th:text="${book.bookType}"></p>
+											</div>
+											<div class="contentDiv">
+												<label>作者：</label>
+												<p class = "contentp" id="bookAuthor" th:text="${book.author}"></p>
+											</div>
+											<div class="contentDiv">
+												<label>出版商：</label>
+												<p class = "contentp" id="bookPublisher" th:text="${book.publisher}"></p>
+											</div>
+											<div class="contentDiv">
+												<label>新旧程度：</label>
+												<p  class = "contentp" id="bookNewDegree" th:text="${book.newDegree}"></p>	
+											</div>
+											<div class="contentDiv">
+												<label id="bookOnsale" th:value="${book.onsale}">当前状态：</label>	
+												<td  th:switch="${book.onsale}">
+													<span th:case="0">挂起</span>
+													<span th:case="1">在售</span>
+													<span th:case="2">售出</span>
+												</td>
+											</div>
+											<div class="contentDiv">
+												<label>所在地：</label>
+												<p class = "contentp" id="bookAddress" th:text="${book.address}"></p>	
+											</div>
+											<div class="contentDiv">
+												<label>所需积分：</label>													
+												<p class = "contentp" id="bookPrice" th:text="${book.price}"></p>
+											</div>
+										</div>
+										<div th:if="${isBookMine==true}" class="buttonContainer">
+											<button type="button" th:onClick="'javascript:deleteBook()'" style="color:red">删除</button>
+											<button id="modifyButton" type="button" style="color:green" th:onClick="'javascript:modifyBook()'">编辑</button>
+										</div>
 									</div>
 								</div>
-								<div class="Card TopstoryItem TopstoryItem-isRecommend" style="padding-top:0">
+								<div th:if="${isBookMine==false}"class="Card TopstoryItem TopstoryItem-isRecommend" style="padding-top:0">
 									<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
 										<a style="font-size:15px;">>>发起交易</a>
 									</div>
@@ -137,10 +167,89 @@
 	    };
 	    
 	    function myMessage(){
-	        location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;
-	    	
+	        location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;    	
 	    }
 	    
+	    function modifyBook(){
+	    	var bookName = document.getElementById("bookName");
+	    	var bookType = document.getElementById("bookType");
+	    	var bookAuthor = document.getElementById("bookAuthor");
+	    	var bookPublisher = document.getElementById("bookPublisher");
+	    	var bookNewDegree = document.getElementById("bookNewDegree");
+	    	var bookAddress = document.getElementById("bookAddress");
+	    	var bookPrice = document.getElementById("bookPrice");
+	    	bookName.setAttribute("contenteditable","true");
+	    	bookType.setAttribute("contenteditable","true");
+	    	bookAuthor.setAttribute("contenteditable","true");
+	    	bookPublisher.setAttribute("contenteditable","true");
+	    	bookNewDegree.setAttribute("contenteditable","true");
+	    	bookAddress.setAttribute("contenteditable","true");
+	    	bookPrice.setAttribute("contenteditable","true");
+	    	
+	    	var modifyButton = document.getElementById("modifyButton");
+	    	modifyButton.textContent="完成"
+	    	modifyButton.setAttribute("onclick","javascript:modifyConfirm()")
+
+	    }
+	    
+	    function modifyConfirm(){
+	    	 if(confirm('确定要修改书籍信息?')) { 
+	    	     modifyComplete();
+	    	 } 
+	    	 return false; 
+	    }
+	    
+	    function modifyComplete(){
+	    	sendModify();
+	    	var bookName = document.getElementById("bookName");
+	    	var bookType = document.getElementById("bookType");
+	    	var bookAuthor = document.getElementById("bookAuthor");
+	    	var bookPublisher = document.getElementById("bookPublisher");
+	    	var bookNewDegree = document.getElementById("bookNewDegree");
+	    	var bookAddress = document.getElementById("bookAddress");
+	    	var bookPrice = document.getElementById("bookPrice");
+	    	bookName.setAttribute("contenteditable","false");
+	    	bookType.setAttribute("contenteditable","false");
+	    	bookAuthor.setAttribute("contenteditable","false");
+	    	bookPublisher.setAttribute("contenteditable","false");
+	    	bookNewDegree.setAttribute("contenteditable","false");
+	    	bookAddress.setAttribute("contenteditable","false");
+	    	bookPrice.setAttribute("contenteditable","false");
+	    	
+	    	var modifyButton = document.getElementById("modifyButton");
+	    	modifyButton.textContent="修改"
+	    	modifyButton.setAttribute("onclick","javascript:modifyBook()")
+	    }
+	    
+	    function sendModify(){
+	    	var bookName = document.getElementById("bookName").textContent;
+	    	var bookType = document.getElementById("bookType").textContent;
+	    	var bookAuthor = document.getElementById("bookAuthor").textContent;
+	    	var bookPublisher = document.getElementById("bookPublisher").textContent;
+	    	var bookNewDegree = document.getElementById("bookNewDegree").textContent;
+	    	var bookOnsale = document.getElementById("bookOnsale").getAttribute("value");
+	    	var bookAddress = document.getElementById("bookAddress").textContent;
+	    	var bookPrice = document.getElementById("bookPrice").textContent;
+	    	var uId = document.getElementById("hidden_uId").value;
+	    	var bId = document.getElementById("hidden_bId").value;
+	    	var isDel = document.getElementById("hidden_isDel").value;
+	    	
+	        location.href="/bookModify?bookName="+bookName+"&bookType="+bookType+"&publisher="+bookPublisher+"&author="+bookAuthor+"&newDegree="+bookNewDegree+"&address="+bookAddress+"&onsale="+bookOnsale+"&bookOnsale="+bookPrice+"&uId="+uId+"&bId="+bId+"&isDel="+isDel;    	
+
+	    }
+	    
+	    function deleteBook(){
+	    	 if(confirm('确定要删除书籍信息?')) { 
+	    	     deleteComplete();
+	    	 } 
+	    	 return false; 
+	    }
+	    
+	    function deleteComplete(){
+	    	var uId = document.getElementById("hidden_uId").value;
+	    	var bId = document.getElementById("hidden_bId").value;
+	    	location.href="/bookDel?bId="+bId+"&uId="+uId;
+	    }
 	</script>
 </body>
 </html>
