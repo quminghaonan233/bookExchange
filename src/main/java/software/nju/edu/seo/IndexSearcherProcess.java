@@ -28,7 +28,7 @@ public class IndexSearcherProcess {
 	private List<Book> startSearchProcess(Query query) {
 		try {
 			// create Directory
-			Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("/Users/huanghj/Desktop/LuceneIndex"));
+			Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("G://javaEE//workspace//book_exchange/LuceneIndex"));
 			IndexReader reader = DirectoryReader.open(directory);
 			IndexSearcher searcher = new IndexSearcher(reader);
 			// 
@@ -38,7 +38,7 @@ public class IndexSearcherProcess {
 			System.out.println("hit records counts = " + hitCounts);
 			ScoreDoc[] scoreDocs = topDocs.scoreDocs;
 			
-			if (hitCounts > 0)
+			if (hitCounts <= 0)
 				return null;
 			
 			List<Book> queryResultBookList = new ArrayList<Book>();
@@ -61,9 +61,9 @@ public class IndexSearcherProcess {
 				resultBook.setAuthor(doc.get("author"));
 				resultBook.setNewDegree(doc.get("newDegree"));
 				resultBook.setAddress(doc.get("address"));
-				resultBook.setOnsale(Integer.valueOf(doc.get("onsale")));
-				resultBook.setIsDel(Integer.valueOf(doc.get("isdel")));
-				resultBook.setPrice(Integer.valueOf(doc.get("price")));
+				resultBook.setOnsale(doc.get("onsale")==null?0:Integer.valueOf(doc.get("onsale")));
+				resultBook.setIsDel((doc.get("isdel")==null)?0:Integer.valueOf(doc.get("isDel")));
+				resultBook.setPrice(doc.get("price")==null?0:Integer.valueOf(doc.get("price")));
 				resultBook.setImg(doc.get("img"));
 				
 				// add result book into result book list

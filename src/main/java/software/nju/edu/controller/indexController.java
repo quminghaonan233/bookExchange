@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import software.nju.edu.bean.SearchBean;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.serviceimpl.bookServiceImpl;
@@ -15,6 +16,7 @@ import software.nju.edu.serviceimpl.userServiceImpl;
 
 @Controller
 public class indexController {
+	
 	
 	@Autowired
 	private bookServiceImpl bookService;
@@ -28,10 +30,10 @@ public class indexController {
 	}
 	
 	@RequestMapping("/index")
-	public String hello(@ModelAttribute User user,Model model){
+	public String hello(String uId,Model model){
 		List<Book> list = bookService.findHotBookList();
 		model.addAttribute("hotBookList",list);
-		model.addAttribute("user",user);
+		model.addAttribute("user",userService.getUserById(Integer.parseInt(uId)));
 		System.out.println(model.toString());
 	    return "index";
 	}

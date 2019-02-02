@@ -41,8 +41,7 @@ public class loginController {
 		
 		User u = userService.validateUser(userName, passwd);
 		if(u != null) {
-			redir.addFlashAttribute("user", u);
-			return "redirect:/index";
+			return "redirect:/index?uId="+ u.getuId();
 		}
 		else {
 			redir.addFlashAttribute("failError","用户名或密码错误");

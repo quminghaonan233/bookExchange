@@ -91,7 +91,7 @@ public class IndexCreaterProcess {
 		IndexWriterConfig cfg = new IndexWriterConfig(analyzer);
 		
 		// path is the lib store your created index
-		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("/Users/huanghj/Desktop/LuceneIndex"));
+		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("G://javaEE//workspace//book_exchange/LuceneIndex"));
 		
 		IndexWriter writer = new IndexWriter(directory, cfg);
 		writer.deleteAll();

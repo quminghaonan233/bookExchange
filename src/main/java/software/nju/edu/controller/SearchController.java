@@ -16,19 +16,21 @@ import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.seo.SEOLogic;
 import software.nju.edu.serviceimpl.bookServiceImpl;
+import software.nju.edu.serviceimpl.userServiceImpl;
 
 @Controller
 public class SearchController {
 	
 	@Autowired
+	private userServiceImpl userService;
+	@Autowired
 	private bookServiceImpl bookService;
 	@Autowired
 	private BookMapper BookMapper;
 	
-	@GetMapping("/searchAll/{key}")
-	public String searchBooksInAll(@PathVariable String key, Model model) {
+	@GetMapping("/searchAll")
+	public String searchBooksInAll(String uId,String key, Model model) {
 		List<Book> books = BookMapper.getAllBooks();
-		System.out.println("aaa" + books);
 		
 		// Search Engine 
 		SEOLogic seo = new SEOLogic();
@@ -39,10 +41,10 @@ public class SearchController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		System.out.println("test : " + queryResultBookList.get(0).getBookName());
-		
+		System.out.println(queryResultBookList);
 		model.addAttribute("queryResultBookList", queryResultBookList);
+		model.addAttribute("key",key);
+		model.addAttribute("user",userService.getUserById(Integer.parseInt(uId)));
 		return "/searchAll";
 	}
 	
