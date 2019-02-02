@@ -1,11 +1,13 @@
 package software.nju.edu.serviceimpl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import software.nju.edu.domain.entity.Trade;
 import software.nju.edu.mapper.TradeMapper;
 import software.nju.edu.service.tradeService;
 
+@Service
 public class tradeServiceImpl implements tradeService {
 
 	@Autowired
