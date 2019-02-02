@@ -8,10 +8,13 @@ public class Book implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private int bId; // 书的id
-	private String bookName; // book name
-	private String book_owner; // FK uId
-	private String bookType; // book class
+	/**
+	 * Attributes
+	 */
+	private int bId;           // Primary key
+	private String bookName; 
+	private String book_owner; // Foreign Key: uId
+	private String bookType;
 	private String publisher; 
 	private String author;
 	private String newDegree;
@@ -32,6 +35,25 @@ public class Book implements Serializable {
 		this.bookName = bookName;
 		this.book_owner = book_owner;
 		 
+	}
+	
+	@Override
+	public String toString() {
+		return "Book{" +
+			   "bId=" + bId +
+			   "bookName=" + bookName +
+			   "book_owner=" + book_owner +
+			   "bookType=" + bookType +
+			   "publisher=" + publisher +
+			   "author=" + author +
+			   "newDegree=" + newDegree +
+			   "address=" + address +
+			   "onsale=" + onsale +
+			   "isDel=" + isDel +
+			   "price=" + price +
+			   "img=" + img +
+			   "}";
+			   
 	}
 	
 	//getters and setters
@@ -106,26 +128,6 @@ public class Book implements Serializable {
 	}
 	public void setImg(String img) {
 		this.img = img;
-	}
-	
-	@Override
-	public String toString() {
-		return "Book{" +
-			   "bId=" + bId +
-			   "bookName=" + bookName +
-			   "book_owner=" + book_owner +
-			   "bookType=" + bookType +
-			   "publisher=" + publisher +
-			   "author=" + author +
-			   "newDegree=" + newDegree +
-			   "address=" + address +
-			   "onsale=" + onsale +
-			   "isDel=" + isDel +
-			   "price=" + price +
-			   "img=" + img +
-			   "}";
-			   
-	}
-	
+	}	
 
 }

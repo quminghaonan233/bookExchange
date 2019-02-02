@@ -39,6 +39,9 @@ public class SearchController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		System.out.println("test : " + queryResultBookList.get(0).getBookName());
+		
 		model.addAttribute("queryResultBookList", queryResultBookList);
 		return "/searchAll";
 	}

@@ -8,6 +8,9 @@ public class User implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	/**
+	 * Attributes
+	 */
 	private int uId; // user id 唯一标识
 	private String userName; // user name
 	private String passwd; // password
@@ -25,6 +28,18 @@ public class User implements Serializable {
 		this.userName = userName;
 		this.score = score;
 		this.credit = credit;
+	}
+	
+	@Override
+	public String toString() {
+		return "User{" +
+				"userId=" + uId +
+				"userName=" + userName +
+				"passwd=" + "******" +
+				"score=" + score +
+				"credit=" + credit +
+				"}";
+	
 	}
 	
 	// getters and setters
@@ -66,18 +81,6 @@ public class User implements Serializable {
 
 	public void setCredit(int credit) {
 		this.credit = credit;
-	}
-	
-	@Override
-	public String toString() {
-		return "User{" +
-				"userId=" + uId +
-				"userName=" + userName +
-				"passwd=" + "******" +
-				"score=" + score +
-				"credit=" + credit +
-				"}";
-	
 	}
 
 }

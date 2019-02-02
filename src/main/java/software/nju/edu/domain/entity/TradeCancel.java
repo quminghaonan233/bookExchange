@@ -1,12 +1,27 @@
 package software.nju.edu.domain.entity;
 
-public class TradeCancel {
-	private int tcId; // primary key
-	private int tId; // Fk
-	private int initiate; // fk uId
-	private String description;
-	private int status;
+import java.io.Serializable;
 
+public class TradeCancel implements Serializable {
+	/**
+	 * version
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Attributes
+	 */
+	private int tcId;          // Primary key
+	private int tId;           // Foreign key tId
+	private int sourceId;      // Foreign key uId
+	private String sourceName;
+	private int targetId;      // Foreign key uId
+	private String tarhetName;
+	private String cancelDescription;
+	private int cancelStatus;
+	private String tradeDescrpition;
+	private int tradeStatus;
+	
 	/**
 	 * getters and setters
 	 * 
@@ -14,41 +29,62 @@ public class TradeCancel {
 	public int getTcId() {
 		return tcId;
 	}
-
 	public void setTcId(int tcId) {
 		this.tcId = tcId;
 	}
-
 	public int gettId() {
 		return tId;
 	}
-
 	public void settId(int tId) {
 		this.tId = tId;
 	}
-
-	public int getInitiate() {
-		return initiate;
+	public int getSourceId() {
+		return sourceId;
 	}
-
-	public void setInitiate(int initiate) {
-		this.initiate = initiate;
+	public void setSourceId(int sourceId) {
+		this.sourceId = sourceId;
 	}
-
-	public String getDescription() {
-		return description;
+	public String getSourceName() {
+		return sourceName;
 	}
-
-	public void setDescription(String description) {
-		this.description = description;
+	public void setSourceName(String sourceName) {
+		this.sourceName = sourceName;
 	}
-
-	public int getStatus() {
-		return status;
+	public int getTargetId() {
+		return targetId;
 	}
-
-	public void setStatus(int status) {
-		this.status = status;
+	public void setTargetId(int targetId) {
+		this.targetId = targetId;
 	}
+	public String getTarhetName() {
+		return tarhetName;
+	}
+	public void setTarhetName(String tarhetName) {
+		this.tarhetName = tarhetName;
+	}
+	public String getCancelDescription() {
+		return cancelDescription;
+	}
+	public void setCancelDescription(String cancelDescription) {
+		this.cancelDescription = cancelDescription;
+	}
+	public int getCancelStatus() {
+		return cancelStatus;
+	}
+	public void setCancelStatus(int cancelStatus) {
+		this.cancelStatus = cancelStatus;
+	}
+	public String getTradeDescrpition() {
+		return tradeDescrpition;
+	}
+	public void setTradeDescrpition(String tradeDescrpition) {
+		this.tradeDescrpition = tradeDescrpition;
+	}
+	public int getTradeStatus() {
+		return tradeStatus;
+	}
+	public void setTradeStatus(int tradeStatus) {
+		this.tradeStatus = tradeStatus;
+	}	
 
 }

@@ -8,10 +8,17 @@ public class Trade implements Serializable {
 	 * version
 	 */
 	private static final long serialVersionUID = 1L;
-
-	private int tId;
-	private int buyer; // foreign key: uId
-	private int bId; // foreign key: bId
+	
+	/**
+	 * Attributes
+	 */
+	private int tId;           // Primary key
+	private int buyerId;       // Foreign key: uId
+	private String buyerName; 
+	private int sellerId;      // Foreign key: uId
+	private String sellerName;
+	private int bId;           // Foreign key: bId
+	private String bookName;
 	private Date start;
 	private Date end;
 	private String sendTo;
@@ -24,26 +31,13 @@ public class Trade implements Serializable {
 	}
 
 	// constructor with several arguments.
-	public Trade(int tId, int buyer, int bId) {
+	public Trade(int tId, int buyerId, int sellerId, int bId) {
 		this.tId = tId;
-		this.buyer = buyer;
+		this.buyerId = buyerId;
+		this.sellerId = sellerId;
 		this.bId = bId;
 	}
 
-	@Override
-	public String toString() {
-		return "Trade{" + 
-				"tId=" + tId +
-				"buyer=" + buyer +
-				"bId=" + bId +
-				"start" + start +
-				"end" + end +
-				"sendTo" + sendTo +
-				"status" + status +
-				"}";
-		
-	}
-	
 	// getters and setters
 	public int gettId() {
 		return tId;
@@ -53,12 +47,36 @@ public class Trade implements Serializable {
 		this.tId = tId;
 	}
 
-	public int getBuyer() {
-		return buyer;
+	public int getBuyerId() {
+		return buyerId;
 	}
 
-	public void setBuyer(int buyer) {
-		this.buyer = buyer;
+	public void setBuyerId(int buyerId) {
+		this.buyerId = buyerId;
+	}
+
+	public String getBuyerName() {
+		return buyerName;
+	}
+
+	public void setBuyerName(String buyerName) {
+		this.buyerName = buyerName;
+	}
+
+	public int getSellerId() {
+		return sellerId;
+	}
+
+	public void setSellerId(int sellerId) {
+		this.sellerId = sellerId;
+	}
+
+	public String getSellerName() {
+		return sellerName;
+	}
+
+	public void setSellerName(String sellerName) {
+		this.sellerName = sellerName;
 	}
 
 	public int getbId() {
@@ -67,6 +85,14 @@ public class Trade implements Serializable {
 
 	public void setbId(int bId) {
 		this.bId = bId;
+	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}
 
 	public Date getStart() {
@@ -107,10 +133,6 @@ public class Trade implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
-	}
-
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
+	}	
 	
 }
