@@ -19,6 +19,7 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import software.nju.edu.domain.entity.Book;
+import software.nju.edu.util.LuceneUtil;
 
 public class IndexSearcherProcess {
 	
@@ -28,7 +29,10 @@ public class IndexSearcherProcess {
 	private List<Book> startSearchProcess(Query query) {
 		try {
 			// create Directory
-			Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("G://javaEE//workspace//book_exchange/LuceneIndex"));
+			String luceneIndexPath;
+			luceneIndexPath = new LuceneUtil().getLuceneIndex();
+			
+			Directory directory = FSDirectory.open(FileSystems.getDefault().getPath(luceneIndexPath));
 			IndexReader reader = DirectoryReader.open(directory);
 			IndexSearcher searcher = new IndexSearcher(reader);
 			// 

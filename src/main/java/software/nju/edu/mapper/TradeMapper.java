@@ -13,6 +13,9 @@ public interface TradeMapper {
 	@Select("SELECT * FROM trade")
 	List<Trade> getAllTrades();
 	
+	@Select("SELECT * FROM trade WHERE tId = #{tId}")
+	Trade getTradeByTradeId(int tId);
+	
 	@Select("SELECT * FROM trade WHERE buyerId = #{buyerId}")
 	List<Trade> getAllTradesByBuyerId(int buyerId);
 	
