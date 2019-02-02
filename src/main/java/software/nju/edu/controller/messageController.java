@@ -17,6 +17,7 @@ import software.nju.edu.mapper.TradeMapper;
 public class messageController {
 	@Autowired
 	private TradeMapper tradeMapper;
+	@Autowired
 	private TradeCancelMapper tradeCancelMapper;
 	
 	@RequestMapping("/myMessage")
@@ -25,13 +26,11 @@ public class messageController {
 		List<Trade> trade = tradeMapper.getAllTradesByUserId(Integer.valueOf(uId));
 		System.out.println("trade Test=" + trade.get(0));
 		
-		//List<TradeCancel> tradeCancel = tradeCancelMapper.getAllTradeCancel();
-		//System.out.println("tradeCancel Test=" + tradeCancel.get(0));
-		int tcId = tradeCancelMapper.getTradeCancelId();
-		System.out.println(tcId);
+		List<TradeCancel> tradeCancel = tradeCancelMapper.getAllTradeCancelByUserId(Integer.valueOf(uId));
+		System.out.println("tradeCancel Test=" + tradeCancel.get(0));
 		
 		model.addAttribute(trade);
-		//model.addAttribute(tradeCancel);
+		model.addAttribute(tradeCancel);
 	    return "message";
 	}
 }
