@@ -90,7 +90,7 @@
 								<div class="Card TopstoryItem TopstoryItem-isRecommend">
 									<img class="bookImg" src="/img/book1.jpg">
 									<div class="bookDescription">
-										<a class="bookName" th:text="${book.bookName}"></a>
+										<p class="bookName" th:text="${book.bookName}"></a>
 										<p class="bookType" th:text="'书籍类型：'+${book.bookType}"></a>
 										<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
 										<p class="bookPublisher" th:text="'出版商：'+${book.publisher}"></p>
@@ -110,12 +110,17 @@
 										<a style="font-size:15px;">>>发起交易</a>
 									</div>
 									<form method="post" action="/tradeSubmit" th:object="${tradeMessage}">
-										<label>收货地址：</label>
 										<div>
-											<input type="text" style="width:500px;height:30px" th:field="*{sendTo}" placeholder="请输入收货地址">
-											<input type="text" style="width:500px;height:30px" th:field="*{description}" placeholder="请输入收货地址">
+											<div class ="tradeLabelContainer">
+												<label class="tradeLabel">收货地址：</label>
+												<input type="text" style="width:500px;height:30px" th:field="*{sendTo}" placeholder="请输入收货地址">
+											</div>
+											<div class="tradeLabelContainer">
+												<label class="tradeLabel">备注：</label>
+												<input type="text" style="width:500px;height:30px" th:field="*{description}" placeholder="请输入备注信息">
+											</div>
 										</div>
-										<button type="submit" style="border-style:none;color:green;margin-left:10px">提交申请</button>
+										<button type="submit" style="border-style:none;color:green;">提交申请</button>
 									</form>
 								</div>
 							</div>

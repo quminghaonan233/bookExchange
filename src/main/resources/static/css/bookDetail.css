@@ -364,6 +364,13 @@ img[Attributes Style] {
 .bookDescription{
 	width:70%;
 	float:right;
-	margin-top:35px;
+	margin-top:10px;
+}
+.tradeLabelContainer{
+	height:50px;
 }
 
+.tradeLabel{
+	width:80px;
+	display:inline-block;
+}
