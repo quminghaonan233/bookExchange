@@ -24,7 +24,10 @@
                     <input type="password" th:field="*{password}" placeholder="请输入密码">
                 </div>
             </li>
-            <a class="register" href="/register">注册新账号</a>
+            <div style="float:left;">
+            	<a class="register" href="/register">注册新账号</a>
+            	<a class="failReason" th:text="${failError}"></a>
+            </div>
             <li>
                 <button type="submit">登陆</button>
             </li>

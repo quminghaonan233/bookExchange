@@ -93,7 +93,7 @@
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
 										<img class="bookImg" src="/img/book1.jpg">
 										<div class="bookDescription">
-											<a class="bookName" th:text="${book.bookName}" href="/bookDetail?bId=1"></a>
+											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}"></a>
 											<p class="bookPublisher" th:text="${book.publisher}"></p>
 											<p class="bookAuthor" th:text="${book.author}"></p>
 											<p class="bookPrice" th:text="${book.price}"></p>

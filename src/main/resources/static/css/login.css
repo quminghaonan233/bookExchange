@@ -227,3 +227,10 @@ ul li button:active{
 .register{
 	font-size: 13px;
 }
+
+.failReason {
+    font-size: 13px;
+    color: red;
+    float: right;
+    margin-right: 5px;
+}

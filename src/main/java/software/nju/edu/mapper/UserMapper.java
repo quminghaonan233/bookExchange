@@ -20,22 +20,25 @@ public interface UserMapper {
 		@Result(property = "userName", column = "userName")
 	})
 	List<User> getAllUsers();
+	
+	@Select("Select * FROM user where userName=#{userName} and passwd=#{passwd}")
+	User getUserDetail(String userName,String passwd);
 
 	/**
 	 * Select
 	 * @return
 	 */
 	@Select("SELECT * FROM user ORDER BY score DESC")
-	List<Book> getAllUsersOrderByScoreDesc();
+	List<User> getAllUsersOrderByScoreDesc();
 	
 	@Select("SELECT * FROM user ORDER BY score ASC")
-	List<Book> getAllUsersOrderByScoreAsc();
+	List<User> getAllUsersOrderByScoreAsc();
 	
 	@Select("SELECT * FROM user ORDER BY credit DESC")
-	List<Book> getAllUsersOrderByCreditDesc();
+	List<User> getAllUsersOrderByCreditDesc();
 	
 	@Select("SELECT * FROM user ORDER BY credit ASC")
-	List<Book> getAllUsersOrderByCreditAsc();
+	List<User> getAllUsersOrderByCreditAsc();
 	
 	/**
 	 * Insert

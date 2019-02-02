@@ -2,25 +2,28 @@ package software.nju.edu.controller;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
-import software.nju.edu.bean.UserInfo;
 import software.nju.edu.domain.entity.Book;
+import software.nju.edu.domain.entity.User;
 import software.nju.edu.serviceimpl.bookServiceImpl;
 
-@RestController
+@Controller
 public class indexController {
 	
+	
+	@Autowired
+	private bookServiceImpl bookService;
+	
 	@RequestMapping("/index")
-	public ModelAndView hello(Model model){
-		ModelAndView mav = new ModelAndView("index");
-		bookServiceImpl bookService = new bookServiceImpl();
+	public String hello(@ModelAttribute User user,Model model){
 		List<Book> list = bookService.findHotBookList();
 		model.addAttribute("hotBookList",list);
-	    return mav;
+	    return "index";
 	}
 
 }
