@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.serviceimpl.bookServiceImpl;
+import software.nju.edu.serviceimpl.userServiceImpl;
 
 @Controller
 public class indexController {
@@ -18,6 +19,10 @@ public class indexController {
 	
 	@Autowired
 	private bookServiceImpl bookService;
+	
+	@Autowired
+	private userServiceImpl userService;
+	
 	@RequestMapping("/")
 	public String toLogin(Model model){
 	    return "redirect:/login";
@@ -34,10 +39,10 @@ public class indexController {
 	
 	@RequestMapping("/myBook")
 	public String myBook(String uId,Model model){
-//		List<Book> list = bookService.findHotBookList();
-//		model.addAttribute("hotBookList",list);
-		System.out.println(model.toString());
-		System.out.println(uId);
+		List<Book> list = bookService.queryMineBooks(Integer.valueOf(uId));
+		User u = userService.getUserById(Integer.parseInt(uId));
+		model.addAttribute("myBookList",list);
+		model.addAttribute("user",u);
 	    return "myBook";
 	}
 

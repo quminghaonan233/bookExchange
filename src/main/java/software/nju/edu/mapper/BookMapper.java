@@ -27,10 +27,10 @@ public interface BookMapper {
 	@Select("SELECT * FROM book WHERE bId = #{bId}")
 	Book getBookDetail(int bId);
 	
-	@Select("SELECT COUNT(*) FROM book WHERE bId = #{bId} AND owner = #{uId}")
+	@Select("SELECT COUNT(*) FROM book WHERE bId = #{bId} AND book_owner = #{uId}")
 	int queryMineBooksByBookIdAndUserId(int bId, int uId);
 	
-	@Select("SELECT * FROM book WHERE owner = #{uId}")
+	@Select("SELECT * FROM book WHERE book_owner = #{uId}")
 	List<Book> queryMineBooksByUserId(int uId);
 	
 	/**

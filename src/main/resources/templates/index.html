@@ -50,7 +50,8 @@
 					<!-- 我的消息 -->
 					<div>
 						<div class="Popover Messages AppHeader-messages">
-							<form method="get" th:action="'/myMessage?uId='+${user.uId}">
+							<form method="get" th:action=@{/myMessage} th:object="${user}">
+								<input type="hidden" th:value="${user.uId}" th:field="*{uId}">
 								<button type="submit" id="Popover16-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content" class="Button Messages-icon Button--plain">
 									<span style="display: inline-flex; align-items: center;">​
 										<svg class="Zi Zi--Comments" fill="currentColor" viewBox="0 0 24 24" width="22" height="22">
