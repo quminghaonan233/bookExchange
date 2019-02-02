@@ -27,9 +27,6 @@ public class SearchController {
 	
 	@GetMapping("/searchAll/{key}")
 	public String searchBooksInAll(@PathVariable String key, Model model) {
-		// List<Book> list = bookService.findBookListWithKey(key);
-		// model.addAttribute("allBookList",list);
-		
 		List<Book> books = BookMapper.getAllBooks();
 		System.out.println("aaa" + books);
 		
@@ -39,14 +36,10 @@ public class SearchController {
 		List<Book> queryResultBookList = null;
 		try {		
 			queryResultBookList = seo.start(books, key);
-			
 		} catch (Exception e) {
 			e.printStackTrace();
-			
 		}
-		
 		model.addAttribute("queryResultBookList", queryResultBookList);
-		
 		return "/searchAll";
 	}
 	

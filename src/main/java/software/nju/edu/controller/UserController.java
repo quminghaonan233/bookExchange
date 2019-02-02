@@ -16,5 +16,10 @@ public class UserController {
 	public String getUser(@PathVariable int uId) {
 		return "uId = " + uId;
 	}
+	
+	@RequestMapping("/")
+	public String getMe() {
+		return "";
+	}
 
 }
