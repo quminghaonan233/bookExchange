@@ -12,9 +12,47 @@ import software.nju.edu.service.bookService;
 
 @Service
 public class bookServiceImpl implements bookService {
-
 	@Autowired
 	private BookMapper BookMapper;
+	
+	@Override
+	public void addNewBook(Book book) {
+		BookMapper.addNewBook(book);
+		
+	}
+
+	@Override
+	public void updateBook(Book book) {
+		BookMapper.updateBookDetail(book);
+		
+	}
+
+	@Override
+	public void deleteBook(int bId) {
+		BookMapper.deleteBook(bId);
+		
+	}
+
+	@Override
+	public void forSaleBook(int bId) {
+		// 待售 挂起 onsale = 0
+		BookMapper.alterBookWaitSale(bId);
+		
+	}
+
+	@Override
+	public void onSaleBook(int bId) {
+		// 出售 onsale = 1
+		BookMapper.alterBookOnSale(bId);
+		
+	}
+
+	@Override
+	public void sellOutBook(int bId) {
+		// 售完 onsale = 2
+		BookMapper.alterBookSaleOut(bId);
+		
+	}
 	
 	@Override
 	public List<Book> findHotBookList() {
@@ -64,6 +102,8 @@ public class bookServiceImpl implements bookService {
 		List<Book> list = BookMapper.queryMineBooksByUserId(uId);
 		return list;
 	}
+
+
 	
 	
 
