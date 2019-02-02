@@ -18,7 +18,7 @@ import org.thymeleaf.context.Context;
 
 import software.nju.edu.bean.LoginMessage;
 import software.nju.edu.domain.entity.User;
-import software.nju.edu.serviceimpl.UserServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 
 @Controller
 public class LoginController {

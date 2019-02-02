@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
-import software.nju.edu.seo.SEOLogic;
-import software.nju.edu.serviceimpl.BookServiceImpl;
-import software.nju.edu.serviceimpl.UserServiceImpl;
+import software.nju.edu.service.impl.BookServiceImpl;
+import software.nju.edu.service.impl.SearchEngineOptimizationServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 
 @Controller
 public class SearchController {
@@ -33,7 +33,7 @@ public class SearchController {
 		List<Book> books = BookMapper.getAllBooks();
 		
 		// Search Engine 
-		SEOLogic seo = new SEOLogic();
+		SearchEngineOptimizationServiceImpl seo = new SearchEngineOptimizationServiceImpl();
 		
 		List<Book> queryResultBookList = null;
 		try {		

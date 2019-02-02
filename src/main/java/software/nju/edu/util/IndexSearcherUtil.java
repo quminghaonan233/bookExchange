@@ -1,4 +1,4 @@
-package software.nju.edu.seo;
+package software.nju.edu.util;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -19,9 +19,8 @@ import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 
 import software.nju.edu.domain.entity.Book;
-import software.nju.edu.util.LuceneUtil;
 
-public class IndexSearcherProcess {
+public class IndexSearcherUtil {
 	
 	
 	private int query_result_max_count = 10;
@@ -57,21 +56,28 @@ public class IndexSearcherProcess {
 				System.out.println("book name :" + doc.get("bookName"));
 				
 				// set attribute for result book.
-				resultBook.setbId(Integer.valueOf(doc.get("bId")));
-				resultBook.setBookName(doc.get("bookName"));
-				resultBook.setBook_owner(doc.get("book_owner"));	
-				resultBook.setBookType(doc.get("bookType"));
-				resultBook.setPublisher(doc.get("publisher"));
-				resultBook.setAuthor(doc.get("author"));
-				resultBook.setNewDegree(doc.get("newDegree"));
-				resultBook.setAddress(doc.get("address"));
-				resultBook.setOnsale(doc.get("onsale")==null?0:Integer.valueOf(doc.get("onsale")));
-				resultBook.setIsDel((doc.get("isdel")==null)?0:Integer.valueOf(doc.get("isDel")));
-				resultBook.setPrice(doc.get("price")==null?0:Integer.valueOf(doc.get("price")));
-				resultBook.setImg(doc.get("img"));
+				try {
+					resultBook.setbId(Integer.valueOf(doc.get("bId")));
+					resultBook.setBookName(doc.get("bookName"));
+					resultBook.setBook_owner(doc.get("book_owner"));	
+					resultBook.setBookType(doc.get("bookType"));
+					resultBook.setPublisher(doc.get("publisher"));
+					resultBook.setAuthor(doc.get("author"));
+					resultBook.setNewDegree(doc.get("newDegree"));
+					resultBook.setAddress(doc.get("address"));
+					resultBook.setOnsale(doc.get("onsale")==null?0:Integer.valueOf(doc.get("onsale")));
+					resultBook.setIsDel((doc.get("isdel")==null)?0:Integer.valueOf(doc.get("isDel")));
+					resultBook.setPrice(doc.get("price")==null?0:Integer.valueOf(doc.get("price")));
+					resultBook.setImg(doc.get("img"));
+					
+					// add result book into result book list
+					queryResultBookList.add(resultBook);
+					
+				} catch (Exception e) {
+					
+				}
 				
-				// add result book into result book list
-				queryResultBookList.add(resultBook);
+				
 				
 			}
 			

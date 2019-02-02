@@ -6,7 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import software.nju.edu.serviceimpl.UserServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 
 @Controller
 public class UserController {

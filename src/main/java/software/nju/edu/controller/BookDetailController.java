@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import software.nju.edu.bean.TradeMessage;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
-import software.nju.edu.serviceimpl.BookServiceImpl;
-import software.nju.edu.serviceimpl.UserServiceImpl;
+import software.nju.edu.service.impl.BookServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 
 
 @Controller

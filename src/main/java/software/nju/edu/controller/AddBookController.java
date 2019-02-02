@@ -11,9 +11,10 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import software.nju.edu.domain.entity.Book;
-import software.nju.edu.serviceimpl.BookServiceImpl;
-import software.nju.edu.serviceimpl.UserServiceImpl;
+import software.nju.edu.service.impl.BookServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 import software.nju.edu.util.FileUtil;
+import software.nju.edu.util.ImageUtil;
 
 @Controller
 public class AddBookController {
@@ -40,7 +41,7 @@ public class AddBookController {
 		String uId = params.getParameter("uId");
 
 		String fileName = file.getOriginalFilename();
-		String filePath = "/Users/huanghj/img/";
+		String filePath = new ImageUtil().getImagePath();
 
 		int onsale = 0;
 		int isDel = 0;

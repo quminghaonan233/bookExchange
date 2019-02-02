@@ -11,9 +11,9 @@ import software.nju.edu.domain.entity.Trade;
 import software.nju.edu.domain.entity.TradeCancel;
 import software.nju.edu.mapper.TradeCancelMapper;
 import software.nju.edu.mapper.TradeMapper;
-import software.nju.edu.serviceimpl.TradeCancelServiceImpl;
-import software.nju.edu.serviceimpl.TradeServiceImpl;
-import software.nju.edu.serviceimpl.UserServiceImpl;
+import software.nju.edu.service.impl.TradeCancelServiceImpl;
+import software.nju.edu.service.impl.TradeServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 
 @Controller
 public class MessageController {

@@ -1,4 +1,4 @@
-package software.nju.edu.seo;
+package software.nju.edu.util;
 
 import java.nio.file.FileSystems;
 import java.util.ArrayList;
@@ -14,9 +14,8 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import software.nju.edu.domain.entity.Book;
-import software.nju.edu.util.LuceneUtil;
 
-public class IndexCreaterProcess {
+public class IndexCreaterUtil {
 		
 	public void createIndex(List<Book> bookList) throws Exception {
 		
