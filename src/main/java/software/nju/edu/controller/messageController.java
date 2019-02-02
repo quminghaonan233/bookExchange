@@ -1,14 +1,11 @@
 package software.nju.edu.controller;
 
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import software.nju.edu.domain.association.TradeCancel;
-import software.nju.edu.domain.entity.Trade;
 import software.nju.edu.mapper.TradeCancelMapper;
 import software.nju.edu.mapper.TradeMapper;
 
