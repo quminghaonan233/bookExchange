@@ -94,9 +94,9 @@
 										<img class="bookImg" src="/img/book1.jpg">
 										<div class="bookDescription">
 											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}"></a>
-											<p class="bookPublisher" th:text="${book.publisher}"></p>
-											<p class="bookAuthor" th:text="${book.author}"></p>
-											<p class="bookPrice" th:text="${book.price}"></p>
+											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>
+											<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
+											<p class="bookPrice" th:text="'所需积分：'+${book.price}"></p>
 										</div>
 									</div>
 								</th:block>

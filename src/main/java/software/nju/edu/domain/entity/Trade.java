@@ -15,6 +15,7 @@ public class Trade implements Serializable {
 	private Date start;
 	private Date end;
 	private String sendTo;
+	private String description;
 	private int status;
 
 	// constructor without argument.

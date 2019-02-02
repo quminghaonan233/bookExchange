@@ -37,6 +37,7 @@ create table trade(
     start datetime,
     end datetime,
     sendTo varchar(100),
+    description varchar(200),
     status int(1),
     foreign key(buyer) references user(uId),
     foreign key(bId) references book(bId)
@@ -45,6 +46,7 @@ create table trade(
 drop table if exists trade_cancel;
 
 create table trade_cancel(
+	tcId int(11) primary key auto_increment,
 	tId int(11),
     initiate int(11),
     description varchar(100),

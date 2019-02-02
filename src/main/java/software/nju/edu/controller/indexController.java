@@ -18,6 +18,10 @@ public class indexController {
 	
 	@Autowired
 	private bookServiceImpl bookService;
+	@RequestMapping("/")
+	public String toLogin(Model model){
+	    return "redirect:/login";
+	}
 	
 	@RequestMapping("/index")
 	public String hello(@ModelAttribute User user,Model model){
