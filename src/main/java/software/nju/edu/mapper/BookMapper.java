@@ -27,6 +27,12 @@ public interface BookMapper {
 	@Select("SELECT * FROM book WHERE bId = #{bId}")
 	Book getBookDetail(int bId);
 	
+	@Select("SELECT COUNT(*) FROM book WHERE bId = #{bId} AND owner = #{uId}")
+	int queryMineBooksByBookidAndUserId(int bId, int uId);
+	
+	@Select("SELECT * FROM book WHERE owner = #{uId}")
+	int queryMineBooksByUserId(int uId);
+	
 	/**
 	 * Select and Sort(Order By)
 	 * @return
