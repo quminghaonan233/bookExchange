@@ -28,7 +28,7 @@ public interface BookMapper {
 	Book getBookDetail(int bId);
 	
 	@Select("SELECT COUNT(*) FROM book WHERE bId = #{bId} AND owner = #{uId}")
-	int queryMineBooksByBookidAndUserId(int bId, int uId);
+	int queryMineBooksByBookIdAndUserId(int bId, int uId);
 	
 	@Select("SELECT * FROM book WHERE owner = #{uId}")
 	List<Book> queryMineBooksByUserId(int uId);

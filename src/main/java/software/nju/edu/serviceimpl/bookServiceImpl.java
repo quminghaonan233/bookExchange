@@ -46,6 +46,24 @@ public class bookServiceImpl implements bookService {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public boolean queryBookIsMine(int uId, int bId) {
+		// res = 0, true; res = 1, flase;
+		boolean flag = true;
+		int res = BookMapper.queryMineBooksByBookIdAndUserId(bId, uId);
+		if(res == 0)
+			flag = false;
+		else if (res == 1)
+			flag = true;
+		return flag;
+	}
+
+	@Override
+	public List<Book> queryMineBooks(int uId) {
+		List<Book> list = BookMapper.queryMineBooksByUserId(uId);
+		return list;
+	}
 	
 	
 

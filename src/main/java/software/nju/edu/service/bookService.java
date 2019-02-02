@@ -11,5 +11,9 @@ public interface bookService {
 	public List<Book> findBookListWithKey(String key);
 	
 	public void sortBookList(List<Book> bookList);
+	
+	public boolean queryBookIsMine(int uId, int bId);
+	
+	public List<Book> queryMineBooks(int uId);
 
 }
