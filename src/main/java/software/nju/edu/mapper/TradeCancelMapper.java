@@ -31,13 +31,13 @@ public interface TradeCancelMapper {
 			+ ")")
 	void addNewTradeCancel(TradeCancel tradeCancel);
 	
-	@Update("UPDATE trade_cancel SET status = 0 WHERE tcId = #{tcId}")
+	@Update("UPDATE trade_cancel SET cancelStatus = 0 WHERE tcId = #{tcId}")
 	void updateCancelStatusAsApplicationWaitng(int tcId);
 	
-	@Update("UPDATE trade_cancel SET status = 1 WHERE tcId = #{tcId}")
+	@Update("UPDATE trade_cancel SET cancelStatus = 1 WHERE tcId = #{tcId}")
 	void updateCancelStatusAsApplicationSuccess(int tcId);
 	
-	@Update("UPDATE trade_cancel SET status = 2 WHERE tcId = #{tcId}")
+	@Update("UPDATE trade_cancel SET cancelStatus = 2 WHERE tcId = #{tcId}")
 	void updateCancelStatusAsApplicationRefused(int tcId);
 	
 	@Delete("DELETE FROM trade_cancel WHERE tcId = #{tcId}")
