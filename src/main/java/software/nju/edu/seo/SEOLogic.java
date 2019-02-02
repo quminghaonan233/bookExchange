@@ -1,7 +1,6 @@
 package software.nju.edu.seo;
 
 import java.util.List;
-import software.nju.edu.bean.SearchBean;
 import software.nju.edu.domain.entity.Book;
 
 public class SEOLogic {

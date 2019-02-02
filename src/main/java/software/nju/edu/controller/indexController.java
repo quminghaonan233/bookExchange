@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import software.nju.edu.bean.SearchBean;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.serviceimpl.bookServiceImpl;
