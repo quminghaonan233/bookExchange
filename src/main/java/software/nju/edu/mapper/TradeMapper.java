@@ -13,6 +13,9 @@ public interface TradeMapper {
 	@Select("SELECT * FROM trade")
 	List<Trade> getAllTrades();
 	
+	@Select("SELECT * FROM trade WHERE buyer = #{uId}")
+	List<Trade> getAllTradesByUserId(int uId);
+	
 	@Insert("INSERT INTO trade(tId, buyer, bId, start, end, sendTo, status) "
 			+ "VALUES (#{tId}, #{buyer}, #{bId}, #{start}, #{end}, #{sendTo}, #{status})")
 	void addNewTrade();
