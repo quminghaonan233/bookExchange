@@ -31,7 +31,7 @@ public interface BookMapper {
 	int queryMineBooksByBookidAndUserId(int bId, int uId);
 	
 	@Select("SELECT * FROM book WHERE owner = #{uId}")
-	int queryMineBooksByUserId(int uId);
+	List<Book> queryMineBooksByUserId(int uId);
 	
 	/**
 	 * Select and Sort(Order By)
