@@ -3,7 +3,7 @@ package software.nju.edu.domain.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Trade implements Serializable {
+public class Trade_ implements Serializable {
 	/**
 	 * version
 	 */
@@ -19,17 +19,31 @@ public class Trade implements Serializable {
 	private int status;
 
 	// constructor without argument.
-	public Trade() {
+	public Trade_() {
 
 	}
 
 	// constructor with several arguments.
-	public Trade(int tId, int buyer, int bId) {
+	public Trade_(int tId, int buyer, int bId) {
 		this.tId = tId;
 		this.buyer = buyer;
 		this.bId = bId;
 	}
 
+	@Override
+	public String toString() {
+		return "Trade{" + 
+				"tId=" + tId +
+				"buyer=" + buyer +
+				"bId=" + bId +
+				"start" + start +
+				"end" + end +
+				"sendTo" + sendTo +
+				"status" + status +
+				"}";
+		
+	}
+	
 	// getters and setters
 	public int gettId() {
 		return tId;
@@ -79,6 +93,14 @@ public class Trade implements Serializable {
 		this.sendTo = sendTo;
 	}
 
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
 	public int getStatus() {
 		return status;
 	}
@@ -87,18 +109,8 @@ public class Trade implements Serializable {
 		this.status = status;
 	}
 
-	@Override
-	public String toString() {
-		return "Trade{" + 
-				"tId=" + tId +
-				"buyer=" + buyer +
-				"bId=" + bId +
-				"start" + start +
-				"end" + end +
-				"sendTo" + sendTo +
-				"status" + status +
-				"}";
-		
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 	
 }

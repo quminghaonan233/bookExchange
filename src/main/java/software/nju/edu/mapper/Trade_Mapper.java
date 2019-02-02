@@ -6,22 +6,22 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import software.nju.edu.domain.entity.Trade;
+import software.nju.edu.domain.entity.Trade_;
 
-public interface TradeMapper {
+public interface Trade_Mapper {
 	
 	@Select("SELECT * FROM trade")
-	List<Trade> getAllTrades();
+	List<Trade_> getAllTrades();
 	
 	@Select("SELECT * FROM trade WHERE buyer = #{buyer}")
-	List<Trade> getAllTradesByUserId(int buyer);
+	List<Trade_> getAllTradesByUserId(int buyer);
 	
 	@Insert("INSERT INTO trade(tId, buyer, bId, start, end, sendTo, status) "
 			+ "VALUES (#{tId}, #{buyer}, #{bId}, #{start}, #{end}, #{sendTo}, #{status})")
-	void addNewTrade(Trade trade);
+	void addNewTrade(Trade_ trade);
 	
-	@Select("SELECT * FROM trade WHERE bId In (SELECT bId FROM book WHERE book_owner = #{book_owner});")
-	List<Trade> getAllTradesBySellerId(int book_owner);
+	@Select("SELECT * FROM trade WHERE bId In (SELECT bId FROM book WHERE book_owner = #{book_owner})")
+	List<Trade_> getAllTradesBySellerId(int book_owner);
 	
 	/**
 	 * 4 status for trade status = 0, 1, 2, 3.

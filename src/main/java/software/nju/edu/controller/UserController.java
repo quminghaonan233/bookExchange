@@ -17,9 +17,5 @@ public class UserController {
 		return "uId = " + uId;
 	}
 	
-	@RequestMapping("/")
-	public String getMe() {
-		return "";
-	}
 
 }
