@@ -50,7 +50,8 @@ public interface BookMapper {
 			+ "publisher, author, newDegree, address, onsale, isDel, price, img) "
 			+ "VALUES (#{bookName}, #{book_owner}, #{bookType}, "
 			+ "#{publisher}, #{author}, #{newDegree}, #{address}, "
-			+ "#{onsale}, #{isDel}, #{price}, #{img}")
+			+ "#{onsale}, #{isDel}, #{price}, #{img}"
+			+ ")")
 	void addNewBook(Book book);
 	
 	/**
