@@ -16,7 +16,6 @@ import software.nju.edu.serviceimpl.userServiceImpl;
 @Controller
 public class indexController {
 	
-	
 	@Autowired
 	private bookServiceImpl bookService;
 	

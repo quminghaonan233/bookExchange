@@ -13,16 +13,21 @@ public interface TradeMapper {
 	@Select("SELECT * FROM trade")
 	List<Trade> getAllTrades();
 	
-	@Select("SELECT * FROM trade WHERE buyer = #{buyer}")
-	List<Trade> getAllTradesByUserId(int buyer);
+	@Select("SELECT * FROM trade WHERE buyerId = #{buyerId}")
+	List<Trade> getAllTradesByBuyerId(int buyerId);
 	
-	@Insert("INSERT INTO trade(tId, buyer, bId, start, end, sendTo, status) "
-			+ "VALUES (#{tId}, #{buyer}, #{bId}, #{start}, #{end}, #{sendTo}, #{status})")
+	@Select("SELECT * FROM trade WHERE sellerId = #{sellerId}")
+	List<Trade> getAllTradesBySellerId(int sellerId);
+	
+	@Insert("INSERT INTO trade("
+			+ "tId, buyerId, buyerName, sellerId, sellerName, bId, bookName, "
+			+ "start, end, sendTo, description, status) "
+			+ "VALUES ("
+			+ "#{tId}, #{buyerId}, #{buyerName}, #{sellerId}, #{sellerName}, #{bId}, #{bookName}, "
+			+ "#{start}, #{end}, #{sendTo}, #{description}, #{status}"
+			+ ")")
 	void addNewTrade(Trade trade);
-	
-	@Select("SELECT * FROM trade WHERE bId In (SELECT bId FROM book WHERE book_owner = #{book_owner})")
-	List<Trade> getAllTradesBySellerId(int book_owner);
-	
+		
 	/**
 	 * 4 status for trade status = 0, 1, 2, 3.
 	 * @param tId

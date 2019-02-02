@@ -23,10 +23,10 @@ public class messageController {
 	@RequestMapping("/myMessage")
 	public String myMessage(String uId, Model model){
 		System.out.println(uId);
-		List<Trade> trade = tradeMapper.getAllTradesByUserId(Integer.valueOf(uId));
+		List<Trade> trade = tradeMapper.getAllTradesBySellerId(Integer.valueOf(uId));
 		System.out.println("trade Test=" + trade.get(0));
 		
-		List<TradeCancel> tradeCancel = tradeCancelMapper.getAllTradeCancelByUserId(Integer.valueOf(uId));
+		List<TradeCancel> tradeCancel = tradeCancelMapper.getAllTradeCancelBySourceId(Integer.valueOf(uId));
 		System.out.println("tradeCancel Test=" + tradeCancel.get(0));
 		
 		model.addAttribute(trade);

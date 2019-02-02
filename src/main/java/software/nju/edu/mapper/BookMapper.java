@@ -4,8 +4,6 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Result;
-import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -13,15 +11,10 @@ import software.nju.edu.domain.entity.Book;
 
 public interface BookMapper {
 	
-	/**
-	 * Select
-	 * @return
-	 */
+	@Select("SELECT bookName FROM book WHERE bId = #{bId}")
+	String getBookNameByBookId(int bId);
+	
 	@Select("SELECT * FROM book")
-	@Results({
-		@Result(property = "bId", column = "bId"),
-		@Result(property = "bookName", column = "bookName")
-	})
 	List<Book> getAllBooks();
 	
 	@Select("SELECT * FROM book WHERE bId = #{bId}")

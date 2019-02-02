@@ -9,13 +9,12 @@ import software.nju.edu.service.userService;
 
 @Service
 public class userServiceImpl implements userService {
-
+	
 	@Autowired
 	private UserMapper userMapper;
 	
 	@Override
 	public User validateUser(String userName, String passwd) {
-		// TODO Auto-generated method stub
 		User u = userMapper.getUserDetail(userName, passwd);
 		return u;
 	}
@@ -25,4 +24,11 @@ public class userServiceImpl implements userService {
 		User u = userMapper.getUserById(uId);
 		return u;
 	}
+
+	@Override
+	public String getUserName(int uId) {
+		String userName = userMapper.getUserNameByUserId(uId);
+		return userName;
+	}
+	
 }

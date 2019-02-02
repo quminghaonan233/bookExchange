@@ -14,50 +14,50 @@ import software.nju.edu.service.bookService;
 public class bookServiceImpl implements bookService {
 	@Autowired
 	private BookMapper BookMapper;
-	
+
+	@Override
+	public String getBookName(int bId) {
+		String bookName = BookMapper.getBookNameByBookId(bId);
+		return bookName;
+	}
+
 	@Override
 	public void addNewBook(Book book) {
 		BookMapper.addNewBook(book);
-		
 	}
 
 	@Override
 	public void updateBook(Book book) {
 		BookMapper.updateBookDetail(book);
-		
 	}
 
 	@Override
 	public void deleteBook(int bId) {
 		BookMapper.deleteBook(bId);
-		
 	}
 
 	@Override
 	public void forSaleBook(int bId) {
 		// 待售 挂起 onsale = 0
 		BookMapper.alterBookWaitSale(bId);
-		
 	}
 
 	@Override
 	public void onSaleBook(int bId) {
 		// 出售 onsale = 1
 		BookMapper.alterBookOnSale(bId);
-		
 	}
 
 	@Override
 	public void sellOutBook(int bId) {
 		// 售完 onsale = 2
 		BookMapper.alterBookSaleOut(bId);
-		
 	}
-	
+
 	@Override
 	public List<Book> findHotBookList() {
 		// assume this is the hot book list.
-		List<Book> list = BookMapper.getAllBooksOrderByNewDegreeDesc();	
+		List<Book> list = BookMapper.getAllBooksOrderByNewDegreeDesc();
 		return list;
 	}
 
@@ -75,14 +75,14 @@ public class bookServiceImpl implements bookService {
 		list.add(b3);
 		list.add(b4);
 		list.add(b5);
-		
+
 		return list;
 	}
 
 	@Override
 	public void sortBookList(List<Book> bookList) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
@@ -90,7 +90,7 @@ public class bookServiceImpl implements bookService {
 		// res = 0, true; res = 1, flase;
 		boolean flag = true;
 		int res = BookMapper.queryMineBooksByBookIdAndUserId(bId, uId);
-		if(res == 0)
+		if (res == 0)
 			flag = false;
 		else if (res == 1)
 			flag = true;
@@ -102,9 +102,5 @@ public class bookServiceImpl implements bookService {
 		List<Book> list = BookMapper.queryMineBooksByUserId(uId);
 		return list;
 	}
-
-
-	
-	
 
 }

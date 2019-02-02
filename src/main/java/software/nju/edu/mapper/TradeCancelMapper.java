@@ -8,30 +8,27 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import software.nju.edu.domain.entity.TradeCancel;
-import software.nju.edu.domain.entity.Trade;
 
 public interface TradeCancelMapper {
 	
 	@Select("SELECT * FROM trade_cancel")
 	List<TradeCancel> getAllTradeCancel();
 	
-	@Select("SELECT COUNT(tcId) FROM trade_cancel")
-	int getTradeCancelId();
+	@Select("SELECT * FROM trade_cancel WHERE sourceId = #{uId}")
+	List<TradeCancel> getAllTradeCancelBySourceId(int uId);
 	
-	@Select("SELECT * FROM trade_cancel WHERE initiate = #{uId}")
-	List<TradeCancel> getAllTradeCancelByUserId(int uId);
+	@Select("SELECT * FROM trade_cancel WHERE targetId = #{uId}")
+	List<TradeCancel> getAllTradeCancelByTargetId(int uId);
 	
-	@Select("SELECT * FROM trade_cancel WHERE tId In \n" + 
-			"(\n" + 
-			"	SELECT tId FROM trade WHERE bId in \n" + 
-			"	(\n" + 
-			"		SELECT bId FROM book WHERE book_owner = #{uId}\n" + 
-			"	)\n" + 
-			")")
-	List<TradeCancel> getAllTradeCancelsBySellerId(int uId);
-	
-	@Insert("INSERT INTO trade_cancel(tId, initiate, description, status) "
-			+ "VALUES (#{tId}, #{initiate}, #{description}, #{status})")
+	@Insert("INSERT INTO trade_cancel("
+			+ "tcId, tId, sourceId, sourceName, targetId, targetName, "
+			+ "cancelDescription, cancelStatus, "
+			+ "tradeDescription, tradeStatus) "
+			+ "VALUES ("
+			+ "#{tcId}, #{tId}, #{sourceId}, #{sourceName}, #{targetId}, #{targetName}, "
+			+ "#{cancelDescription}, #{cancelStatus}, "
+			+ "#{tradeDescription}, #{tradeStatus}"
+			+ ")")
 	void addNewTradeCancel(TradeCancel tradeCancel);
 	
 	@Update("UPDATE trade_cancel SET status = 0 WHERE tId = #{tId} AND initiate = #{initiate}")
