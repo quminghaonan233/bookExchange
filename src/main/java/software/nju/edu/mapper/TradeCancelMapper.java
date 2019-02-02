@@ -14,6 +14,9 @@ public interface TradeCancelMapper {
 	@Select("SELECT * FROM trade_cancel")
 	List<TradeCancel> getAllTradeCancel();
 	
+	@Select("SELECT * FROM trade_cancel WHERE initiate = #{uId}")
+	List<TradeCancel> getAllTradeCancelByUserId(int uId);
+	
 	@Insert("INSERT INTO trade_cancel(tId, initiate, description, status) "
 			+ "VALUES (#{tId}, #{initiate}, #{description}, #{status})")
 	void addNewTradeCancel();
