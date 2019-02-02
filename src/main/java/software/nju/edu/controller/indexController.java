@@ -27,7 +27,18 @@ public class indexController {
 	public String hello(@ModelAttribute User user,Model model){
 		List<Book> list = bookService.findHotBookList();
 		model.addAttribute("hotBookList",list);
+		model.addAttribute("user",user);
+		System.out.println(model.toString());
 	    return "index";
+	}
+	
+	@RequestMapping("/myBook")
+	public String myBook(String uId,Model model){
+//		List<Book> list = bookService.findHotBookList();
+//		model.addAttribute("hotBookList",list);
+		System.out.println(model.toString());
+		System.out.println(uId);
+	    return "myBook";
 	}
 
 }
