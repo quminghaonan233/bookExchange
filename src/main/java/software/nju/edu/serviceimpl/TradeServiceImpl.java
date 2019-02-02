@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import software.nju.edu.domain.entity.Trade;
 import software.nju.edu.mapper.TradeMapper;
-import software.nju.edu.service.tradeService;
+import software.nju.edu.service.TradeService;
 
 @Service
-public class tradeServiceImpl implements tradeService {
+public class TradeServiceImpl implements TradeService {
 
 	@Autowired
 	private TradeMapper tradeMapper;

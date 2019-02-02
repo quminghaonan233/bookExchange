@@ -18,14 +18,14 @@ import org.thymeleaf.context.Context;
 
 import software.nju.edu.bean.LoginMessage;
 import software.nju.edu.domain.entity.User;
-import software.nju.edu.serviceimpl.userServiceImpl;
+import software.nju.edu.serviceimpl.UserServiceImpl;
 
 @Controller
-public class loginController {
+public class LoginController {
 	
 	
 	@Autowired
-	private userServiceImpl userService;
+	private UserServiceImpl userService;
 	
     @GetMapping("/login")
     public String form(Model model) {

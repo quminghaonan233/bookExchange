@@ -4,7 +4,7 @@ import java.util.List;
 
 import software.nju.edu.domain.entity.Book;
 
-public interface bookService {
+public interface BookService {
 
 	// get bookName
 	public String getBookName(int bId);

@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.mapper.UserMapper;
-import software.nju.edu.service.userService;
+import software.nju.edu.service.UserService;
 
 @Service
-public class userServiceImpl implements userService {
+public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserMapper userMapper;

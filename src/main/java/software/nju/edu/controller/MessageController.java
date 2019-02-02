@@ -11,22 +11,22 @@ import software.nju.edu.domain.entity.Trade;
 import software.nju.edu.domain.entity.TradeCancel;
 import software.nju.edu.mapper.TradeCancelMapper;
 import software.nju.edu.mapper.TradeMapper;
-import software.nju.edu.serviceimpl.tradeCancelServiceImpl;
-import software.nju.edu.serviceimpl.tradeServiceImpl;
-import software.nju.edu.serviceimpl.userServiceImpl;
+import software.nju.edu.serviceimpl.TradeCancelServiceImpl;
+import software.nju.edu.serviceimpl.TradeServiceImpl;
+import software.nju.edu.serviceimpl.UserServiceImpl;
 
 @Controller
-public class messageController {
+public class MessageController {
 	@Autowired
 	private TradeMapper tradeMapper;
 	@Autowired
 	private TradeCancelMapper tradeCancelMapper;
 	@Autowired
-	private userServiceImpl userService;
+	private UserServiceImpl userService;
 	@Autowired
-	private tradeServiceImpl tradeService;
+	private TradeServiceImpl tradeService;
 	@Autowired
-	private tradeCancelServiceImpl tradeCancelService;
+	private TradeCancelServiceImpl tradeCancelService;
 
 	@RequestMapping("/myMessage")
 	public String myMessage(String uId, Model model) {

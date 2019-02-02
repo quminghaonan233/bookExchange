@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/css/index.css}"
+	href="../../static/css/index.css" />
+	
 <title>Insert title here</title>
 </head>
+
+<h1> User Info</h1>
 <body>
 
+<div class="contentDiv">
+	<p th:text="${user.uId}"></p>
+	<p th:text="${user.userName}"></p>
+	<p th:text="${user.passwd}"></p>
+	<p th:text="${user.score}"></p>
+	<p th:text="${user.credit}"></p>
+	</div>
+	<div>
+		<header role="banner" class="Sticky AppHeader"
+			data-za-module="TopNavBar">
+			<div class="AppHeader-inner" style="margin-left: 100px;">
+				<!-- 菜单栏 -->
+				<nav role="navigation" class="AppHeader-nav">
+					<a class="AppHeader-navItem is-active"
+						th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
+					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}"
+						data-za-not-track-link="true">我的发布</a>
+				</nav>
+				
+			</div>
+		</header>
+	</div>
+	
+	
+	
+	<script type="text/javascript"
+		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script th:inline="javascript">	    
+	  
+	    
+	</script> 
+	
 </body>
 </html>

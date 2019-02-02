@@ -2,7 +2,7 @@ package software.nju.edu.service;
 
 import software.nju.edu.domain.entity.Trade;
 
-public interface tradeService {
+public interface TradeService {
 	
 	void submitTrade(Trade trade);
 	

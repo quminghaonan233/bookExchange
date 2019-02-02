@@ -10,18 +10,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
-import software.nju.edu.serviceimpl.bookServiceImpl;
-import software.nju.edu.serviceimpl.userServiceImpl;
+import software.nju.edu.serviceimpl.BookServiceImpl;
+import software.nju.edu.serviceimpl.UserServiceImpl;
 
 @Controller
-public class indexController {
+public class IndexController {
 	
 	
 	@Autowired
-	private bookServiceImpl bookService;
+	private BookServiceImpl bookService;
 	
 	@Autowired
-	private userServiceImpl userService;
+	private UserServiceImpl userService;
 	
 	@RequestMapping("/")
 	public String toLogin(Model model){

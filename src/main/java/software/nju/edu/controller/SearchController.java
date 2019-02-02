@@ -15,16 +15,16 @@ import org.springframework.web.bind.annotation.RestController;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.seo.SEOLogic;
-import software.nju.edu.serviceimpl.bookServiceImpl;
-import software.nju.edu.serviceimpl.userServiceImpl;
+import software.nju.edu.serviceimpl.BookServiceImpl;
+import software.nju.edu.serviceimpl.UserServiceImpl;
 
 @Controller
 public class SearchController {
 	
 	@Autowired
-	private userServiceImpl userService;
+	private UserServiceImpl userService;
 	@Autowired
-	private bookServiceImpl bookService;
+	private BookServiceImpl bookService;
 	@Autowired
 	private BookMapper BookMapper;
 	

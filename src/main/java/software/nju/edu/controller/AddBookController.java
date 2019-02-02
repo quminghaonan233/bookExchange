@@ -11,18 +11,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import software.nju.edu.domain.entity.Book;
-import software.nju.edu.serviceimpl.bookServiceImpl;
-import software.nju.edu.serviceimpl.userServiceImpl;
+import software.nju.edu.serviceimpl.BookServiceImpl;
+import software.nju.edu.serviceimpl.UserServiceImpl;
 import software.nju.edu.util.FileUtil;
 
 @Controller
 public class AddBookController {
 
 	@Autowired
-	bookServiceImpl bookService;
+	BookServiceImpl bookService;
 
 	@Autowired
-	userServiceImpl userService;
+	UserServiceImpl userService;
 
 	@GetMapping("/addBook")
 	public String addBook(String uId, Model model) {

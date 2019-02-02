@@ -8,25 +8,25 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import software.nju.edu.bean.TradeMessage;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
-import software.nju.edu.serviceimpl.bookServiceImpl;
-import software.nju.edu.serviceimpl.userServiceImpl;
+import software.nju.edu.serviceimpl.BookServiceImpl;
+import software.nju.edu.serviceimpl.UserServiceImpl;
 
 
 @Controller
-public class bookDetailController {
+public class BookDetailController {
 	
 	@Autowired
-	private bookServiceImpl bookService;
+	private BookServiceImpl bookService;
 	
 	@Autowired
-	private userServiceImpl userService;
+	private UserServiceImpl userService;
 	@Autowired
-	private BookMapper BookMapper;
+	private BookMapper bookMapper;
 	
 	@RequestMapping("/bookDetail")
 	public String bookDetail(String bId,String uId, Model model){
 		System.out.println(uId);
-		Book book = BookMapper.getBookDetail(Integer.valueOf(bId));
+		Book book = bookMapper.getBookDetail(Integer.valueOf(bId));
 		model.addAttribute(book);
 		model.addAttribute("user",userService.getUserById(Integer.parseInt(uId)));
 		model.addAttribute("tradeMessage",new TradeMessage());

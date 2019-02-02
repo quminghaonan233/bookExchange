@@ -5,10 +5,10 @@ import org.springframework.stereotype.Service;
 
 import software.nju.edu.domain.entity.TradeCancel;
 import software.nju.edu.mapper.TradeCancelMapper;
-import software.nju.edu.service.tradeCancelService;
+import software.nju.edu.service.TradeCancelService;
 
 @Service
-public class tradeCancelServiceImpl implements tradeCancelService {
+public class TradeCancelServiceImpl implements TradeCancelService {
 
 	@Autowired
 	private TradeCancelMapper tradeCancelMapper;

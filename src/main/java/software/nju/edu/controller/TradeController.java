@@ -11,7 +11,7 @@ import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.TradeMapper;
 
 @Controller
-public class tradeController {
+public class TradeController {
 
 	@Autowired
 	private TradeMapper tradeMapper;
