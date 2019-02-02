@@ -362,8 +362,8 @@ img[Attributes Style] {
 	width:25%;
 }
 .bookDescription{
-	width:70%;
-	float:right;
+	width:80%;
+	float:left;
 	margin-top:10px;
 }
 .tradeLabelContainer{
@@ -373,4 +373,17 @@ img[Attributes Style] {
 .tradeLabel{
 	width:80px;
 	display:inline-block;
+}
+
+.buttonContainer{
+	width:20%;
+	float:right;	
+	margin-top:25px;
+}
+
+.contentp{
+	display: inline;
+}
+.contentDiv{
+	margin-top:10px;
 }
