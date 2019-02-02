@@ -7,10 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
@@ -22,22 +20,24 @@ import software.nju.edu.service.impl.UserServiceImpl;
 public class SearchController {
 	
 	@Autowired
+	private SearchEngineOptimizationServiceImpl searchEngineOptimizationService;
+	@Autowired
 	private UserServiceImpl userService;
 	@Autowired
 	private BookServiceImpl bookService;
 	@Autowired
-	private BookMapper BookMapper;
+	private BookMapper bookMapper;
 	
 	@GetMapping("/searchAll")
 	public String searchBooksInAll(String uId,String key, Model model) {
-		List<Book> books = BookMapper.getAllBooks();
+		List<Book> books = bookMapper.getAllBooks();
 		
 		// Search Engine 
-		SearchEngineOptimizationServiceImpl seo = new SearchEngineOptimizationServiceImpl();
+		//SearchEngineOptimizationServiceImpl seo = new SearchEngineOptimizationServiceImpl();
 		
 		List<Book> queryResultBookList = null;
 		try {		
-			queryResultBookList = seo.start(books, key);
+			queryResultBookList = searchEngineOptimizationService.start(books, key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -49,9 +49,18 @@ public class SearchController {
 	}
 	
 	@GetMapping("/searchMine")
-	public String searchBooksInMine(String key, Model model) {
-		List<Book> list = bookService.findBookListWithKey(key);
-		model.addAttribute("mineBookList",list);
+	public String searchBooksInMine(String uId, String key, Model model) {
+		
+		List<Book> books = bookService.getMineBooks(Integer.valueOf(uId));
+		List<Book> queryResultBookList = null;
+		try {		
+			queryResultBookList = searchEngineOptimizationService.start(books, key);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		model.addAttribute("mineBookList",queryResultBookList);
+		model.addAttribute("user",userService.getUserById(Integer.parseInt(uId)));
 		return "/searchMine";
 	}
 	

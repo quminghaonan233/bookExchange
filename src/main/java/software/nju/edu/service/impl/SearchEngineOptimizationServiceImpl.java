@@ -10,7 +10,7 @@ public class SearchEngineOptimizationServiceImpl implements SearchEngineOptimiza
 	
 	//private static Searcher searcher = null;
 	//private static Analyzer analyzer = null;
-	private int maxBufferedDocs = 100;
+	//private int maxBufferedDocs = 100;
 
 	public SearchEngineOptimizationServiceImpl() {
 		

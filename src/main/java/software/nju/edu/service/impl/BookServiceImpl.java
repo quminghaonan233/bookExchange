@@ -105,7 +105,7 @@ public class BookServiceImpl implements BookService {
 	}
 
 	@Override
-	public List<Book> queryMineBooks(int uId) {
+	public List<Book> getMineBooks(int uId) {
 		List<Book> list = bookMapper.queryMineBooksByUserId(uId);
 		return list;
 	}

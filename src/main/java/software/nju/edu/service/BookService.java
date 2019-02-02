@@ -37,6 +37,6 @@ public interface BookService {
 
 	public boolean queryBookIsMine(int uId, int bId);
 
-	public List<Book> queryMineBooks(int uId);
+	public List<Book> getMineBooks(int uId);
 
 }
