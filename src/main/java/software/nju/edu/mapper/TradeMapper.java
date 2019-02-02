@@ -13,6 +13,9 @@ public interface TradeMapper {
 	@Select("SELECT * FROM trade")
 	List<Trade> getAllTrades();
 	
+	@Select("SELECT * FROM trade WHERE tId = #{tId}")
+	Trade getTradeByTradeId(int tId);
+	
 	@Select("SELECT * FROM trade WHERE buyerId = #{buyerId}")
 	List<Trade> getAllTradesByBuyerId(int buyerId);
 	
@@ -33,16 +36,16 @@ public interface TradeMapper {
 	 * @param tId
 	 */
 	@Update("UPDATE trade SET status = 0 WHERE tId = #{tId}")
-	void alterTradeStatusAsApplying(int tId);
+	void updateTradeStatusAsApplicationWaiting(int tId);
 	
 	@Update("UPDATE trade SET status = 1 WHERE tId = #{tId}")
-	void alterTradeStatusAsApplicationSuccess(int tId);
+	void updateTradeStatusAsApplicationSuccess(int tId);
 	
 	@Update("UPDATE trade SET status = 2 WHERE tId = #{tId}")
-	void alterTradeStatusAsApplicationRefuse(int tId);
+	void updateTradeStatusAsApplicationRefused(int tId);
 	
 	@Update("UPDATE trade SET status = 3 WHERE tId = #{tId}")
-	void alterTradeStatusAsApplicationFinished(int tId);
+	void updateTradeStatusAsApplicationFinished(int tId);
 	
 	
 

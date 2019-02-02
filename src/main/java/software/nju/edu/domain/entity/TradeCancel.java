@@ -16,11 +16,12 @@ public class TradeCancel implements Serializable {
 	private int sourceId;      // Foreign key uId
 	private String sourceName;
 	private int targetId;      // Foreign key uId
-	private String tarhetName;
+	private String targetName;
 	private String cancelDescription;
 	private int cancelStatus;
 	private String tradeDescrpition;
 	private int tradeStatus;
+	private String bookName;
 	
 	/**
 	 * getters and setters
@@ -57,10 +58,10 @@ public class TradeCancel implements Serializable {
 		this.targetId = targetId;
 	}
 	public String getTarhetName() {
-		return tarhetName;
+		return targetName;
 	}
 	public void setTarhetName(String tarhetName) {
-		this.tarhetName = tarhetName;
+		this.targetName = tarhetName;
 	}
 	public String getCancelDescription() {
 		return cancelDescription;
@@ -85,6 +86,12 @@ public class TradeCancel implements Serializable {
 	}
 	public void setTradeStatus(int tradeStatus) {
 		this.tradeStatus = tradeStatus;
+	}
+	public String getBookName() {
+		return bookName;
+	}
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
 	}	
 
 }

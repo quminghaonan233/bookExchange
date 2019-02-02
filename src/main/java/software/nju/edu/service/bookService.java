@@ -27,6 +27,8 @@ public interface bookService {
 	// sell Out (onsale = 2) 售出 下架
 	public void sellOutBook(int bId);
 
+	public void updateBookDetail(Book book);
+	
 	public List<Book> findHotBookList();
 
 	public List<Book> findBookListWithKey(String key);

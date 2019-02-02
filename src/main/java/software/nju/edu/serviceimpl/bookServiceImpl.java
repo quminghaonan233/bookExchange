@@ -12,6 +12,7 @@ import software.nju.edu.service.bookService;
 
 @Service
 public class bookServiceImpl implements bookService {
+	
 	@Autowired
 	private BookMapper BookMapper;
 
@@ -54,6 +55,12 @@ public class bookServiceImpl implements bookService {
 		BookMapper.alterBookSaleOut(bId);
 	}
 
+	@Override
+	public void updateBookDetail(Book book) {
+		BookMapper.updateBookDetail(book);
+		
+	}
+	
 	@Override
 	public List<Book> findHotBookList() {
 		// assume this is the hot book list.

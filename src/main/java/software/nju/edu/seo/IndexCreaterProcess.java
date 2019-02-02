@@ -14,6 +14,7 @@ import org.apache.lucene.index.IndexWriterConfig;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
 import software.nju.edu.domain.entity.Book;
+import software.nju.edu.util.LuceneUtil;
 
 public class IndexCreaterProcess {
 		
@@ -91,7 +92,9 @@ public class IndexCreaterProcess {
 		IndexWriterConfig cfg = new IndexWriterConfig(analyzer);
 		
 		// path is the lib store your created index
-		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath("G://javaEE//workspace//book_exchange/LuceneIndex"));
+		String luceneIndexPath;
+		luceneIndexPath = new LuceneUtil().getLuceneIndex();
+		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath(luceneIndexPath));
 		
 		IndexWriter writer = new IndexWriter(directory, cfg);
 		writer.deleteAll();

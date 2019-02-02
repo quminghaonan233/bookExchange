@@ -1,18 +1,206 @@
-<!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Login</title>
-    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}"/>
-    <link rel="stylesheet" type="text/css" th:href="@{css/message.css}"/>
+<title>login</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/css/message.css}"/>
+
 </head>
 <body>
-<div class="wrapper">
-    <div class="header">hhh</div>
-    
-    <p class="bookId" th:text="message"></p>
+	<div>
+		<header role="banner" class="Sticky AppHeader" data-za-module="TopNavBar">
+			<div class="AppHeader-inner" style="margin-left:100px;">
+				<!-- 菜单栏 -->
+				<nav role="navigation" class="AppHeader-nav">
+					<a class="AppHeader-navItem" th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
+					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
+				</nav>				
 
-</div>
+				<div class="AppHeader-userInfo" >
+					<!-- 我的消息 -->
+					<div>
+						<div class="Popover Messages AppHeader-messages">
+								<button type="submit" th:onclick="'javascript:myMessage()'" id="Popover16-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content" class="Button Messages-icon Button--plain">
+									<span style="display: inline-flex; align-items: center;">​
+										<svg class="Zi Zi--Comments" fill="currentColor" viewBox="0 0 24 24" width="22" height="22">
+											<path d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z" fill-rule="evenodd">
+											</path>
+										</svg>
+									</span>
+								</button>
+						</div>
+					</div>
+					<!-- 用户个人信息 -->
+					<div class="AppHeader-profile">
+						<div class="Popover AppHeader-menu">
+							<form method="get" action="/myProfile">
+								<button type="submit" id="Popover17-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover17-content" class="Button AppHeader-profileEntry Button--plain">
+									<img class="Avatar AppHeader-profileAvatar" width="30" height="30" src="/img/userProfile.png">
+								</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+	</div>
+	
+	<main role="main" class="App-main">
+		<div class="Topstory">
+			<div class="Topstory-container">
+				<div class="Topstory-mainColumn">
+					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
+						<a style="font-size:15px;"> >>我的购买</a>
+					</div>
+					<div id="TopstoryContent" class="Topstory-content">
+						<div class="Topstory-recommend">
+							<div class="">
+								<th:block th:each="trade : ${buyList}">									
+									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<div class="tradeDescription">
+											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
+											<p class="seller" th:text="'卖家：'+${trade.sellerName}"></p>
+											<p class="start" th:text="'开始时间：'+${trade.start}"></p>
+											<p class="end" th:text="'结束时间：'+${trade.end}"></p>
+											<p class="sendTo" th:text="'目的地：'+${trade.sendTo}"></p>
+											<p class="description" th:text="'描述：'+${trade.description}"></p>
+											<div th:if=" ${trade.status} eq '0'">
+												<p class="status" th:text="'状态：申请中'"></p>
+												<button type="submit" style="border-style:none;color:green;">申请取消</button>
+											</div>
+											<div th:if=" ${trade.status} eq '1'">
+												<p class="status" th:text="'状态：申请成功，发货中'"></p>
+												<button type="submit" style="border-style:none;color:green;">申请取消</button>
+												<button type="submit" style="border-style:none;color:green;">收货成功</button>
+											</div>
+											<div th:if=" ${trade.status} eq '2'">
+												<p class="status" th:text="'状态：拒绝'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '3'">
+												<p class="status" th:text="'状态：收货完成'"></p>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="Topstory">
+			<div class="Topstory-container">
+				<div class="Topstory-mainColumn">
+					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
+						<a style="font-size:15px;"> >>我的售卖</a>
+					</div>
+					<div id="TopstoryContent" class="Topstory-content">
+						<div class="Topstory-recommend">
+							<div class="">
+								<th:block th:each="trade : ${sellList}">									
+									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<div class="tradeDescription">
+											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
+											<p class="buyer" th:text="'买家：'+${trade.buyerName}"></p>
+											<p class="start" th:text="'开始时间：'+${trade.start}"></p>
+											<p class="end" th:text="'结束时间：'+${trade.end}"></p>
+											<p class="sendTo" th:text="'目的地：'+${trade.sendTo}"></p>
+											<p class="description" th:text="'描述：'+${trade.description}"></p>
+											<div th:if=" ${trade.status} eq '0'">
+												<p class="status" th:text="'状态：申请中'"></p>
+												<button type="submit" style="border-style:none;color:green;">同意交易</button>
+												<button type="submit" style="border-style:none;color:green;">拒绝交易</button>
+											</div>
+											<div th:if=" ${trade.status} eq '1'">
+												<p class="status" th:text="'状态：申请成功，发货中'"></p>
+												<button type="submit" style="border-style:none;color:green;">申请取消</button>
+											</div>
+											<div th:if=" ${trade.status} eq '2'">
+												<p class="status" th:text="'状态：拒绝'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '3'">
+												<p class="status" th:text="'状态：收货完成'"></p>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="Topstory">
+			<div class="Topstory-container">
+				<div class="Topstory-mainColumn">
+					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
+						<a style="font-size:15px;"> >>交易取消</a>
+					</div>
+					<div id="TopstoryContent" class="Topstory-content">
+						<div class="Topstory-recommend">
+							<div class="">
+								<th:block th:each="trade : ${tradeCancelTarList}">
+									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<div class="tradeDescription">
+											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
+											<p class="sendTo" th:text="'发起者：'+${trade.sourceName}"></p>
+											<p class="description" th:text="'描述：'+${trade.cancelDescription}"></p>
+											<div th:if=" ${trade.cancelStatus} eq '0'">
+												<p class="status" th:text="'状态：申请中'"></p>
+												<button type="submit" style="border-style:none;color:green;">同意交易</button>
+												<button type="submit" style="border-style:none;color:green;">拒绝交易</button>
+											</div>
+											<div th:if=" ${trade.cancelStatus} eq '1'">
+												<p class="status" th:text="'状态：申请成功'"></p>
+											</div>
+											<div th:if=" ${trade.cancelStatus} eq '2'">
+												<p class="status" th:text="'状态：拒绝'"></p>
+											</div>
+										</div>
+									</div>
+								</th:block>
+								<th:block th:each="trade : ${tradeCancelSrcList}">
+									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<div class="tradeDescription">
+											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
+											<p class="sendTo" th:text="'接收者：'+${trade.sourceName}"></p>
+											<p class="description" th:text="'描述：'+${trade.cancelDescription}"></p>
+											<div th:if=" ${trade.cancelStatus} eq '0'">
+												<p class="status" th:text="'状态：申请中'"></p>
+											</div>
+											<div th:if=" ${trade.cancelStatus} eq '1'">
+												<p class="status" th:text="'状态：申请成功'"></p>
+											</div>
+											<div th:if=" ${trade.cancelStatus} eq '2'">
+												<p class="status" th:text="'状态：拒绝'"></p>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+	<script th:inline="javascript">
+		function search(){
+	        location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value;
+	    };
+	    
+	    function myMessage(){
+	        location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;
+	    	
+	    }
+	</script> 
+
 </body>
 </html>
