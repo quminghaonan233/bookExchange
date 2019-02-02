@@ -3,7 +3,7 @@ package software.nju.edu.domain.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Trade_ implements Serializable {
+public class Trade implements Serializable {
 	/**
 	 * version
 	 */
@@ -19,12 +19,12 @@ public class Trade_ implements Serializable {
 	private int status;
 
 	// constructor without argument.
-	public Trade_() {
+	public Trade() {
 
 	}
 
 	// constructor with several arguments.
-	public Trade_(int tId, int buyer, int bId) {
+	public Trade(int tId, int buyer, int bId) {
 		this.tId = tId;
 		this.buyer = buyer;
 		this.bId = bId;

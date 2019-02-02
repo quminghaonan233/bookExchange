@@ -8,12 +8,15 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
 import software.nju.edu.domain.entity.TradeCancel;
-import software.nju.edu.domain.entity.Trade_;
+import software.nju.edu.domain.entity.Trade;
 
 public interface TradeCancelMapper {
 	
 	@Select("SELECT * FROM trade_cancel")
 	List<TradeCancel> getAllTradeCancel();
+	
+	@Select("SELECT COUNT(tcId) FROM trade_cancel")
+	int getTradeCancelId();
 	
 	@Select("SELECT * FROM trade_cancel WHERE initiate = #{uId}")
 	List<TradeCancel> getAllTradeCancelByUserId(int uId);

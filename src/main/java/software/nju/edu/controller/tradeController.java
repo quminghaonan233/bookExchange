@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import software.nju.edu.bean.TradeMessage;
 import software.nju.edu.domain.entity.Book;
-import software.nju.edu.mapper.Trade_Mapper;
+import software.nju.edu.mapper.TradeMapper;
 
 @Controller
 public class tradeController {
 
 	@Autowired
-	private Trade_Mapper tradeMapper;
+	private TradeMapper tradeMapper;
 	
 	@RequestMapping("/tradeSubmit")
 	public String hello(@ModelAttribute TradeMessage tradeMessage, Model model){
