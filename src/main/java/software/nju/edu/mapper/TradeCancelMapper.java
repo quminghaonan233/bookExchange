@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import software.nju.edu.domain.association.TradeCancel;
+import software.nju.edu.domain.entity.TradeCancel;
 import software.nju.edu.domain.entity.Trade;
 
 public interface TradeCancelMapper {

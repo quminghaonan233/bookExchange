@@ -1,4 +1,4 @@
-package software.nju.edu.domain.association;
+package software.nju.edu.domain.entity;
 
 public class TradeCancel {
 	private int tId; // Fk
