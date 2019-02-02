@@ -25,11 +25,8 @@ public class SearchController {
 	@Autowired
 	private BookMapper BookMapper;
 	
-	// 有了 key
 	@GetMapping("/searchAll/{key}")
 	public String searchBooksInAll(@PathVariable String key, Model model) {
-		// List<Book> list = bookService.findBookListWithKey(key);
-		// model.addAttribute("allBookList",list);
 		List<Book> books = BookMapper.getAllBooks();
 		System.out.println("aaa" + books);
 		
