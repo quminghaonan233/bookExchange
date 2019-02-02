@@ -5,7 +5,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form enctype="multipart/form-data" method="post" action="/addBook">
+<form enctype="multipart/form-data" method="post" action="/addBookResult">
+			<input type="text" name="uId" th:attr="value=${user.uId}"/>
 bId       	<input type="text" name="bId"      		value="1"> <br>
 bookName  	<input type="text" name="bookName" 		value="2"> <br>
 book_owner	<input type="text" name="book_owner" 	value="3"> <br>
