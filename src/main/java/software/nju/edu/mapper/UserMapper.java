@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -22,7 +23,7 @@ public interface UserMapper {
 	List<User> getAllUsers();
 	
 	@Select("Select * FROM user where userName=#{userName} and passwd=#{passwd}")
-	User getUserDetail(String userName,String passwd);
+	User getUserDetail(@Param("userName")String userName,@Param("passwd")String passwd);
 
 	/**
 	 * Select
