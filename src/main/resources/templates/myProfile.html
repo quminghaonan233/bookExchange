@@ -17,11 +17,11 @@
 <h1>My Profile</h1>
 
 <div class="contentDiv">
-	<p th:text="${user.uId}"></p>
-	<p th:text="${user.userName}"></p>
-	<p th:text="${user.passwd}"></p>
-	<p th:text="${user.score}"></p>
-	<p th:text="${user.credit}"></p>
+	<p th:text="'My ID   		: ' + ${user.uId}"></p>
+	<p th:text="'My Name 		: ' + ${user.userName}"></p>
+	<p th:text="'My Password 	: ' + '******' "></p>
+	<p th:text="'My Score  	: ' + ${user.score}"></p>
+	<p th:text="'My Credot  	: ' + ${user.credit}"></p>
 	</div>
 	<div>
 		<header role="banner" class="Sticky AppHeader"
