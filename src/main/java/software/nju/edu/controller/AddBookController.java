@@ -27,8 +27,8 @@ public class AddBookController {
 	@Autowired
 	UserServiceImpl userService;
 
-	@GetMapping("/addBook?{uid}")
-	public String addBook(@PathVariable String uId, Model model) {
+	@GetMapping("/addBook")
+	public String addBook(String uId, Model model) {
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		return "addBook";
 	}
