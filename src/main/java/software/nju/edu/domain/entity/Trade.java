@@ -30,6 +30,21 @@ public class Trade implements Serializable {
 
 	}
 
+	public Trade(int buyerId, String buyerName, int sellerId, String sellerName, int bId, String bookName, Date start,
+			String sendTo, String description, int status) {
+		super();
+		this.buyerId = buyerId;
+		this.buyerName = buyerName;
+		this.sellerId = sellerId;
+		this.sellerName = sellerName;
+		this.bId = bId;
+		this.bookName = bookName;
+		this.start = start;
+		this.sendTo = sendTo;
+		this.description = description;
+		this.status = status;
+	}
+
 	// constructor with several arguments.
 	public Trade(int tId, int buyerId, int sellerId, int bId) {
 		this.tId = tId;

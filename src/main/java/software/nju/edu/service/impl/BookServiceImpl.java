@@ -15,6 +15,12 @@ public class BookServiceImpl implements BookService {
 	
 	@Autowired
 	private BookMapper bookMapper;
+	
+	@Override
+	public Book getBookById(int bId) {
+		Book b = bookMapper.getBookDetail(bId);
+		return b;
+	}
 
 	@Override
 	public String getBookName(int bId) {

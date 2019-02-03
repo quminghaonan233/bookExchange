@@ -91,6 +91,7 @@
 										<div class="bookDescription">
 											<input type="hidden" id="hidden_bId" th:attr="value=${book.bId}"/>
 											<input type="hidden" id="hidden_isDel" th:attr="value=${book.isDel}"/>
+											<input type="hidden" id="hidden_img" th:attr="value=${book.img}"/>											
 											<div class="contentDiv">
 												<p id="bookName"  th:text="${book.bookName}"></p>
 											</div>
@@ -137,19 +138,17 @@
 									<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
 										<a style="font-size:15px;">>>发起交易</a>
 									</div>
-									<form method="post" action="/tradeSubmit" th:object="${tradeMessage}">
 										<div>
 											<div class ="tradeLabelContainer">
 												<label class="tradeLabel">收货地址：</label>
-												<input type="text" style="width:500px;height:30px" th:field="*{sendTo}" placeholder="请输入收货地址">
+												<input id="trade_sendTo" type="text" style="width:500px;height:30px" placeholder="请输入收货地址">
 											</div>
 											<div class="tradeLabelContainer">
 												<label class="tradeLabel">备注：</label>
-												<input type="text" style="width:500px;height:30px" th:field="*{description}" placeholder="请输入备注信息">
+												<input id="trade_description" type="text" style="width:500px;height:30px" placeholder="请输入备注信息">
 											</div>
 										</div>
-										<button type="submit" style="border-style:none;color:green;">提交申请</button>
-									</form>
+										<button type="submit" th:onClick="'javascript:tradeSubmit()'" style="border-style:none;color:green;">提交申请</button>
 								</div>
 							</div>
 						</div>
@@ -233,8 +232,9 @@
 	    	var uId = document.getElementById("hidden_uId").value;
 	    	var bId = document.getElementById("hidden_bId").value;
 	    	var isDel = document.getElementById("hidden_isDel").value;
-	    	
-	        location.href="/bookModify?bookName="+bookName+"&bookType="+bookType+"&publisher="+bookPublisher+"&author="+bookAuthor+"&newDegree="+bookNewDegree+"&address="+bookAddress+"&onsale="+bookOnsale+"&bookOnsale="+bookPrice+"&uId="+uId+"&bId="+bId+"&isDel="+isDel;    	
+	    	var img = document.getElementById("hidden_img").value;
+
+	        location.href="/bookModify?bookName="+bookName+"&bookType="+bookType+"&publisher="+bookPublisher+"&author="+bookAuthor+"&newDegree="+bookNewDegree+"&address="+bookAddress+"&onsale="+bookOnsale+"&bookPrice="+bookPrice+"&uId="+uId+"&bId="+bId+"&isDel="+isDel+"&img="+img;    	
 
 	    }
 	    
@@ -249,6 +249,15 @@
 	    	var uId = document.getElementById("hidden_uId").value;
 	    	var bId = document.getElementById("hidden_bId").value;
 	    	location.href="/bookDel?bId="+bId+"&uId="+uId;
+	    }
+	    
+	    function tradeSubmit(){
+	    	var trade_sendTo = document.getElementById("trade_sendTo").value;
+	    	var trade_description = document.getElementById("trade_description").value;
+	    	var uId = document.getElementById("hidden_uId").value;
+	    	var bId = document.getElementById("hidden_bId").value;
+			location.href="/tradeSubmit?trade_sendTo="+trade_sendTo+"&trade_description="+trade_description+"&uId="+uId+"&bId="+bId;
+
 	    }
 	</script>
 </body>

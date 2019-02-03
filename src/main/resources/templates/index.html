@@ -63,7 +63,7 @@
 					<!-- 用户个人信息 -->
 					<div class="AppHeader-profile">
 						<div class="Popover AppHeader-menu">
-							<form method="get" action="/myProfile">
+							<form method="get" th:action="'/myProfile?uId='+${user.uId}">
 								<button type="submit" id="Popover17-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover17-content" class="Button AppHeader-profileEntry Button--plain">
 									<img class="Avatar AppHeader-profileAvatar" width="30" height="30" src="/img/userProfile.png">
 								</button>

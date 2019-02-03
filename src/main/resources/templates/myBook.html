@@ -81,6 +81,7 @@
 				<div class="Topstory-mainColumn">
 					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
 						<a style="font-size:15px;"> >>我发布的书籍</a>
+						<button th:onclick="'javascript:addBook()'">发布新书</button>
 					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
@@ -115,6 +116,10 @@
 	    function myMessage(){
 	        location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;
 	    	
+	    }
+	    
+	    function addBook(){
+	    	location.href="/addBook?uId="+document.getElementById("hidden_uId").value;
 	    }
 	    
 	</script> 

@@ -6,6 +6,7 @@ import software.nju.edu.domain.entity.Book;
 
 public interface BookService {
 
+	public Book getBookById(int bId) ;
 	// get bookName
 	public String getBookName(int bId);
 

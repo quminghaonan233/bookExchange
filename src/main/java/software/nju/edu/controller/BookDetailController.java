@@ -37,14 +37,17 @@ public class BookDetailController {
 	}
 	
 	@RequestMapping("/bookModify")
-	public String bookModify(String bookName,String bookType,String bookPublisher,String bookAuthor,String bookNewDegree,String address,String onsale,String bookOnsale,String uId,String bId,String isDel,Model model){
+	public String bookModify(String bookName,String bookType,String publisher,String author,String newDegree,String address,String onsale,String bookPrice,String uId,String bId,String isDel,String img,Model model){
 		//调修改接口
+		Book book = new Book(Integer.parseInt(bId), bookName, uId, bookType, publisher, author, newDegree, address, Integer.parseInt(onsale), Integer.parseInt(isDel), Integer.parseInt(bookPrice), img);
+		bookService.updateBookDetail(book);
 	    return "redirect:/bookDetail?bId="+bId+"&uId="+uId;
 	}
 	
 	@RequestMapping("/bookDel")
 	public String bookDel(String bId,String uId,Model model) {
 		//调删除接口
+		bookService.deleteBook(Integer.parseInt(bId));
 		return "redirect:/index?uId="+uId;
 	}
 	

@@ -58,7 +58,7 @@ public interface BookMapper {
 	 * Update
 	 * @param book
 	 */
-	@Update("UPDATE book SET userName = #{userName} "
+	@Update("UPDATE book SET bookName = #{bookName}, "
 			+ "book_owner = #{book_owner}, "
 			+ "bookType = #{bookType}, "
 			+ "publisher = #{publisher}, "
@@ -71,6 +71,8 @@ public interface BookMapper {
 			+ "img = #{img} "
 			+ "WHERE bId = #{bId}")
 	void updateBookDetail(Book book);
+	
+
 	
 	
 	/**

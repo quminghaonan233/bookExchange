@@ -29,6 +29,23 @@ public class Book implements Serializable {
 		
 	}
 	
+	public Book(int bId, String bookName, String book_owner, String bookType, String publisher, String author,
+			String newDegree, String address, int onsale, int isDel, int price, String img) {
+		super();
+		this.bId = bId;
+		this.bookName = bookName;
+		this.book_owner = book_owner;
+		this.bookType = bookType;
+		this.publisher = publisher;
+		this.author = author;
+		this.newDegree = newDegree;
+		this.address = address;
+		this.onsale = onsale;
+		this.isDel = isDel;
+		this.price = price;
+		this.img = img;
+	}
+
 	// constructor with several arguments.
 	public Book(int bId, String bookName, String book_owner) {
 		this.bId = bId;

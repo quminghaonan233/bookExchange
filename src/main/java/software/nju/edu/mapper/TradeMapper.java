@@ -23,11 +23,11 @@ public interface TradeMapper {
 	List<Trade> getAllTradesBySellerId(int sellerId);
 	
 	@Insert("INSERT INTO trade("
-			+ "tId, buyerId, buyerName, sellerId, sellerName, bId, bookName, "
-			+ "start, end, sendTo, description, status) "
+			+ "buyerId, buyerName, sellerId, sellerName, bId, bookName, "
+			+ "start, sendTo, description, status) "
 			+ "VALUES ("
-			+ "#{tId}, #{buyerId}, #{buyerName}, #{sellerId}, #{sellerName}, #{bId}, #{bookName}, "
-			+ "#{start}, #{end}, #{sendTo}, #{description}, #{status}"
+			+ "#{buyerId}, #{buyerName}, #{sellerId}, #{sellerName}, #{bId}, #{bookName}, "
+			+ "#{start},#{sendTo}, #{description}, #{status}"
 			+ ")")
 	void addNewTrade(Trade trade);
 		
