@@ -50,6 +50,8 @@ public class MessageController {
 			tradeCancel2.get(i).setBookName(tradeTmp.getBookName());
 		}
 
+		int messageNum = sellList.size() + buyList.size() + tradeCancel.size() + tradeCancel2.size();
+		model.addAttribute("messageNum", messageNum);
 		model.addAttribute("userId", uId);
 		model.addAttribute("sellList", sellList);
 		model.addAttribute("buyList", buyList);
