@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
@@ -26,8 +27,8 @@ public class AddBookController {
 	@Autowired
 	UserServiceImpl userService;
 
-	@GetMapping("/addBook")
-	public String addBook(String uId, Model model) {
+	@GetMapping("/addBook?{uid}")
+	public String addBook(@PathVariable String uId, Model model) {
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		return "addBook";
 	}
@@ -50,6 +51,7 @@ public class AddBookController {
 		int price = 0;
 		String bookName = null;
 		String book_owner = null;
+		String bookType = null;
 		String publisher = null;
 		String author = null;
 		String newDegree = null;
@@ -58,20 +60,22 @@ public class AddBookController {
 
 		try {
 			bookName = params.getParameter("bookName");
-			book_owner = params.getParameter("book_owner");
-			publisher = params.getParameter("publisher");
-			author = params.getParameter("author");
-			newDegree = params.getParameter("author");
-			address = params.getParameter("author");
-			onsale = Integer.valueOf(params.getParameter("onsale"));
-			isDel = Integer.valueOf(params.getParameter("isDel"));
-			price = Integer.valueOf(params.getParameter("price"));
+			book_owner = uId;
+			bookType = params.getParameter("bookType").equals("") ? "未知类型" : params.getParameter("bookType");
+			publisher = params.getParameter("publisher").equals("") ? "未知出版社" : params.getParameter("publisher");
+			author = params.getParameter("author").equals("") ? "未知作者" : params.getParameter("author");
+			newDegree = params.getParameter("newDegree").equals("") ? "未知程度" : params.getParameter("newDegree");
+			address = params.getParameter("address").equals("") ? "未知地址": params.getParameter("address");
+			onsale = 1;
+			isDel = 0;
+			price = params.getParameter("price").equals("") ? 100: Integer.valueOf(params.getParameter("price"));
 			img = filePath + fileName;
 
 			try {
 				Book book = new Book();
 				book.setBookName(bookName);
 				book.setBook_owner(book_owner);
+				book.setBookType(bookType);
 				book.setPublisher(publisher);
 				book.setAuthor(author);
 				book.setNewDegree(newDegree);
@@ -96,10 +100,14 @@ public class AddBookController {
 
 			} catch (Exception e) {
 				addBookResultMessage = "add New Book Unsuccessfully : When write to database.";
+				
+				e.printStackTrace();
 			}
 
 		} catch (Exception e) {
 			addBookResultMessage = "add New Book Unsuccessfully : When get params.";
+			
+			e.printStackTrace();
 
 		}
 
