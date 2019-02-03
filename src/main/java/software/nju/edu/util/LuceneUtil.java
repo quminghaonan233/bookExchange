@@ -11,9 +11,11 @@ public class LuceneUtil {
 	public void setLuceneIndexPath() {
 		String type = new SystemUtil().getSystemType();
 		if (type.equals("Windows"))
-			this.lucene_index = "C:/Lucene/LuceneIndex";
+			this.lucene_index = "C:/BookExchangeResource/LuceneIndex/";
+		else if (type.equals("Mac OS"))
+			this.lucene_index = "/Users/huanghj/Test/BookExchangeResource/LuceneIndex/";
 		else
-			this.lucene_index = "/Users/huanghj/Desktop/LuceneIndex";
+			this.lucene_index = "/root/BookExchangeResource/LuceneIndex/";
 	}
 	
 	public String getLuceneIndex() {

@@ -8,8 +8,8 @@ public class FileUtil {
 	public static void uploadFile(byte[] file, String filePath, String fileName) throws Exception {
 		File saveFile = new File(filePath);
 		
-		if (!saveFile.exists() && !saveFile.isDirectory())
-			saveFile.mkdir();
+		if (!saveFile.exists())
+			saveFile.mkdirs();
 		
 		FileOutputStream out = new FileOutputStream(filePath + fileName);
 		out.write(file);

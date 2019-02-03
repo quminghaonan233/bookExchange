@@ -92,6 +92,7 @@ public class IndexCreaterUtil {
 		
 		// path is the lib store your created index
 		String luceneIndexPath;
+		
 		luceneIndexPath = new LuceneUtil().getLuceneIndex();
 		Directory directory = FSDirectory.open(FileSystems.getDefault().getPath(luceneIndexPath));
 		

@@ -15,6 +15,7 @@ import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.UserServiceImpl;
 import software.nju.edu.util.FileUtil;
 import software.nju.edu.util.ImageUtil;
+import software.nju.edu.util.UUIDUtil;
 
 @Controller
 public class AddBookController {
@@ -41,7 +42,8 @@ public class AddBookController {
 		String uId = params.getParameter("uId");
 
 		String fileName = file.getOriginalFilename();
-		String filePath = new ImageUtil().getImagePath();
+		String uuidPath = new UUIDUtil().getUUID() + "/";
+		String filePath = new ImageUtil().getImagePath() + uuidPath;
 
 		int onsale = 0;
 		int isDel = 0;
@@ -87,6 +89,8 @@ public class AddBookController {
 
 				} catch (Exception e) {
 					addBookResultMessage = "add New Book Unsuccessfully : When upload image.";
+					
+					e.printStackTrace();
 
 				}
 
