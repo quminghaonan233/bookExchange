@@ -75,7 +75,7 @@
 											<div th:if=" ${trade.status} eq '1'">
 												<p class="status" th:text="'状态：申请成功，发货中'"></p>
 												<!--<button type="submit" style="border-style:none;color:green;">申请取消</button>  -->
-												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:buySuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">收货成功</button>
+												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:buySuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">确认收货</button>
 											</div>
 											<div th:if=" ${trade.status} eq '2'">
 												<p class="status" th:text="'状态：拒绝'"></p>
