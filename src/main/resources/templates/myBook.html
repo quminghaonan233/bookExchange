@@ -17,8 +17,8 @@
 			<div class="AppHeader-inner" style="margin-left:100px;">
 				<!-- 菜单栏 -->
 				<nav role="navigation" class="AppHeader-nav">
-					<a class="AppHeader-navItem is-active" th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
-					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
+					<a class="AppHeader-navItem " th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
+					<a class="AppHeader-navItem is-active" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
 				</nav>
 				
 				<!-- 搜索框 -->
@@ -81,7 +81,7 @@
 				<div class="Topstory-mainColumn">
 					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
 						<a style="font-size:15px;"> >>我发布的书籍</a>
-						<button th:onclick="'javascript:addBook()'">发布新书</button>
+						<button style="float:right;font-size: 20px;color: green;margin-right: 20px;" th:onclick="'javascript:addBook()'">+</button>
 					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
@@ -89,7 +89,7 @@
 								<!-- 每个推荐书目标签 -->
 								<th:block th:each="book : ${myBookList}">
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="/img/book1.jpg">
+										<img class="bookImg" src="${book.img}">
 										<div class="bookDescription">
 											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}+'&uId='+${user.uId}"></a>
 											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>

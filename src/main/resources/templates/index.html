@@ -88,7 +88,7 @@
 								<!-- 每个推荐书目标签 -->
 								<th:block th:each="book : ${hotBookList}">
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="/img/book1.jpg">
+										<img class="bookImg" src="${book.img}">
 										<div class="bookDescription">
 											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}+'&uId='+${user.uId}"></a>
 											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>
