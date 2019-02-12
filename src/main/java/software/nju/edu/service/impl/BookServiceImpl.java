@@ -17,6 +17,11 @@ public class BookServiceImpl implements BookService {
 	private BookMapper bookMapper;
 	
 	@Override
+	public void updateBookImage(int bId, String img) {
+		bookMapper.updateBookImage(bId, img);
+	}
+	
+	@Override
 	public Book getBookById(int bId) {
 		Book b = bookMapper.getBookDetail(bId);
 		return b;

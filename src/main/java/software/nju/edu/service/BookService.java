@@ -6,7 +6,10 @@ import software.nju.edu.domain.entity.Book;
 
 public interface BookService {
 
-	public Book getBookById(int bId) ;
+	// update Book Image
+	public void updateBookImage(int bId, String img);
+	
+	public Book getBookById(int bId);
 	// get bookName
 	public String getBookName(int bId);
 

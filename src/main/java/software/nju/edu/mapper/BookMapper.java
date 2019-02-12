@@ -73,6 +73,8 @@ public interface BookMapper {
 	void updateBookDetail(Book book);
 	
 
+	@Update("UPDATE book SET img = #{img} WHERE bId = #{bId}")
+	void updateBookImage(int bId, String img);
 	
 	
 	/**
