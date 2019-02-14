@@ -29,6 +29,11 @@ public class Book implements Serializable {
 		
 	}
 	
+	public Book(int bId, int price) {
+		this.bId = bId;
+		this.price = price;
+	}
+	
 	public Book(int bId, String bookName, String book_owner, String bookType, String publisher, String author,
 			String newDegree, String address, int onsale, int isDel, int price, String img) {
 		super();
