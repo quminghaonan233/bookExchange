@@ -42,5 +42,7 @@ public interface BookService {
 	public boolean queryBookIsMine(int uId, int bId);
 
 	public List<Book> getMineBooks(int uId);
+	
+	public int getCreditByBookOwner(int book_owner);
 
 }

@@ -6,10 +6,10 @@ import software.nju.edu.domain.entity.Book;
 
 public interface SortingService {
 	
-	void sortedByPrice(List<Book> bookList);
+	List<Book> sortedByPrice(List<Book> bookList);
 	
-	void sortedByCredit(List<Book> bookList);
+	List<Book> sortedByCredit(List<Book> bookList);
 	
-	void sortedByTimestamp(List<Book> bookList);
+	List<Book> sortedByTimestamp(List<Book> bookList);
 
 }
