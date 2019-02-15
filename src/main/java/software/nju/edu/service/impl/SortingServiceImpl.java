@@ -2,6 +2,7 @@ package software.nju.edu.service.impl;
 
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,7 +50,13 @@ public class SortingServiceImpl implements SortingService {
 	@Override
 	public List<Book> sortedByTimestamp(List<Book> bookList) {
 		// TODO Auto-generated method stub
-		
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				Date d1 = b1.getFinalUpdateTime();
+				Date d2 = b2.getFinalUpdateTime();
+				return d1.compareTo(d2);
+			}
+		});
 		return bookList;
 		
 	}
