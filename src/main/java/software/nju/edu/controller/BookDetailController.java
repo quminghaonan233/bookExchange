@@ -1,5 +1,8 @@
 package software.nju.edu.controller;
 
+import java.sql.Timestamp;
+import java.util.Date;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -40,8 +43,9 @@ public class BookDetailController {
 			String address, String onsale, String bookPrice, String uId, String bId, String isDel, String img,
 			Model model) {
 		// 调修改接口
+		Date finalUpdateTime = new Timestamp(System.currentTimeMillis());
 		Book book = new Book(Integer.parseInt(bId), bookName, Integer.parseInt(uId), bookType, publisher, author, newDegree, address,
-				Integer.parseInt(onsale), Integer.parseInt(isDel), Integer.parseInt(bookPrice), img);
+				Integer.parseInt(onsale), Integer.parseInt(isDel), Integer.parseInt(bookPrice), img, finalUpdateTime);
 		bookService.updateBookDetail(book);
 		return "redirect:/bookDetail?bId=" + bId + "&uId=" + uId;
 	}

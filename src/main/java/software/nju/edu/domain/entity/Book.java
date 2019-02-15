@@ -1,6 +1,7 @@
 package software.nju.edu.domain.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Book implements Serializable {	
 	/**
@@ -23,6 +24,7 @@ public class Book implements Serializable {
 	private int isDel;
 	private int price;
 	private String img;
+	private Date finalUpdateTime;
 	
 	// constructor without argument.
 	public Book() {
@@ -35,7 +37,7 @@ public class Book implements Serializable {
 	}
 	
 	public Book(int bId, String bookName, int book_owner, String bookType, String publisher, String author,
-			String newDegree, String address, int onsale, int isDel, int price, String img) {
+			String newDegree, String address, int onsale, int isDel, int price, String img, Date finalUpdateTime) {
 		super();
 		this.bId = bId;
 		this.bookName = bookName;
@@ -49,6 +51,7 @@ public class Book implements Serializable {
 		this.isDel = isDel;
 		this.price = price;
 		this.img = img;
+		this.finalUpdateTime = finalUpdateTime;
 	}
 
 	// constructor with several arguments.
@@ -74,6 +77,7 @@ public class Book implements Serializable {
 			   "isDel=" + isDel +
 			   "price=" + price +
 			   "img=" + img +
+			   "finalUpdateTime=" + finalUpdateTime +
 			   "}";
 			   
 	}
@@ -173,6 +177,14 @@ public class Book implements Serializable {
 
 	public void setImg(String img) {
 		this.img = img;
+	}
+	
+	public Date getFinalUpdateTime() {
+		return finalUpdateTime;
+	}
+
+	public void setFinalUpdateTime(Date finalUpdateTime) {
+		this.finalUpdateTime = finalUpdateTime;
 	}
 
 }

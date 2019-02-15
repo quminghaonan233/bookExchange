@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Result;
+import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -15,15 +17,24 @@ public interface BookMapper {
 	String getBookNameByBookId(int bId);
 	
 	@Select("SELECT * FROM book")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	List<Book> getAllBooks();
 	
 	@Select("SELECT * FROM book WHERE bId = #{bId}")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	Book getBookDetail(int bId);
 	
 	@Select("SELECT COUNT(*) FROM book WHERE bId = #{bId} AND book_owner = #{uId}")
 	int queryMineBooksByBookIdAndUserId(int bId, int uId);
 	
 	@Select("SELECT * FROM book WHERE book_owner = #{uId}")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	List<Book> queryMineBooksByUserId(int uId);
 	
 	/**
@@ -31,15 +42,27 @@ public interface BookMapper {
 	 * @return
 	 */
 	@Select("SELECT * FROM book ORDER BY newDegree DESC")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	List<Book> getAllBooksOrderByNewDegreeDesc();
 	
 	@Select("SELECT * FROM book ORDER BY newDegree ASC")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	List<Book> getAllBooksOrderByNewDegreeAsc();
 	
 	@Select("SELECT * FROM book ORDER BY price DESC ")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	List<Book> getAllBooksOrderByPriceDesc();
 	
 	@Select("SELECT * FROM book ORDER BY price ASC")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
 	List<Book> getAllBooksOrderByPriceAsc();
 	
 	/**
@@ -47,10 +70,10 @@ public interface BookMapper {
 	 * @param book
 	 */
 	@Insert("INSERT INTO book(bookName, book_owner, bookType, "
-			+ "publisher, author, newDegree, address, onsale, isDel, price, img) "
+			+ "publisher, author, newDegree, address, onsale, isDel, price, img, final_update_time) "
 			+ "VALUES (#{bookName}, #{book_owner}, #{bookType}, "
 			+ "#{publisher}, #{author}, #{newDegree}, #{address}, "
-			+ "#{onsale}, #{isDel}, #{price}, #{img}"
+			+ "#{onsale}, #{isDel}, #{price}, #{img}, #{finalUpdateTime}"
 			+ ")")
 	void addNewBook(Book book);
 	
