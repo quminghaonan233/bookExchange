@@ -35,7 +35,7 @@ public class IndexCreaterUtil {
 			Field bookName = new TextField("bookName", book.getBookName(), Field.Store.YES);
 			
 			// book owner
-			Field book_owner = new TextField("book_owner", book.getBook_owner(), Field.Store.YES);
+			Field book_owner = new TextField("book_owner", Integer.toString(book.getBook_owner()), Field.Store.YES);
 			
 			// book class
 			Field bookType = new TextField("bookType", book.getBookType(), Field.Store.YES);

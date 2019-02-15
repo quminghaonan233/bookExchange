@@ -37,7 +37,7 @@ public class TradeController {
 		int buyerId = Integer.parseInt(uId);
 		String buyerName =  userService.getUserById(Integer.parseInt(uId)).getUserName();
 		Book b = bookService.getBookById(Integer.parseInt(bId));
-		int sellerId = Integer.parseInt(b.getBook_owner());
+		int sellerId = b.getBook_owner();
 		String sellerName = userService.getUserName(sellerId);
 		String bookName = b.getBookName();
 		Date start = new Timestamp(System.currentTimeMillis());

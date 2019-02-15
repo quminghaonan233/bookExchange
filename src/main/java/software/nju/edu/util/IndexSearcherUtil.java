@@ -59,7 +59,7 @@ public class IndexSearcherUtil {
 				try {
 					resultBook.setbId(Integer.valueOf(doc.get("bId")));
 					resultBook.setBookName(doc.get("bookName"));
-					resultBook.setBook_owner(doc.get("book_owner"));	
+					resultBook.setBook_owner(Integer.valueOf(doc.get("book_owner")));	
 					resultBook.setBookType(doc.get("bookType"));
 					resultBook.setPublisher(doc.get("publisher"));
 					resultBook.setAuthor(doc.get("author"));

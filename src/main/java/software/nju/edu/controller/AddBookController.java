@@ -49,7 +49,7 @@ public class AddBookController {
 		int isDel = 0;
 		int price = 0;
 		String bookName = null;
-		String book_owner = null;
+		int book_owner = 0;
 		String bookType = null;
 		String publisher = null;
 		String author = null;
@@ -59,7 +59,7 @@ public class AddBookController {
 
 		try {
 			bookName = params.getParameter("bookName");
-			book_owner = uId;
+			book_owner = Integer.valueOf(uId);
 			bookType = params.getParameter("bookType").equals("") ? "未知类型" : params.getParameter("bookType");
 			publisher = params.getParameter("publisher").equals("") ? "未知出版社" : params.getParameter("publisher");
 			author = params.getParameter("author").equals("") ? "未知作者" : params.getParameter("author");

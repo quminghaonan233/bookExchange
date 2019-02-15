@@ -40,7 +40,7 @@ public class BookDetailController {
 			String address, String onsale, String bookPrice, String uId, String bId, String isDel, String img,
 			Model model) {
 		// 调修改接口
-		Book book = new Book(Integer.parseInt(bId), bookName, uId, bookType, publisher, author, newDegree, address,
+		Book book = new Book(Integer.parseInt(bId), bookName, Integer.parseInt(uId), bookType, publisher, author, newDegree, address,
 				Integer.parseInt(onsale), Integer.parseInt(isDel), Integer.parseInt(bookPrice), img);
 		bookService.updateBookDetail(book);
 		return "redirect:/bookDetail?bId=" + bId + "&uId=" + uId;
