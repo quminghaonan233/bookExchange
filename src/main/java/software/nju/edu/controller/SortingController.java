@@ -25,7 +25,7 @@ public class SortingController {
 	@Autowired
 	private BookMapper bookMapper;
 	
-	@GetMapping("/searchAll")
+	@GetMapping("/searchAll/byCredit")
 	public String sortingByCredit(String uId, String key, Model model) {
 		
 		List<Book> books = bookMapper.getAllBooks();
@@ -46,7 +46,7 @@ public class SortingController {
 	}
 	
 	
-	@GetMapping("/searchAll")
+	@GetMapping("/searchAll/byTime")
 	public String sortingByTimestamp() {
 		
 		return "searchAll";

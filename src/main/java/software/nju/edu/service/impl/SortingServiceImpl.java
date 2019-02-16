@@ -30,6 +30,22 @@ public class SortingServiceImpl implements SortingService {
 		
 		return bookList;
 	}
+	
+	public List<Book> sortedByPriceReverse(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				return ((Integer)b1.getPrice()).compareTo(b2.getPrice());
+			}
+		});
+		
+		for (Book b: bookList) {
+			System.out.println(b.getbId() + ", " + b.getPrice());
+		}
+		
+		return bookList;
+	}
+	
 
 	@Override
 	public List<Book> sortedByCredit(List<Book> bookList) {

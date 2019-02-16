@@ -27,8 +27,10 @@ public class SortingServiceImplTest {
 		for(Book b: bookList) {
 			System.out.println(b.getbId() + ", " + b.getPrice());
 		}
-		
+		//
+		System.out.println(" === test 1 :");
 		new SortingServiceImpl().sortedByPrice(bookList);
+		System.out.println(" === test 2 reverse :");
 		
 	}
 	
