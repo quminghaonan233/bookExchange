@@ -1,12 +1,106 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
-<h1>Page Helper Test</h1>
+	<h1>Page Helper Test</h1>
+
+	<table>
+		<thead>
+			<tr>
+				<th>bId</th>
+				<th>bookName</th>
+				<th>bookOwner</th>
+				<th>bookType</th>
+				<th>publisher</th>
+				<th>author</th>
+				<th>newDegree</th>
+				<th>address</th>
+				<th>onSale</th>
+				<th>isDel</th>
+				<th>price</th>
+				<th>img</th>
+				<th>finalUpdateTime</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="book: ${pageInfo.list}">
+				<td th:text="${book.bId}"></td>
+				<td th:text="${book.bookName}"></td>
+				<td th:text="${book.book_owner}"></td>
+				<td th:text="${book.bookType}"></td>
+				<td th:text="${book.publisher}"></td>
+				<td th:text="${book.author}"></td>
+				<td th:text="${book.newDegree}"></td>
+				<td th:text="${book.address}"></td>
+				<td th:text="${book.Onsale}"></td>
+				<td th:text="${book.isDel}"></td>
+				<td th:text="${book.price}"></td>
+				<td th:text="${book.img}"></td>
+				<td th:text="${book.finalUpdateTime}"></td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<hr>
+
+	<table>
+		<tr>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?pageNum=1'">首页</a></td>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?pageNum='+${pageInfo.prePage}">上一页</a></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?pageNum='+${pageInfo.nextPage}">下一页</a></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?pageNum='+${pageInfo.pages}">尾页</a></td>
+		</tr>
+	</table>
+	<hr>
+
+	<div>
+		当前页号 <span th:text="${pageInfo.pageNum}"></span>
+	</div>
+	<div>
+		每页结果数 <span th:text="${pageInfo.pageSize}"></span>
+	</div>
+	<div>
+		起始行号 <span th:text="${pageInfo.startRow}"></span>
+	</div>
+	<div>
+		终止行号 <span th:text="${pageInfo.endRow}"></span>
+	</div>
+	<div>
+		总结果数 <span th:text="${pageInfo.total}"></span>
+	</div>
+	<div>
+		总页数 <span th:text="${pageInfo.pages}"></span>
+	</div>
+
+	<hr>
+
+	<div>
+		是否为首页 <span th:text="${pageInfo.isFirstPage}"></span>
+	</div>
+	<div>
+		是否有上一页 <span th:text="${pageInfo.hasPreviousPage}"></span>
+	</div>
+	<div>
+		是否有下一页 <span th:text="${pageInfo.hasNextPage}"></span>
+	</div>
+	<div>
+		是否为尾页 <span th:text="${pageInfo.isLastPage}"></span>
+	</div>
+
+
+
+
+
+
 
 </body>
 </html>

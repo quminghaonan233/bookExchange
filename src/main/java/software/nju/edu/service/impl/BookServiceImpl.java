@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
@@ -124,11 +125,14 @@ public class BookServiceImpl implements BookService {
 		return user.getCredit();
 	}
 	
-	public List<Book> getBookListByPage(int pageNum, int pageSize) {
+	public PageInfo<Book> getBookListByPage(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-		List allBooks = bookMapper.getAllBooks();
+		List<Book> allBooks = bookMapper.getAllBooks();
+		
+		// PageInfo
+		PageInfo<Book> pageInfo = new PageInfo<Book>(allBooks);
 		// by page
-		return allBooks;
+		return pageInfo;
 		
 	}
  
