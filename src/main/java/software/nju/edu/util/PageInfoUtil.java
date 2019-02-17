@@ -205,7 +205,7 @@ public class PageInfoUtil<T> implements Serializable {
 		this.isFirstPage = (pageNum == 1 ? true : false);
 		this.isLastPage = (pageNum == pages ? true : false);
 		this.hasPreviousPage = (prePage > 0 ? true : false);
-		this.hasNextPage = (nextPage > pages ? true : false);
+		this.hasNextPage = (nextPage > pages ? false : true);
 		
 		
 		computeNavigateNums();

@@ -155,7 +155,9 @@ public class BookServiceImpl implements BookService {
 		
 		PageInfoUtil<Book> pageInfo = new PageInfoUtil<Book>(bookList, pageNum, pageSize);
 		
-		System.out.println("pageInfo.getList().size():");
+		
+		System.out.println("pageInfo.toString():");
+		System.out.println(pageInfo);
 		// by page
 		return pageInfo;
 		

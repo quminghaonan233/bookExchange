@@ -23,7 +23,7 @@ import software.nju.edu.domain.entity.Book;
 public class IndexSearcherUtil {
 	
 	
-	private int query_result_max_count = 10;
+	private int query_result_max_count = 100;
 	
 	private List<Book> startSearchProcess(Query query) {
 		try {
