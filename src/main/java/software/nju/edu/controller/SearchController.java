@@ -52,15 +52,35 @@ public class SearchController {
 		case 0:
 			break;	
 		case 1:
-			queryResultBookList = sortingService.sortedByCredit(queryResultBookList);
+			queryResultBookList = sortingService.sortedByCreditASC(queryResultBookList);
 			break;
 		case 2:
-			queryResultBookList = sortingService.sortedByPrice(queryResultBookList);
+			queryResultBookList = sortingService.sortedByPriceASC(queryResultBookList);
 			break;
 		case 3:
-			queryResultBookList = sortingService.sortedByPriceReverse(queryResultBookList);
+			queryResultBookList = sortingService.sortedByPriceDESC(queryResultBookList);
 		case 4:
-			queryResultBookList = sortingService.sortedByTimestamp(queryResultBookList);
+			queryResultBookList = sortingService.sortedByTimeASC(queryResultBookList);
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		case 8:
+			break;
+		case 9:
+			break;
+		case 10:
+			break;
+		case 11:
+			break;
+		case 12:
+			break;
+		case 13:
+			break;
+		case 14:
+			break;
 		}
 
 		PageInfoUtil<Book> bookPageInfo = bookService.getBookListByPage(queryResultBookList, pageNum, pageSize);
