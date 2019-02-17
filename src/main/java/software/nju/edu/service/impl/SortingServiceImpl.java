@@ -103,4 +103,58 @@ public class SortingServiceImpl implements SortingService {
 		return bookList;
 		
 	}
+
+	@Override
+	public List<Book> sortedByHotIndexASC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByHotIndexDESC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByClicksASC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByClicksDESC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByViewsASC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByViewsDESC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByClickThroughRateASC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByClickThroughRateDESC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<Book> sortedByCreditASC(List<Book> bookList) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
