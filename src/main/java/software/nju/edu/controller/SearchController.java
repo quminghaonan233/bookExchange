@@ -37,26 +37,19 @@ public class SearchController {
 			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
 		List<Book> books = bookMapper.getAllBooks();
-
-		// Search Engine
-		// SearchEngineOptimizationServiceImpl seo = new
-		// SearchEngineOptimizationServiceImpl();
-
 		List<Book> queryResultBookList = null;
 		try {
 			queryResultBookList = searchEngineOptimizationService.start(books, key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		System.out.println(queryResultBookList);
 
+		int hitCounts = queryResultBookList.size();
+		
 		PageInfoUtil<Book> bookPageInfo = bookService.getBookListByPage(queryResultBookList, pageNum, pageSize);
 
 		model.addAttribute("pageInfo", bookPageInfo);
-		
-		System.out.println("");
-
-		// model.addAttribute("queryResultBookList", queryResultBookList);
+		model.addAttribute("hitCounts", hitCounts);
 		model.addAttribute("key", key);
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		return "/searchAll";

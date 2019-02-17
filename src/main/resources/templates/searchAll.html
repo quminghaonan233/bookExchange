@@ -76,12 +76,36 @@
 	</div>
 	
 	
+	<hr>
+
+	<table>
+		<tr>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=1'">首页</a></td>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
+			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}" th:text=${navNum}
+				th:if="${navNum != pageInfo.pageNum}"></a> <span
+				style="font-weight: bold" th:text="${navNum}"
+				th:if="${navNum == pageInfo.pageNum}"></span></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
+		</tr>
+	</table>
+	
+	<hr>
+	
 	<main role="main" class="App-main">
 		<div class="Topstory">
 			<div class="Topstory-container">
 				<div class="Topstory-mainColumn">
-					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
+					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:100px">
 						<a style="font-size:15px;" th:text= "' >>'+${key}+'的搜索结果'"></a>
+						<p th:text="'合计出现 ' + ${hitCounts} +' 条相似记录'" ></p>
+						<p th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
 					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
@@ -107,27 +131,7 @@
 	</main>
 
 
-	<hr>
 
-	<table>
-		<tr>
-			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=1'">首页</a></td>
-			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
-			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}" th:text=${navNum}
-				th:if="${navNum != pageInfo.pageNum}"></a> <span
-				style="font-weight: bold" th:text="${navNum}"
-				th:if="${navNum == pageInfo.pageNum}"></span></td>
-			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
-			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
-		</tr>
-	</table>
-	
-	<hr>
 	
 	
 	<script type="text/javascript"
