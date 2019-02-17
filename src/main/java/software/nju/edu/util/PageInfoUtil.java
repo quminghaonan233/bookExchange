@@ -244,8 +244,8 @@ public class PageInfoUtil<T> implements Serializable {
 				navigatepageNums[i] = i + 1;
 		} else {
 			navigatepageNums = new int[navigatePages];
-			int startNum = (pageNum - navigatePages) / 2;
-			int endNum = (pageNum + navigatePages) / 2;
+			int startNum = pageNum - navigatePages / 2;
+			int endNum = pageNum + navigatePages / 2;
 			
 			if (startNum < 1) {
 				startNum = 1;
@@ -254,7 +254,7 @@ public class PageInfoUtil<T> implements Serializable {
 				
 			} else if (endNum > pages) {
 				endNum = pages;
-				for (int i = pages - 1; i >= 0; i--)
+				for (int i = navigatePages - 1; i >= 0; i--)
 					navigatepageNums[i] = endNum --;
 				
 			} else {
