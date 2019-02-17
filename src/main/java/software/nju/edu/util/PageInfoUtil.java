@@ -277,7 +277,7 @@ public class PageInfoUtil<T> implements Serializable {
 				+ "isFirstPage=" + isFirstPage + ", "
 				+ "isLastPage=" + isLastPage + ", "
 				+ "hasPreviousPage=" + hasPreviousPage + ", "
-				+ "hasNextPage=" + hasNextPage + ", "
+				+ "hasNextPage=" + hasNextPage
 				+ "}";
 	}
 	
