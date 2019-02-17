@@ -19,7 +19,7 @@ public class PageHelperTestController {
 
 	@GetMapping("/pageHelperTest")
 	public String bookInfoPageTest(@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
+			@RequestParam(value = "pageSize", defaultValue = "3") int pageSize, Model model) {
 
 		PageInfo<Book> bookPageInfo = bookService.getBookListByPage(pageNum, pageSize);
 		model.addAttribute("pageInfo", bookPageInfo);

@@ -27,7 +27,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr th:each="book: ${pageInfo.list}">
+			<tr th:each="book : ${pageInfo.list}">
 				<td th:text="${book.bId}"></td>
 				<td th:text="${book.bookName}"></td>
 				<td th:text="${book.book_owner}"></td>
@@ -53,11 +53,16 @@
 			<td th:if="${pageInfo.hasPreviousPage}"><a
 				th:href="'?pageNum=1'">首页</a></td>
 			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?pageNum='+${pageInfo.prePage}">上一页</a></td>
+				th:href="'?pageNum=' + ${pageInfo.prePage}">上一页</a></td>
+			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
+				th:href="'?pageNum=' + ${navNum}" th:text=${navNum}
+				th:if="${navNum != pageInfo.pageNum}"></a> <span
+				style="font-weight: bold" th:text="${navNum}"
+				th:if="${navNum == pageInfo.pageNum}"></span></td>
 			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?pageNum='+${pageInfo.nextPage}">下一页</a></td>
+				th:href="'?pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
 			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?pageNum='+${pageInfo.pages}">尾页</a></td>
+				th:href="'?pageNum=' + ${pageInfo.pages}">尾页</a></td>
 		</tr>
 	</table>
 	<hr>
