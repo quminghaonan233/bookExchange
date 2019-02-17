@@ -87,7 +87,7 @@
 						<div class="Topstory-recommend">
 							<div class="">
 								<!-- 每个推荐书目标签 -->
-								<th:block th:each="book : ${queryResultBookList}">
+								<th:block th:each="book : ${pageInfo.list}">
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
 										<img class="bookImg" src="${book.img}">
 										<div class="bookDescription">
@@ -106,6 +106,30 @@
 		</div>
 	</main>
 
+
+	<hr>
+
+	<table>
+		<tr>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=1'">首页</a></td>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
+			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}" th:text=${navNum}
+				th:if="${navNum != pageInfo.pageNum}"></a> <span
+				style="font-weight: bold" th:text="${navNum}"
+				th:if="${navNum == pageInfo.pageNum}"></span></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
+		</tr>
+	</table>
+	
+	<hr>
+	
+	
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script th:inline="javascript">

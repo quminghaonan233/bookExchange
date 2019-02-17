@@ -14,6 +14,7 @@ import software.nju.edu.domain.entity.User;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.mapper.UserMapper;
 import software.nju.edu.service.BookService;
+import software.nju.edu.util.PageInfoUtil;
 
 @Service
 public class BookServiceImpl implements BookService {
@@ -143,6 +144,19 @@ public class BookServiceImpl implements BookService {
 		// create PageInfo for Hot Books on /index
 		PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
 		// return pageInfo
+		return pageInfo;
+		
+	}
+	
+	public PageInfoUtil<Book> getBookListByPage(List<Book> bookList, int pageNum, int pageSize) {
+		// PageHelper.startPage(pageNum, pageSize);		
+		// create PageInfo
+		
+		
+		PageInfoUtil<Book> pageInfo = new PageInfoUtil<Book>(bookList, pageNum, pageSize);
+		
+		System.out.println("pageInfo.getList().size():");
+		// by page
 		return pageInfo;
 		
 	}

@@ -36,7 +36,6 @@ public class IndexController {
 		
 		PageInfo<Book> bookPageInfo = bookService.getHotBookListByPage(pageNum, pageSize);
 		
-		//model.addAttribute("hotBookList",list);
 		model.addAttribute("pageInfo", bookPageInfo);
 		model.addAttribute("user",userService.getUserById(Integer.parseInt(uId)));
 		System.out.println(model.toString());
