@@ -65,6 +65,8 @@ public class IndexCreaterUtil {
 			Field img = new TextField("img", book.getImg(), Field.Store.YES);
 			
 			
+			
+			
 			// add field into document
 			document.add(bId);
 			document.add(bookName);

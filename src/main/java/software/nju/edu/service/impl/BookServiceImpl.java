@@ -129,11 +129,24 @@ public class BookServiceImpl implements BookService {
 		PageHelper.startPage(pageNum, pageSize);
 		List<Book> allBooks = bookMapper.getAllBooks();
 		
-		// PageInfo
+		// create PageInfo
 		PageInfo<Book> pageInfo = new PageInfo<Book>(allBooks);
 		// by page
 		return pageInfo;
 		
 	}
+	
+	public PageInfo<Book> getHotBookListByPage(int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		// get bookList
+		List<Book> bookList = bookMapper.getAllBooksOrderByNewDegreeDesc();
+		// create PageInfo for Hot Books on /index
+		PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
+		// return pageInfo
+		return pageInfo;
+		
+	}
+	
+	
  
 }
