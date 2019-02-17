@@ -6,6 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.github.pagehelper.PageHelper;
+
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.mapper.BookMapper;
@@ -121,5 +123,13 @@ public class BookServiceImpl implements BookService {
 		User user = userMapper.getUserById(book_owner);
 		return user.getCredit();
 	}
-
+	
+	public List<Book> getBookListByPage(int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		List allBooks = bookMapper.getAllBooks();
+		// by page
+		return allBooks;
+		
+	}
+ 
 }
