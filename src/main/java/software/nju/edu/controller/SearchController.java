@@ -11,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.github.pagehelper.PageInfo;
-
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.SearchEngineOptimizationServiceImpl;
+import software.nju.edu.service.impl.SortingServiceImpl;
 import software.nju.edu.service.impl.UserServiceImpl;
 import software.nju.edu.util.PageInfoUtil;
 
@@ -31,9 +30,12 @@ public class SearchController {
 	private BookServiceImpl bookService;
 	@Autowired
 	private BookMapper bookMapper;
+	@Autowired
+	private SortingServiceImpl sortingService;
 
 	@GetMapping("/searchAll")
 	public String searchBooksInAll(String uId, String key,
+			@RequestParam(value = "sort", defaultValue = "0") int sort,
 			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
 		List<Book> books = bookMapper.getAllBooks();
@@ -46,6 +48,21 @@ public class SearchController {
 
 		int hitCounts = queryResultBookList.size();
 		
+		switch(sort) {
+		case 0:
+			break;	
+		case 1:
+			queryResultBookList = sortingService.sortedByCredit(queryResultBookList);
+			break;
+		case 2:
+			queryResultBookList = sortingService.sortedByPrice(queryResultBookList);
+			break;
+		case 3:
+			queryResultBookList = sortingService.sortedByPriceReverse(queryResultBookList);
+		case 4:
+			queryResultBookList = sortingService.sortedByTimestamp(queryResultBookList);
+		}
+
 		PageInfoUtil<Book> bookPageInfo = bookService.getBookListByPage(queryResultBookList, pageNum, pageSize);
 
 		model.addAttribute("pageInfo", bookPageInfo);
