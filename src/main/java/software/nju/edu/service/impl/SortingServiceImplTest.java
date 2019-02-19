@@ -29,7 +29,7 @@ public class SortingServiceImplTest {
 		}
 		//
 		System.out.println(" === test 1 :");
-		new SortingServiceImpl().sortedByPrice(bookList);
+		new SortingServiceImpl().sortedByPriceASC(bookList);
 		System.out.println(" === test 2 reverse :");
 		
 	}

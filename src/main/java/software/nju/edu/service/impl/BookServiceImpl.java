@@ -13,6 +13,7 @@ import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.mapper.UserMapper;
+import software.nju.edu.mapper.WebDataMapper;
 import software.nju.edu.service.BookService;
 import software.nju.edu.util.PageInfoUtil;
 
@@ -24,6 +25,9 @@ public class BookServiceImpl implements BookService {
 	
 	@Autowired
 	private UserMapper userMapper;
+	
+	@Autowired
+	private WebDataMapper webDataMapper;
 	
 	@Override
 	public void updateBookImage(int bId, String img) {
@@ -45,6 +49,9 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public void addNewBook(Book book) {
 		bookMapper.addNewBook(book);
+		int bId = bookMapper.getLastInsertId();
+		System.out.println("add new book and return bId:" + bId);
+		webDataMapper.addWebData(bId);
 	}
 
 	@Override

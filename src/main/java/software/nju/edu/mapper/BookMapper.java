@@ -77,6 +77,9 @@ public interface BookMapper {
 			+ ")")
 	void addNewBook(Book book);
 	
+	@Select("SELECT LAST_INSERT_ID()")
+	int getLastInsertId();
+	
 	/**
 	 * Update
 	 * @param book
