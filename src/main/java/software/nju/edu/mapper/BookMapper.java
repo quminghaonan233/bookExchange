@@ -41,6 +41,13 @@ public interface BookMapper {
 	 * Select and Sort(Order By)
 	 * @return
 	 */
+	@Select("SELECT * FROM book LEFT JOIN web_data ON book.bId = web_data.bId ORDER BY hot_index DESC, views DESC")
+	@Results({
+		@Result(property = "finalUpdateTime", column = "final_update_time")
+	})
+	List<Book> getAllBooksOrderByHotIndexDescByViewsDesc();
+	
+	
 	@Select("SELECT * FROM book ORDER BY newDegree DESC")
 	@Results({
 		@Result(property = "finalUpdateTime", column = "final_update_time")

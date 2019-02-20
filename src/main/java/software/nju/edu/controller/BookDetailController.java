@@ -12,7 +12,6 @@ import software.nju.edu.bean.TradeMessage;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.WebData;
 import software.nju.edu.mapper.BookMapper;
-import software.nju.edu.mapper.WebDataMapper;
 import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.UserServiceImpl;
 import software.nju.edu.service.impl.WebDataServiceImpl;

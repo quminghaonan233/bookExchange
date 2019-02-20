@@ -10,6 +10,10 @@ public interface SortingService {
 	
 	List<Book> sortedByHotIndexDESC(List<Book> bookList);
 	
+	List<Book> sortedByClickThroughRateASC(List<Book> bookList);
+	
+	List<Book> sortedByClickThroughRateDESC(List<Book> bookList);
+	
 	List<Book> sortedByClicksASC(List<Book> bookList);
 	
 	List<Book> sortedByClicksDESC(List<Book> bookList);
@@ -17,10 +21,6 @@ public interface SortingService {
 	List<Book> sortedByViewsASC(List<Book> bookList);
 	
 	List<Book> sortedByViewsDESC(List<Book> bookList);
-	
-	List<Book> sortedByClickThroughRateASC(List<Book> bookList);
-	
-	List<Book> sortedByClickThroughRateDESC(List<Book> bookList);
 	
 	List<Book> sortedByPriceASC(List<Book> bookList);
 	

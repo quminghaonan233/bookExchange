@@ -26,6 +26,9 @@ public interface WebDataMapper {
 	})
 	WebData getWebDataByBookId(int bId);
 	
+	@Select("SELECT COUNT(*) FROM web_data WHERE bId = #{bId}")
+	int getWebDataCountByBookId(int bId);
+	
 	@Insert("INSERT INTO web_data(bId) VALUES (#{bId})")
 	void addWebData(int bId);
 	
@@ -34,5 +37,8 @@ public interface WebDataMapper {
 	
 	@Update("UPDATE web_data SET clicks = clicks + 1 WHERE bId = #{bId}")
 	void updateClicks(int bId);
+	
+	@Update("UPDATE web_data SET click_through_rate = #{clickThroughRate}, hot_index = #{hotIndex} WHERE bId = #{bId}")
+	void updateWebData(WebData webData);
 
 }

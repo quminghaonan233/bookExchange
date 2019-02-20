@@ -91,7 +91,7 @@ public class BookServiceImpl implements BookService {
 	@Override
 	public List<Book> findHotBookList() {
 		// assume this is the hot book list.
-		List<Book> list = bookMapper.getAllBooksOrderByNewDegreeDesc();
+		List<Book> list = bookMapper.getAllBooksOrderByHotIndexDescByViewsDesc();
 		return list;
 	}
 
@@ -136,7 +136,6 @@ public class BookServiceImpl implements BookService {
 	public PageInfo<Book> getBookListByPage(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
 		List<Book> allBooks = bookMapper.getAllBooks();
-		
 		// create PageInfo
 		PageInfo<Book> pageInfo = new PageInfo<Book>(allBooks);
 		// by page
@@ -144,10 +143,16 @@ public class BookServiceImpl implements BookService {
 		
 	}
 	
+	/**
+	 * 获取热门书籍列表
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
 	public PageInfo<Book> getHotBookListByPage(int pageNum, int pageSize) {
 		PageHelper.startPage(pageNum, pageSize);
-		// get bookList
-		List<Book> bookList = bookMapper.getAllBooksOrderByNewDegreeDesc();
+		// get hot-book List by hot-index by views.
+		List<Book> bookList = bookMapper.getAllBooksOrderByHotIndexDescByViewsDesc();
 		// create PageInfo for Hot Books on /index
 		PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
 		// return pageInfo

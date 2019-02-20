@@ -8,6 +8,10 @@ public interface WebDataService {
 	
 	void updateBookClicks(int bId);
 	
+	void updateWebData(int bId);
+	
+	int getWebDataCountByBookId(int bId);
+	
 	WebData getWebDataByBookId(int bId);
 
 }
