@@ -17,6 +17,7 @@ import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.SearchEngineOptimizationServiceImpl;
 import software.nju.edu.service.impl.SortingServiceImpl;
 import software.nju.edu.service.impl.UserServiceImpl;
+import software.nju.edu.service.impl.WebDataServiceImpl;
 import software.nju.edu.util.PageInfoUtil;
 
 @Controller
@@ -32,6 +33,8 @@ public class SearchController {
 	private BookMapper bookMapper;
 	@Autowired
 	private SortingServiceImpl sortingService;
+	@Autowired
+	private WebDataServiceImpl webDataService;
 
 	@GetMapping("/searchAll")
 	public String searchBooksInAll(String uId, String key,
@@ -85,6 +88,12 @@ public class SearchController {
 
 		PageInfoUtil<Book> bookPageInfo = bookService.getBookListByPage(queryResultBookList, pageNum, pageSize);
 
+		// update views for each book.
+		for (Book book : bookPageInfo.getList()) {
+			int bId = book.getbId();
+			webDataService.updateBookViews(bId);
+		}
+		
 		model.addAttribute("pageInfo", bookPageInfo);
 		model.addAttribute("hitCounts", hitCounts);
 		model.addAttribute("key", key);

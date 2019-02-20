@@ -14,6 +14,7 @@ import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.UserServiceImpl;
+import software.nju.edu.service.impl.WebDataServiceImpl;
 
 @Controller
 public class IndexController {
@@ -23,6 +24,9 @@ public class IndexController {
 	
 	@Autowired
 	private UserServiceImpl userService;
+	@Autowired
+	
+	private WebDataServiceImpl webDataService;
 	
 	@RequestMapping("/")
 	public String toLogin(Model model){
@@ -31,10 +35,15 @@ public class IndexController {
 	
 	@RequestMapping("/index")
 	public String hello(String uId, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
-			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model){
-		//List<Book> list = bookService.findHotBookList();
-		
+			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model){		
+		// get book page info.
 		PageInfo<Book> bookPageInfo = bookService.getHotBookListByPage(pageNum, pageSize);
+		
+		// update views for each book.
+		for (Book book : bookPageInfo.getList()) {
+			int bId = book.getbId();
+			webDataService.updateBookViews(bId);
+		}
 		
 		model.addAttribute("pageInfo", bookPageInfo);
 		model.addAttribute("user",userService.getUserById(Integer.parseInt(uId)));
