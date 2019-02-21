@@ -8,7 +8,17 @@
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
 <link rel="stylesheet" th:href="@{/css/bookDetail.css}"/>
-
+<style type="text/css">
+#image_container {
+	display: inline-block;
+	width: 20rem;
+	height: 20rem;
+	position: relative;
+	background-image: url(/img/book1.jpg);
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+</style>
 </head>
 <body>
 	<div>
@@ -86,8 +96,13 @@
 						<div class="Topstory-recommend">
 							<div class="">
 								<div class="Card TopstoryItem TopstoryItem-isRecommend">
-									<img class="bookImg" src="${book.img}">
-									<div  style="float:right;width:70%">
+									
+									<div class="contentDiv" id="image_container"
+									style="float:left;background-image: url(/img/book1.jpg)">
+									<input type="file" accept="image/*" id="image_file" value="" />
+									</div>
+									
+									<div  style="float:right;width:50%">
 										<div class="bookDescription">
 											<input type="hidden" id="hidden_bId" th:attr="value=${book.bId}"/>
 											<input type="hidden" id="hidden_isDel" th:attr="value=${book.isDel}"/>
@@ -177,6 +192,9 @@
 	    	var bookNewDegree = document.getElementById("bookNewDegree");
 	    	var bookAddress = document.getElementById("bookAddress");
 	    	var bookPrice = document.getElementById("bookPrice");
+	    	
+	    	var bookImg = document.getElementById("hidden-img");
+	    	
 	    	bookName.setAttribute("contenteditable","true");
 	    	bookType.setAttribute("contenteditable","true");
 	    	bookAuthor.setAttribute("contenteditable","true");
@@ -184,6 +202,30 @@
 	    	bookNewDegree.setAttribute("contenteditable","true");
 	    	bookAddress.setAttribute("contenteditable","true");
 	    	bookPrice.setAttribute("contenteditable","true");
+	    	
+	    	// 图片修改
+	    	var preview = document.querySelector('#image_container');
+            var eleFile = document.querySelector('#image_file');
+            eleFile.addEventListener('change', function() {
+                var file = this.files[0];                
+                // 确认选择的文件是图片                
+                if(file.type.indexOf("image") == 0) {
+                    var reader = new FileReader();
+                    reader.readAsDataURL(file);                    
+                    reader.onload = function(e) {
+                        // 图片base64化
+                        var newUrl = this.result;
+                        preview.style.backgroundImage = 'url(' + newUrl + ')';
+                        
+                        confirm(eleFile.value);
+                        
+                    };
+                }
+            });
+	    	
+            confirm("hehe");
+           
+	    	
 	    	
 	    	var modifyButton = document.getElementById("modifyButton");
 	    	modifyButton.textContent="完成"
