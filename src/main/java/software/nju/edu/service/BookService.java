@@ -1,5 +1,6 @@
 package software.nju.edu.service;
 
+import java.util.Date;
 import java.util.List;
 
 import software.nju.edu.domain.entity.Book;
@@ -7,7 +8,7 @@ import software.nju.edu.domain.entity.Book;
 public interface BookService {
 
 	// update Book Image
-	public void updateBookImage(int bId, String img);
+	public void updateBookImage(int bId, String img, Date finalUpdateTime);
 	
 	public Book getBookById(int bId);
 	// get bookName

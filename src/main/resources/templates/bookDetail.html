@@ -7,7 +7,7 @@
 <link rel="stylesheet" type="text/css"
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
-<link rel="stylesheet" th:href="@{/css/bookDetail.css}"/>
+<link rel="stylesheet" th:href="@{/css/bookDetail.css}" />
 <style type="text/css">
 #image_container {
 	display: inline-block;
@@ -22,27 +22,41 @@
 </head>
 <body>
 	<div>
-		<header role="banner" class="Sticky AppHeader" data-za-module="TopNavBar">
-			<div class="AppHeader-inner" style="margin-left:100px;">
+		<header role="banner" class="Sticky AppHeader"
+			data-za-module="TopNavBar">
+			<div class="AppHeader-inner" style="margin-left: 100px;">
 				<!-- 菜单栏 -->
 				<nav role="navigation" class="AppHeader-nav">
-					<a class="AppHeader-navItem is-active" th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
-					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
+					<a class="AppHeader-navItem is-active"
+						th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
+					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}"
+						data-za-not-track-link="true">我的发布</a>
 				</nav>
-				
+
 				<!-- 搜索框 -->
 				<div class="SearchBar" role="search" data-za-module="PresetWordItem">
 					<div class="SearchBar-toolWrapper">
 						<div>
 							<div class="Popover">
 								<div class="SearchBar-input Input-wrapper Input-wrapper--grey">
-									<input type="hidden" id="hidden_uId" th:attr="value=${user.uId}"/>
-									<input type="text"  maxlength="100" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete2--1" id="Popover1-toggle" aria-haspopup="true" aria-owns="Popover1-content" class="Input" placeholder="请输入要搜索的书名" value=""/>
+									<input type="hidden" id="hidden_uId"
+										th:attr="value=${user.uId}" /> <input type="text"
+										maxlength="100" autocomplete="off" role="combobox"
+										aria-expanded="false" aria-autocomplete="list"
+										aria-activedescendant="AutoComplete2--1" id="Popover1-toggle"
+										aria-haspopup="true" aria-owns="Popover1-content"
+										class="Input" placeholder="请输入要搜索的书名" value="" />
 									<div class="Input-after">
-										<button aria-label="搜索"  type="button" th:onclick="'javascript:search()'" class="Button SearchBar-searchIcon Button--primary" style="border-style: none;">
+										<button aria-label="搜索" type="button"
+											th:onclick="'javascript:search()'"
+											class="Button SearchBar-searchIcon Button--primary"
+											style="border-style: none;">
 											<span style="display: inline-flex; align-items: center;">
-												​<svg class="Zi Zi--Search" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
-													<path d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z" fill-rule="evenodd"></path>
+												​<svg class="Zi Zi--Search" fill="currentColor"
+													viewBox="0 0 24 24" width="18" height="18">
+													<path
+														d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z"
+														fill-rule="evenodd"></path>
 												</svg>
 											</span>
 										</button>
@@ -52,29 +66,37 @@
 						</div>
 					</div>
 				</div>
-				
 
-				<div class="AppHeader-userInfo" >
+
+				<div class="AppHeader-userInfo">
 					<!-- 我的消息 -->
 					<div>
 						<div class="Popover Messages AppHeader-messages">
-								<button type="submit" th:onclick="'javascript:myMessage()'" id="Popover16-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content" class="Button Messages-icon Button--plain">
-									<span style="display: inline-flex; align-items: center;">​
-										<svg class="Zi Zi--Comments" fill="currentColor" viewBox="0 0 24 24" width="22" height="22">
-											<path d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z" fill-rule="evenodd">
+							<button type="submit" th:onclick="'javascript:myMessage()'"
+								id="Popover16-toggle" aria-haspopup="true" aria-expanded="false"
+								aria-owns="Popover16-content"
+								class="Button Messages-icon Button--plain">
+								<span style="display: inline-flex; align-items: center;">​
+									<svg class="Zi Zi--Comments" fill="currentColor"
+										viewBox="0 0 24 24" width="22" height="22">
+											<path
+											d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z"
+											fill-rule="evenodd">
 											</path>
 										</svg>
-									</span>
-									<span class="Messages-count">2</span>
-								</button>
+								</span> <span class="Messages-count">2</span>
+							</button>
 						</div>
 					</div>
 					<!-- 用户个人信息 -->
 					<div class="AppHeader-profile">
 						<div class="Popover AppHeader-menu">
 							<form method="get" action="/myProfile">
-								<button type="submit" id="Popover17-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover17-content" class="Button AppHeader-profileEntry Button--plain">
-									<img class="Avatar AppHeader-profileAvatar" width="30" height="30" src="/img/userProfile.png">
+								<button type="submit" id="Popover17-toggle" aria-haspopup="true"
+									aria-expanded="false" aria-owns="Popover17-content"
+									class="Button AppHeader-profileEntry Button--plain">
+									<img class="Avatar AppHeader-profileAvatar" width="30"
+										height="30" src="/img/userProfile.png">
 								</button>
 							</form>
 						</div>
@@ -83,224 +105,263 @@
 			</div>
 		</header>
 	</div>
-	
-	
+
+
 	<main role="main" class="App-main">
-		<div class="Topstory">
-			<div class="Topstory-container">
-				<div class="Topstory-mainColumn">
-					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
-						<a style="font-size:15px;"> >>书籍详情</a>
-					</div>
-					<div id="TopstoryContent" class="Topstory-content">
-						<div class="Topstory-recommend">
-							<div class="">
-								<div class="Card TopstoryItem TopstoryItem-isRecommend">
-									
-									<div class="contentDiv" id="image_container"
-									style="float:left;background-image: url(/img/book1.jpg)">
-									<input type="file" accept="image/*" id="image_file" value="" />
-									</div>
-									
-									<div  style="float:right;width:50%">
-										<div class="bookDescription">
-											<input type="hidden" id="hidden_bId" th:attr="value=${book.bId}"/>
-											<input type="hidden" id="hidden_isDel" th:attr="value=${book.isDel}"/>
-											<input type="hidden" id="hidden_img" th:attr="value=${book.img}"/>											
-											<div class="contentDiv">
-												<p id="bookName"  th:text="${book.bookName}"></p>
-											</div>
-											<div class="contentDiv">
-												<label>书籍类型：</label>
-												<p class = "contentp" id="bookType" th:text="${book.bookType}"></p>
-											</div>
-											<div class="contentDiv">
-												<label>作者：</label>
-												<p class = "contentp" id="bookAuthor" th:text="${book.author}"></p>
-											</div>
-											<div class="contentDiv">
-												<label>出版商：</label>
-												<p class = "contentp" id="bookPublisher" th:text="${book.publisher}"></p>
-											</div>
-											<div class="contentDiv">
-												<label>新旧程度：</label>
-												<p  class = "contentp" id="bookNewDegree" th:text="${book.newDegree}"></p>	
-											</div>
-											<div class="contentDiv">
-												<label id="bookOnsale" th:value="${book.onsale}">当前状态：</label>	
-												<td  th:switch="${book.onsale}">
-													<span th:case="0">挂起</span>
-													<span th:case="1">在售</span>
-													<span th:case="2">售出</span>
-												</td>
-											</div>
-											<div class="contentDiv">
-												<label>所在地：</label>
-												<p class = "contentp" id="bookAddress" th:text="${book.address}"></p>	
-											</div>
-											<div class="contentDiv">
-												<label>所需积分：</label>													
-												<p class = "contentp" id="bookPrice" th:text="${book.price}"></p>
-											</div>
+	<div class="Topstory">
+		<div class="Topstory-container">
+			<div class="Topstory-mainColumn">
+				<div class="Card Topstory-noMarginCard Topstory-tabCard"
+					style="height: 30px">
+					<a style="font-size: 15px;"> >>书籍详情</a>
+				</div>
+				<div id="TopstoryContent" class="Topstory-content">
+					<div class="Topstory-recommend">
+						<div class="">
+							<div class="Card TopstoryItem TopstoryItem-isRecommend">
+								<div style="float: left; width: 50%">
+									<form enctype="multipart/form-data" method="post"
+										action="/modifyImg">
+										<input type="hidden" name="uId" th:attr="value=${user.uId}" />
+										<input type="hidden" name="bId" th:attr="value=${book.bId}" />
+										<div class="contentDiv" id="image_container"
+											style="float: left; background-image: url(/img/book1.jpg)">
+											<input type="file" accept="image/*" name="file" id="image_file" value="" />
 										</div>
-										<div th:if="${isBookMine==true}" class="buttonContainer">
-											<button type="button" th:onClick="'javascript:deleteBook()'" style="color:red">删除</button>
-											<button id="modifyButton" type="button" style="color:green" th:onClick="'javascript:modifyBook()'">编辑</button>
+										<div class="contentDiv">
+											<input type="submit"
+												style="border-style: none; color: green; margin-left: 10px; font-size: 15px;"
+												value="发布">
 										</div>
+									</form>
+
+									<div th:if="${isBookMine==true}" class="buttonContainer">
+										<button id="modifyButton" type="button" style="color: green"
+											th:onClick="'javascript:modifyImg()'">编辑</button>
 									</div>
 								</div>
-								<div th:if="${isBookMine==false}"class="Card TopstoryItem TopstoryItem-isRecommend" style="padding-top:0">
-									<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
-										<a style="font-size:15px;">>>发起交易</a>
-									</div>
-										<div>
-											<div class ="tradeLabelContainer">
-												<label class="tradeLabel">收货地址：</label>
-												<input id="trade_sendTo" type="text" style="width:500px;height:30px" placeholder="请输入收货地址">
-											</div>
-											<div class="tradeLabelContainer">
-												<label class="tradeLabel">备注：</label>
-												<input id="trade_description" type="text" style="width:500px;height:30px" placeholder="请输入备注信息">
-											</div>
+
+								<div style="float: right; width: 50%">
+									<div class="bookDescription">
+										<input type="hidden" id="hidden_bId"
+											th:attr="value=${book.bId}" /> <input type="hidden"
+											id="hidden_isDel" th:attr="value=${book.isDel}" /> <input
+											type="hidden" id="hidden_img" th:attr="value=${book.img}" />
+										<div class="contentDiv">
+											<p id="bookName" th:text="${book.bookName}"></p>
 										</div>
-										<button type="submit" th:onClick="'javascript:tradeSubmit()'" style="border-style:none;color:green;">提交申请</button>
+										<div class="contentDiv">
+											<label>书籍类型：</label>
+											<p class="contentp" id="bookType" th:text="${book.bookType}"></p>
+										</div>
+										<div class="contentDiv">
+											<label>作者：</label>
+											<p class="contentp" id="bookAuthor" th:text="${book.author}"></p>
+										</div>
+										<div class="contentDiv">
+											<label>出版商：</label>
+											<p class="contentp" id="bookPublisher"
+												th:text="${book.publisher}"></p>
+										</div>
+										<div class="contentDiv">
+											<label>新旧程度：</label>
+											<p class="contentp" id="bookNewDegree"
+												th:text="${book.newDegree}"></p>
+										</div>
+										<div class="contentDiv">
+											<label id="bookOnsale" th:value="${book.onsale}">当前状态：</label>
+											<td th:switch="${book.onsale}"><span th:case="0">挂起</span>
+												<span th:case="1">在售</span> <span th:case="2">售出</span></td>
+										</div>
+										<div class="contentDiv">
+											<label>所在地：</label>
+											<p class="contentp" id="bookAddress"
+												th:text="${book.address}"></p>
+										</div>
+										<div class="contentDiv">
+											<label>所需积分：</label>
+											<p class="contentp" id="bookPrice" th:text="${book.price}"></p>
+										</div>
+									</div>
+									<div th:if="${isBookMine==true}" class="buttonContainer">
+										<button type="button" th:onClick="'javascript:deleteBook()'"
+											style="color: red">删除</button>
+										<button id="modifyButton" type="button" style="color: green"
+											th:onClick="'javascript:modifyBook()'">编辑</button>
+									</div>
 								</div>
+							</div>
+							<div th:if="${isBookMine==false}"
+								class="Card TopstoryItem TopstoryItem-isRecommend"
+								style="padding-top: 0">
+								<div class="Card Topstory-noMarginCard Topstory-tabCard"
+									style="height: 30px">
+									<a style="font-size: 15px;">>>发起交易</a>
+								</div>
+								<div>
+									<div class="tradeLabelContainer">
+										<label class="tradeLabel">收货地址：</label> <input
+											id="trade_sendTo" type="text"
+											style="width: 500px; height: 30px" placeholder="请输入收货地址">
+									</div>
+									<div class="tradeLabelContainer">
+										<label class="tradeLabel">备注：</label> <input
+											id="trade_description" type="text"
+											style="width: 500px; height: 30px" placeholder="请输入备注信息">
+									</div>
+								</div>
+								<button type="submit" th:onClick="'javascript:tradeSubmit()'"
+									style="border-style: none; color: green;">提交申请</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</main>
 
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script th:inline="javascript">
-		function search(){
-	        location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value;
-	    };
-	    
-	    function myMessage(){
-	        location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;    	
-	    }
-	    
-	    function modifyBook(){
-	    	var bookName = document.getElementById("bookName");
-	    	var bookType = document.getElementById("bookType");
-	    	var bookAuthor = document.getElementById("bookAuthor");
-	    	var bookPublisher = document.getElementById("bookPublisher");
-	    	var bookNewDegree = document.getElementById("bookNewDegree");
-	    	var bookAddress = document.getElementById("bookAddress");
-	    	var bookPrice = document.getElementById("bookPrice");
-	    	
-	    	var bookImg = document.getElementById("hidden-img");
-	    	
-	    	bookName.setAttribute("contenteditable","true");
-	    	bookType.setAttribute("contenteditable","true");
-	    	bookAuthor.setAttribute("contenteditable","true");
-	    	bookPublisher.setAttribute("contenteditable","true");
-	    	bookNewDegree.setAttribute("contenteditable","true");
-	    	bookAddress.setAttribute("contenteditable","true");
-	    	bookPrice.setAttribute("contenteditable","true");
-	    	
-	    	// 图片修改
-	    	var preview = document.querySelector('#image_container');
-            var eleFile = document.querySelector('#image_file');
-            eleFile.addEventListener('change', function() {
-                var file = this.files[0];                
-                // 确认选择的文件是图片                
-                if(file.type.indexOf("image") == 0) {
-                    var reader = new FileReader();
-                    reader.readAsDataURL(file);                    
-                    reader.onload = function(e) {
-                        // 图片base64化
-                        var newUrl = this.result;
-                        preview.style.backgroundImage = 'url(' + newUrl + ')';
-                        
-                        confirm(eleFile.value);
-                        
-                    };
-                }
-            });
-	    	
-            confirm("hehe");
-           
-	    	
-	    	
-	    	var modifyButton = document.getElementById("modifyButton");
-	    	modifyButton.textContent="完成"
-	    	modifyButton.setAttribute("onclick","javascript:modifyConfirm()")
+		function search() {
+			location.href = "/searchAll?uId="
+					+ document.getElementById("hidden_uId").value + "&key="
+					+ document.getElementById("Popover1-toggle").value;
+		};
 
-	    }
-	    
-	    function modifyConfirm(){
-	    	 if(confirm('确定要修改书籍信息?')) { 
-	    	     modifyComplete();
-	    	 } 
-	    	 return false; 
-	    }
-	    
-	    function modifyComplete(){
-	    	sendModify();
-	    	var bookName = document.getElementById("bookName");
-	    	var bookType = document.getElementById("bookType");
-	    	var bookAuthor = document.getElementById("bookAuthor");
-	    	var bookPublisher = document.getElementById("bookPublisher");
-	    	var bookNewDegree = document.getElementById("bookNewDegree");
-	    	var bookAddress = document.getElementById("bookAddress");
-	    	var bookPrice = document.getElementById("bookPrice");
-	    	bookName.setAttribute("contenteditable","false");
-	    	bookType.setAttribute("contenteditable","false");
-	    	bookAuthor.setAttribute("contenteditable","false");
-	    	bookPublisher.setAttribute("contenteditable","false");
-	    	bookNewDegree.setAttribute("contenteditable","false");
-	    	bookAddress.setAttribute("contenteditable","false");
-	    	bookPrice.setAttribute("contenteditable","false");
-	    	
-	    	var modifyButton = document.getElementById("modifyButton");
-	    	modifyButton.textContent="修改"
-	    	modifyButton.setAttribute("onclick","javascript:modifyBook()")
-	    }
-	    
-	    function sendModify(){
-	    	var bookName = document.getElementById("bookName").textContent;
-	    	var bookType = document.getElementById("bookType").textContent;
-	    	var bookAuthor = document.getElementById("bookAuthor").textContent;
-	    	var bookPublisher = document.getElementById("bookPublisher").textContent;
-	    	var bookNewDegree = document.getElementById("bookNewDegree").textContent;
-	    	var bookOnsale = document.getElementById("bookOnsale").getAttribute("value");
-	    	var bookAddress = document.getElementById("bookAddress").textContent;
-	    	var bookPrice = document.getElementById("bookPrice").textContent;
-	    	var uId = document.getElementById("hidden_uId").value;
-	    	var bId = document.getElementById("hidden_bId").value;
-	    	var isDel = document.getElementById("hidden_isDel").value;
-	    	var img = document.getElementById("hidden_img").value;
+		function myMessage() {
+			location.href = "/myMessage?uId="
+					+ document.getElementById("hidden_uId").value;
+		}
 
-	        location.href="/bookModify?bookName="+bookName+"&bookType="+bookType+"&publisher="+bookPublisher+"&author="+bookAuthor+"&newDegree="+bookNewDegree+"&address="+bookAddress+"&onsale="+bookOnsale+"&bookPrice="+bookPrice+"&uId="+uId+"&bId="+bId+"&isDel="+isDel+"&img="+img;    	
+		function modifyImg() {
+			// 图片修改
+			var preview = document.querySelector('#image_container');
+			var eleFile = document.querySelector('#image_file');
+			eleFile.addEventListener('change', function() {
+				var file = this.files[0];
+				// 确认选择的文件是图片                
+				if (file.type.indexOf("image") == 0) {
+					var reader = new FileReader();
+					reader.readAsDataURL(file);
+					reader.onload = function(e) {
+						// 图片base64化
+						var newUrl = this.result;
+						preview.style.backgroundImage = 'url(' + newUrl + ')';
 
-	    }
-	    
-	    function deleteBook(){
-	    	 if(confirm('确定要删除书籍信息?')) { 
-	    	     deleteComplete();
-	    	 } 
-	    	 return false; 
-	    }
-	    
-	    function deleteComplete(){
-	    	var uId = document.getElementById("hidden_uId").value;
-	    	var bId = document.getElementById("hidden_bId").value;
-	    	location.href="/bookDel?bId="+bId+"&uId="+uId;
-	    }
-	    
-	    function tradeSubmit(){
-	    	var trade_sendTo = document.getElementById("trade_sendTo").value;
-	    	var trade_description = document.getElementById("trade_description").value;
-	    	var uId = document.getElementById("hidden_uId").value;
-	    	var bId = document.getElementById("hidden_bId").value;
-			location.href="/tradeSubmit?trade_sendTo="+trade_sendTo+"&trade_description="+trade_description+"&uId="+uId+"&bId="+bId;
+						//confirm(eleFile.value);
 
-	    }
+					};
+				}
+			});
+
+			//confirm("hehe");
+
+		}
+
+		function modifyBook() {
+			var bookName = document.getElementById("bookName");
+			var bookType = document.getElementById("bookType");
+			var bookAuthor = document.getElementById("bookAuthor");
+			var bookPublisher = document.getElementById("bookPublisher");
+			var bookNewDegree = document.getElementById("bookNewDegree");
+			var bookAddress = document.getElementById("bookAddress");
+			var bookPrice = document.getElementById("bookPrice");
+
+			//var bookImg = document.getElementById("hidden-img");
+
+			bookName.setAttribute("contenteditable", "true");
+			bookType.setAttribute("contenteditable", "true");
+			bookAuthor.setAttribute("contenteditable", "true");
+			bookPublisher.setAttribute("contenteditable", "true");
+			bookNewDegree.setAttribute("contenteditable", "true");
+			bookAddress.setAttribute("contenteditable", "true");
+			bookPrice.setAttribute("contenteditable", "true");
+
+			var modifyButton = document.getElementById("modifyButton");
+			modifyButton.textContent = "完成"
+			modifyButton.setAttribute("onclick", "javascript:modifyConfirm()")
+
+		}
+
+		function modifyConfirm() {
+			if (confirm('确定要修改书籍信息?')) {
+				modifyComplete();
+			}
+			return false;
+		}
+
+		function modifyComplete() {
+			sendModify();
+			var bookName = document.getElementById("bookName");
+			var bookType = document.getElementById("bookType");
+			var bookAuthor = document.getElementById("bookAuthor");
+			var bookPublisher = document.getElementById("bookPublisher");
+			var bookNewDegree = document.getElementById("bookNewDegree");
+			var bookAddress = document.getElementById("bookAddress");
+			var bookPrice = document.getElementById("bookPrice");
+			bookName.setAttribute("contenteditable", "false");
+			bookType.setAttribute("contenteditable", "false");
+			bookAuthor.setAttribute("contenteditable", "false");
+			bookPublisher.setAttribute("contenteditable", "false");
+			bookNewDegree.setAttribute("contenteditable", "false");
+			bookAddress.setAttribute("contenteditable", "false");
+			bookPrice.setAttribute("contenteditable", "false");
+
+			var modifyButton = document.getElementById("modifyButton");
+			modifyButton.textContent = "修改"
+			modifyButton.setAttribute("onclick", "javascript:modifyBook()")
+		}
+
+		function sendModify() {
+			var bookName = document.getElementById("bookName").textContent;
+			var bookType = document.getElementById("bookType").textContent;
+			var bookAuthor = document.getElementById("bookAuthor").textContent;
+			var bookPublisher = document.getElementById("bookPublisher").textContent;
+			var bookNewDegree = document.getElementById("bookNewDegree").textContent;
+			var bookOnsale = document.getElementById("bookOnsale")
+					.getAttribute("value");
+			var bookAddress = document.getElementById("bookAddress").textContent;
+			var bookPrice = document.getElementById("bookPrice").textContent;
+			var uId = document.getElementById("hidden_uId").value;
+			var bId = document.getElementById("hidden_bId").value;
+			var isDel = document.getElementById("hidden_isDel").value;
+			var img = document.getElementById("hidden_img").value;
+
+			location.href = "/bookModify?bookName=" + bookName + "&bookType="
+					+ bookType + "&publisher=" + bookPublisher + "&author="
+					+ bookAuthor + "&newDegree=" + bookNewDegree + "&address="
+					+ bookAddress + "&onsale=" + bookOnsale + "&bookPrice="
+					+ bookPrice + "&uId=" + uId + "&bId=" + bId + "&isDel="
+					+ isDel + "&img=" + img;
+
+		}
+
+		function deleteBook() {
+			if (confirm('确定要删除书籍信息?')) {
+				deleteComplete();
+			}
+			return false;
+		}
+
+		function deleteComplete() {
+			var uId = document.getElementById("hidden_uId").value;
+			var bId = document.getElementById("hidden_bId").value;
+			location.href = "/bookDel?bId=" + bId + "&uId=" + uId;
+		}
+
+		function tradeSubmit() {
+			var trade_sendTo = document.getElementById("trade_sendTo").value;
+			var trade_description = document
+					.getElementById("trade_description").value;
+			var uId = document.getElementById("hidden_uId").value;
+			var bId = document.getElementById("hidden_bId").value;
+			location.href = "/tradeSubmit?trade_sendTo=" + trade_sendTo
+					+ "&trade_description=" + trade_description + "&uId=" + uId
+					+ "&bId=" + bId;
+
+		}
 	</script>
 </body>
 </html>

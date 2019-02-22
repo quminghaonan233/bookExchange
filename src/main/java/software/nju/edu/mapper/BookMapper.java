@@ -1,5 +1,6 @@
 package software.nju.edu.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -106,8 +107,8 @@ public interface BookMapper {
 	void updateBookDetail(Book book);
 	
 
-	@Update("UPDATE book SET img = #{img} WHERE bId = #{bId}")
-	void updateBookImage(int bId, String img);
+	@Update("UPDATE book SET img = #{img}, final_update_time = #{finalUpdateTime} WHERE bId = #{bId}")
+	void updateBookImage(int bId, String img, Date finalUpdateTime);
 	
 	
 	/**

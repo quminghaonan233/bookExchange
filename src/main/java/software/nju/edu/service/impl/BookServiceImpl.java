@@ -1,6 +1,7 @@
 package software.nju.edu.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,8 +31,8 @@ public class BookServiceImpl implements BookService {
 	private WebDataMapper webDataMapper;
 	
 	@Override
-	public void updateBookImage(int bId, String img) {
-		bookMapper.updateBookImage(bId, img);
+	public void updateBookImage(int bId, String img, Date finalUpdateTime) {
+		bookMapper.updateBookImage(bId, img, finalUpdateTime);
 	}
 	
 	@Override
