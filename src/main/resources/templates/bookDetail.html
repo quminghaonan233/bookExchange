@@ -14,9 +14,9 @@
 	width: 20rem;
 	height: 20rem;
 	position: relative;
-	background-image: url(/img/book1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
+	float:left;
 }
 </style>
 </head>
@@ -120,24 +120,32 @@
 						<div class="">
 							<div class="Card TopstoryItem TopstoryItem-isRecommend">
 								<div style="float: left; width: 50%">
-									<form enctype="multipart/form-data" method="post"
-										action="/modifyImg">
-										<input type="hidden" name="uId" th:attr="value=${user.uId}" />
-										<input type="hidden" name="bId" th:attr="value=${book.bId}" />
-										<div class="contentDiv" id="image_container"
-											style="float: left; background-image: url(/img/book1.jpg)">
-											<input type="file" accept="image/*" name="file" id="image_file" value="" />
-										</div>
-										<div class="contentDiv">
-											<input type="submit"
-												style="border-style: none; color: green; margin-left: 10px; font-size: 15px;"
-												value="发布">
-										</div>
-									</form>
+									<div class="bookImgform">
+										<form enctype="multipart/form-data" method="post"
+											action="/modifyImg">
+											<input type="hidden" name="uId" th:attr="value=${user.uId}" />
+											<input type="hidden" name="bId" th:attr="value=${book.bId}" />
+											
+											<div class="contentDiv" id="image_container" th:style="'background-image:url(' + ${book.img} + ')'">
+												<div th:if="${isBookMine==true}" class="contentDiv"
+													style="visibility: hidden" id="file_div">
+													<input type="file" accept="image/*" name="file"
+														id="image_file" value="" />
+												</div>
+											</div>
+											
+											<div th:if="${isBookMine==true}" class="contentDiv"
+												style="visibility: hidden" id="submit_div">
+												<input type="submit"
+													style="border-style: none; color: green; margin-left: 10px; font-size: 15px;"
+													value="更新图片">
+											</div>
+										</form>
+									</div>
 
 									<div th:if="${isBookMine==true}" class="buttonContainer">
-										<button id="modifyButton" type="button" style="color: green"
-											th:onClick="'javascript:modifyImg()'">编辑</button>
+										<button id="modifyImgButton" type="button"
+											style="color: green" th:onClick="'javascript:modifyImg()'">编辑图片</button>
 									</div>
 								</div>
 
@@ -236,6 +244,19 @@
 		}
 
 		function modifyImg() {
+			if (modifyImgButton.textContent == "编辑图片") {
+				// 显示隐藏的input file
+				document.getElementById("file_div").style.visibility = "visible";
+				document.getElementById("submit_div").style.visibility = "visible";
+				modifyImgButton.textContent = "撤销编辑";
+				
+			} else {
+				var bookImg = document.getElementById("hidden_img").value;
+				document.getElementById("file_div").style.visibility = "hidden";
+				document.getElementById("file_div").style.visibility = "hidden";
+				document.getElementById("image_container").style.backgroundImage = "url(" + bookImg +")";
+				modifyImgButton.textContent = "编辑图片";
+			}
 			// 图片修改
 			var preview = document.querySelector('#image_container');
 			var eleFile = document.querySelector('#image_file');
