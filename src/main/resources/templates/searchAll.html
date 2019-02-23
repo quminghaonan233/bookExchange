@@ -107,6 +107,12 @@
 						<p th:text="'合计出现 ' + ${hitCounts} +' 条相似记录'" ></p>
 						<p th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
 					</div>
+					<div id="SortingMethod" class="Sorting-method" style="height:100px">
+						<button type="button" th:onclick="'javascript:sortedByPriceAsc()'">按价格升序</button>
+						<button type="button" th:onclick="'javascript:sortedByPriceDesc()'">按价格降序</button>
+						<button type="button" th:onclick="'javascript:sortedByCreditAsc()'">按信用升序</button>
+						<button type="button" th:onclick="'javascript:sortedByCreditDesc()'">按信用降序</button>
+					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
 							<div class="">
@@ -143,6 +149,22 @@
 	    
 	    function myMessage(){
 	        location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;
+	    	
+	    }
+	    
+	    function sortedByPriceAsc() {
+	    	location.href="/searchAll?uId="
+	    			+document.getElementById("hidden_uId").value+"&key="
+	    			+document.getElementById("Popover1-toggle").value
+	    			+"&sort=2";
+	    	
+	    }
+	    
+	    function sortedByPriceDesc() {
+	    	location.href="/searchAll?uId="
+	    			+document.getElementById("hidden_uId").value+"&key="
+	    			+document.getElementById("Popover1-toggle").value
+	    			+"&sort=3";
 	    	
 	    }
 	    

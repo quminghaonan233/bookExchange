@@ -62,6 +62,7 @@ public class SearchController {
 			break;
 		case 3:
 			queryResultBookList = sortingService.sortedByPriceDESC(queryResultBookList);
+			break;
 		case 4:
 			queryResultBookList = sortingService.sortedByTimeASC(queryResultBookList);
 		case 5:
