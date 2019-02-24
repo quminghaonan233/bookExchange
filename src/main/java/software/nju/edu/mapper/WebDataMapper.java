@@ -21,7 +21,7 @@ public interface WebDataMapper {
 	
 	@Select("SELECT * FROM web_data WHERE bId = #{bId}")
 	@Results({
-		@Result(property = "clickThroughRate", column = "click_throught_rate"),
+		@Result(property = "clickThroughRate", column = "click_through_rate"),
 		@Result(property = "hotIndex", column = "hot_index")
 	})
 	WebData getWebDataByBookId(int bId);

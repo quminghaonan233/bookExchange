@@ -64,7 +64,7 @@ public class IndexCreaterUtil {
 			// book picture name
 			Field img = new TextField("img", book.getImg(), Field.Store.YES);
 			
-			
+			Field finalUpdateTime = new TextField("finalUpdateTime", ""+book.getFinalUpdateTime(), Field.Store.YES);
 			
 			
 			// add field into document
@@ -80,6 +80,7 @@ public class IndexCreaterUtil {
 			document.add(isDel);
 			document.add(price);
 			document.add(img);
+			document.add(finalUpdateTime);
 			
 			// add document into doc list
 			docList.add(document);

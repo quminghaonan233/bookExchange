@@ -72,7 +72,7 @@ public class BookDetailController {
 		try {
 			// upload file: book image.
 			FileUtil.uploadFile(file.getBytes(), filePath, fileName);
-			Date finalUpdateTime = new Timestamp(System.currentTimeMillis());
+			Timestamp finalUpdateTime = new Timestamp(System.currentTimeMillis());
 			// 调修改接口
 			bookService.updateBookImage(Integer.parseInt(bId), img, finalUpdateTime);
 
@@ -88,7 +88,7 @@ public class BookDetailController {
 	public String bookModify(String bookName, String bookType, String publisher, String author, String newDegree,
 			String address, String onsale, String bookPrice, String uId, String bId, String isDel, String img, Model model) {
 		// 调修改接口
-		Date finalUpdateTime = new Timestamp(System.currentTimeMillis());
+		Timestamp finalUpdateTime = new Timestamp(System.currentTimeMillis());
 		Book book = new Book(Integer.parseInt(bId), bookName, Integer.parseInt(uId), bookType, publisher, author,
 				newDegree, address, Integer.parseInt(onsale), Integer.parseInt(isDel), Integer.parseInt(bookPrice), img,
 				finalUpdateTime);

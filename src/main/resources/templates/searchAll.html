@@ -13,27 +13,41 @@
 </head>
 <body>
 	<div>
-		<header role="banner" class="Sticky AppHeader" data-za-module="TopNavBar">
-			<div class="AppHeader-inner" style="margin-left:100px;">
+		<header role="banner" class="Sticky AppHeader"
+			data-za-module="TopNavBar">
+			<div class="AppHeader-inner" style="margin-left: 100px;">
 				<!-- 菜单栏 -->
 				<nav role="navigation" class="AppHeader-nav">
-					<a class="AppHeader-navItem is-active" th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
-					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
+					<a class="AppHeader-navItem is-active"
+						th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
+					<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}"
+						data-za-not-track-link="true">我的发布</a>
 				</nav>
-				
+
 				<!-- 搜索框 -->
 				<div class="SearchBar" role="search" data-za-module="PresetWordItem">
 					<div class="SearchBar-toolWrapper">
 						<div>
 							<div class="Popover">
 								<div class="SearchBar-input Input-wrapper Input-wrapper--grey">
-									<input type="hidden" id="hidden_uId" th:attr="value=${user.uId}"/>
-									<input type="text"  maxlength="100" autocomplete="off" role="combobox" aria-expanded="false" aria-autocomplete="list" aria-activedescendant="AutoComplete2--1" id="Popover1-toggle" aria-haspopup="true" aria-owns="Popover1-content" class="Input" placeholder="请输入要搜索的书名" value=""/>
+									<input type="hidden" id="hidden_uId"
+										th:attr="value=${user.uId}" /> <input type="text"
+										maxlength="100" autocomplete="off" role="combobox"
+										aria-expanded="false" aria-autocomplete="list"
+										aria-activedescendant="AutoComplete2--1" id="Popover1-toggle"
+										aria-haspopup="true" aria-owns="Popover1-content"
+										class="Input" placeholder="请输入要搜索的书名" value="" />
 									<div class="Input-after">
-										<button aria-label="搜索"  type="button" th:onclick="'javascript:search()'" class="Button SearchBar-searchIcon Button--primary" style="border-style: none;">
+										<button aria-label="搜索" type="button"
+											th:onclick="'javascript:search()'"
+											class="Button SearchBar-searchIcon Button--primary"
+											style="border-style: none;">
 											<span style="display: inline-flex; align-items: center;">
-												​<svg class="Zi Zi--Search" fill="currentColor" viewBox="0 0 24 24" width="18" height="18">
-													<path d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z" fill-rule="evenodd"></path>
+												​<svg class="Zi Zi--Search" fill="currentColor"
+													viewBox="0 0 24 24" width="18" height="18">
+													<path
+														d="M17.068 15.58a8.377 8.377 0 0 0 1.774-5.159 8.421 8.421 0 1 0-8.42 8.421 8.38 8.38 0 0 0 5.158-1.774l3.879 3.88c.957.573 2.131-.464 1.488-1.49l-3.879-3.878zm-6.647 1.157a6.323 6.323 0 0 1-6.316-6.316 6.323 6.323 0 0 1 6.316-6.316 6.323 6.323 0 0 1 6.316 6.316 6.323 6.323 0 0 1-6.316 6.316z"
+														fill-rule="evenodd"></path>
 												</svg>
 											</span>
 										</button>
@@ -43,29 +57,37 @@
 						</div>
 					</div>
 				</div>
-				
 
-				<div class="AppHeader-userInfo" >
+
+				<div class="AppHeader-userInfo">
 					<!-- 我的消息 -->
 					<div>
 						<div class="Popover Messages AppHeader-messages">
-								<button type="submit" th:onclick="'javascript:myMessage()'" id="Popover16-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content" class="Button Messages-icon Button--plain">
-									<span style="display: inline-flex; align-items: center;">​
-										<svg class="Zi Zi--Comments" fill="currentColor" viewBox="0 0 24 24" width="22" height="22">
-											<path d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z" fill-rule="evenodd">
+							<button type="submit" th:onclick="'javascript:myMessage()'"
+								id="Popover16-toggle" aria-haspopup="true" aria-expanded="false"
+								aria-owns="Popover16-content"
+								class="Button Messages-icon Button--plain">
+								<span style="display: inline-flex; align-items: center;">​
+									<svg class="Zi Zi--Comments" fill="currentColor"
+										viewBox="0 0 24 24" width="22" height="22">
+											<path
+											d="M11 2c5.571 0 9 4.335 9 8 0 6-6.475 9.764-11.481 8.022-.315-.07-.379-.124-.78.078-1.455.54-2.413.921-3.525 1.122-.483.087-.916-.25-.588-.581 0 0 .677-.417.842-1.904.064-.351-.14-.879-.454-1.171A8.833 8.833 0 0 1 2 10c0-3.87 3.394-8 9-8zm10.14 9.628c.758.988.86 2.009.86 3.15 0 1.195-.619 3.11-1.368 3.938-.209.23-.354.467-.308.722.12 1.073.614 1.501.614 1.501.237.239-.188.562-.537.5-.803-.146-1.495-.42-2.546-.811-.29-.146-.336-.106-.563-.057-2.043.711-4.398.475-6.083-.927 5.965-.524 8.727-3.03 9.93-8.016z"
+											fill-rule="evenodd">
 											</path>
 										</svg>
-									</span>
-									<span class="Messages-count">2</span>
-								</button>
+								</span> <span class="Messages-count">2</span>
+							</button>
 						</div>
 					</div>
 					<!-- 用户个人信息 -->
 					<div class="AppHeader-profile">
 						<div class="Popover AppHeader-menu">
 							<form method="get" action="/myProfile">
-								<button type="submit" id="Popover17-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover17-content" class="Button AppHeader-profileEntry Button--plain">
-									<img class="Avatar AppHeader-profileAvatar" width="30" height="30" src="/img/userProfile.png">
+								<button type="submit" id="Popover17-toggle" aria-haspopup="true"
+									aria-expanded="false" aria-owns="Popover17-content"
+									class="Button AppHeader-profileEntry Button--plain">
+									<img class="Avatar AppHeader-profileAvatar" width="30"
+										height="30" src="/img/userProfile.png">
 								</button>
 							</form>
 						</div>
@@ -74,8 +96,8 @@
 			</div>
 		</header>
 	</div>
-	
-	
+
+
 	<hr>
 
 	<table>
@@ -85,8 +107,8 @@
 			<td th:if="${pageInfo.hasPreviousPage}"><a
 				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
 			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}" th:text=${navNum}
-				th:if="${navNum != pageInfo.pageNum}"></a> <span
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}"
+				th:text=${navNum} th:if="${navNum != pageInfo.pageNum}"></a> <span
 				style="font-weight: bold" th:text="${navNum}"
 				th:if="${navNum == pageInfo.pageNum}"></span></td>
 			<td th:if="${pageInfo.hasNextPage}"><a
@@ -95,51 +117,95 @@
 				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
 		</tr>
 	</table>
-	
+
 	<hr>
-	
+
 	<main role="main" class="App-main">
-		<div class="Topstory">
-			<div class="Topstory-container">
-				<div class="Topstory-mainColumn">
-					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:100px">
-						<a style="font-size:15px;" th:text= "' >>'+${key}+'的搜索结果'"></a>
-						<p th:text="'合计出现 ' + ${hitCounts} +' 条相似记录'" ></p>
-						<p th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
+	<div class="Topstory">
+		<div class="Topstory-container">
+			<div class="Topstory-mainColumn">
+				<div class="Card Topstory-noMarginCard Topstory-tabCard"
+					style="height: 200px">
+					<a style="font-size: 15px;" th:text="' >>'+${key}+'的搜索结果'"></a>
+					<p th:text="'合计出现 ' + ${hitCounts} +' 条相似记录'"></p>
+					<p
+						th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					信用
+					<button type="button" id="bt03" onclick="sortedByCreditAsc()">升序</button>
+					<button type="button" id="bt04" onclick="sortedByCreditDesc()">降序</button>
 					</div>
-					<div id="SortingMethod" class="Sorting-method" style="height:100px">
-						<button type="button" th:onclick="'javascript:sortedByPriceAsc()'">按价格升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPriceDesc()'">按价格降序</button>
-						<button type="button" th:onclick="'javascript:sortedByCreditAsc()'">按信用升序</button>
-						<button type="button" th:onclick="'javascript:sortedByCreditDesc()'">按信用降序</button>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					价格
+					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
+					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
 					</div>
-					<div id="TopstoryContent" class="Topstory-content">
-						<div class="Topstory-recommend">
-							<div class="">
-								<!-- 每个推荐书目标签 -->
-								<th:block th:each="book : ${pageInfo.list}">
-									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="${book.img}">
-										<div class="bookDescription">
-											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}+'&uId='+${user.uId}"></a>
-											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>
-											<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
-											<p class="bookPrice" th:text="'所需积分：'+${book.price}"></p>
-										</div>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					时间
+					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
+					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					</div>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					热度值
+					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
+					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					</div>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					点击数
+					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
+					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					</div>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					浏览数
+					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
+					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					</div>
+					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
+					点击率
+					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
+					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					</div>
+				</div>
+
+				<div id="TopstoryContent" class="Topstory-content">
+					<div class="Topstory-recommend">
+						<div class="">
+							<!-- 每个推荐书目标签 -->
+							<th:block th:each="sr : ${pageInfo.list}">
+								<div class="Card TopstoryItem TopstoryItem-isRecommend">
+									<img class="bookImg" src="${sr.book.img}">
+									<div class="bookDescription">
+									<div class="" style="float:left;width:60%">
+										<a class="bookName" th:text="${sr.book.bookName}"
+											th:href="'/bookDetail?bId='+${sr.book.bId}+'&uId='+${user.uId}"></a>
+										<p class="bookPublisher" th:text="'出版社：'+${sr.book.publisher}"></p>
+										<p class="bookAuthor" th:text="'作者：'+${sr.book.author}"></p>
+										<p class="Credit" th:text="'卖家信用：'+${sr.credit}"></p>
+										<p class="bookPrice" th:text="'所需积分：'+${sr.book.price}"></p>
 									</div>
-								</th:block>
-							</div>
+									<div class="" style="float:left">
+										<p class="finalUpdateTime" th:text="'发布时间：'+${sr.book.finalUpdateTime}"></p>
+										<p class="hotIndex" th:text="'热度值：'+${sr.webData.hotIndex}"></p>
+										<p class="clicks" th:text="'点击数：'+${sr.webData.clicks}"></p>
+										<p class="views" th:text="'浏览数：'+${sr.webData.views}"></p>
+										<p class="clickThroughRate" th:text="'点击率：'+${sr.webData.clickThroughRate}"></p>
+									</div>
+										
+									</div>
+								</div>
+							</th:block>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+	</div>
 	</main>
 
 
 
-	
-	
+
+
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script th:inline="javascript">
@@ -152,11 +218,27 @@
 	    	
 	    }
 	    
-	    function sortedByPriceAsc() {
+	    function sortedByDefault() {
 	    	location.href="/searchAll?uId="
-	    			+document.getElementById("hidden_uId").value+"&key="
-	    			+document.getElementById("Popover1-toggle").value
-	    			+"&sort=2";
+    			+document.getElementById("hidden_uId").value+"&key="
+    			+document.getElementById("Popover1-toggle").value
+    			+"&sort=0";
+	    }
+	    
+	    function sortedByCreditAsc() {
+	    	location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;
+	    	
+	    }
+	    
+	    function sortedByCreditDesc() {
+	    	location.href="/searchAll?uId="
+    			+document.getElementById("hidden_uId").value+"&key="
+    			+document.getElementById("Popover1-toggle").value
+    			+"&sort=2";
+	    }
+	    
+	    function sortedByPriceAsc() {
+	    	location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value+"&sort=3";
 	    	
 	    }
 	    
@@ -164,11 +246,13 @@
 	    	location.href="/searchAll?uId="
 	    			+document.getElementById("hidden_uId").value+"&key="
 	    			+document.getElementById("Popover1-toggle").value
-	    			+"&sort=3";
+	    			+"&sort=4";
 	    	
 	    }
 	    
-	</script> 
+	    function sortedBy
+	    
+	</script>
 
 </body>
 </html>

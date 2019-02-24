@@ -24,18 +24,15 @@ public class SortingServiceImpl implements SortingService {
 	 * @return
 	 */
 	@Override
-	public List<Book> sortedByPriceASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByPriceAsc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
 				return ((Integer)b1.getPrice()).compareTo(b2.getPrice());
 			}
 		});
-		
-		for (Book b: bookList) {
-			System.out.println(b.getbId() + ", " + b.getPrice());
-		}
-		
+//		for (Book b: bookList) {
+//			System.out.println(b.getbId() + ", " + b.getPrice());
+//		}
 		return bookList;
 	}
 	
@@ -44,25 +41,21 @@ public class SortingServiceImpl implements SortingService {
 	 * @param bookList
 	 * @return
 	 */
-	public List<Book> sortedByPriceDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	@Override
+	public List<Book> sortedByPriceDesc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
-				return ((Integer)b1.getPrice()).compareTo(b2.getPrice());
+				return ((Integer)b2.getPrice()).compareTo(b1.getPrice());
 			}
 		});
-		
-		for (Book b: bookList) {
-			System.out.println(b.getbId() + ", " + b.getPrice());
-		}
-		
 		return bookList;
 	}
-	
-	
+
+	/**
+	 * 按信用升序
+	 */
 	@Override
-	public List<Book> sortedByCreditDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByCreditAsc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
 				// find b1 -> user -> credit
@@ -72,13 +65,31 @@ public class SortingServiceImpl implements SortingService {
 				return c1.compareTo(c2);
 			}
 		});
-		
 		return bookList;
 	}
-
+	
+	/**
+	 * 按信用降序
+	 */
 	@Override
-	public List<Book> sortedByTimeASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByCreditDesc(List<Book> bookList) {
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find b1 -> user -> credit
+				Integer c1 = bookService.getCreditByBookOwner(b1.getBook_owner());
+				// find b2 -> user -> credit
+				Integer c2 = bookService.getCreditByBookOwner(b2.getBook_owner());
+				return c2.compareTo(c1);
+			}
+		});
+		return bookList;
+	}
+	
+	/**
+	 * 按发布时间升序
+	 */
+	@Override
+	public List<Book> sortedByTimeAsc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
 				Date d1 = b1.getFinalUpdateTime();
@@ -90,71 +101,84 @@ public class SortingServiceImpl implements SortingService {
 		
 	}
 	
+	/**
+	 * 按发布时间降序
+	 */
 	@Override
-	public List<Book> sortedByTimeDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByTimeDesc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
 				Date d1 = b1.getFinalUpdateTime();
 				Date d2 = b2.getFinalUpdateTime();
-				return d1.compareTo(d2);
+				return d2.compareTo(d1);
 			}
 		});
 		return bookList;
 		
 	}
 
+	/**
+	 * 按热点值升序
+	 */
 	@Override
-	public List<Book> sortedByHotIndexASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByHotIndexAsc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按热点值降序
+	 */
 	@Override
-	public List<Book> sortedByHotIndexDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByHotIndexDesc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按点击数升序
+	 */
 	@Override
-	public List<Book> sortedByClicksASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByClicksAsc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按点击数降序
+	 */
 	@Override
-	public List<Book> sortedByClicksDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByClicksDesc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按浏览数升序
+	 */
 	@Override
-	public List<Book> sortedByViewsASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByViewsAsc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按浏览数降序
+	 */
 	@Override
-	public List<Book> sortedByViewsDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByViewsDesc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按点击率升序
+	 */
 	@Override
-	public List<Book> sortedByClickThroughRateASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByClickThroughRateAsc(List<Book> bookList) {
 		return null;
 	}
 
+	/**
+	 * 按点击率降序
+	 */
 	@Override
-	public List<Book> sortedByClickThroughRateDESC(List<Book> bookList) {
-		// TODO Auto-generated method stub
+	public List<Book> sortedByClickThroughRateDesc(List<Book> bookList) {
 		return null;
 	}
 
-	@Override
-	public List<Book> sortedByCreditASC(List<Book> bookList) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 }

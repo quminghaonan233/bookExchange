@@ -1,6 +1,6 @@
 package software.nju.edu.mapper;
 
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.type.JdbcType;
 
 import software.nju.edu.domain.entity.Book;
 
@@ -19,13 +20,13 @@ public interface BookMapper {
 	
 	@Select("SELECT * FROM book")
 	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
+		@Result(property = "finalUpdateTime", column = "final_update_time", jdbcType=JdbcType.TIMESTAMP, javaType = java.sql.Timestamp.class)
 	})
 	List<Book> getAllBooks();
 	
 	@Select("SELECT * FROM book WHERE bId = #{bId}")
 	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
+		@Result(property = "finalUpdateTime", column = "final_update_time", jdbcType=JdbcType.TIMESTAMP, javaType = java.sql.Timestamp.class)
 	})
 	Book getBookDetail(int bId);
 	
@@ -34,7 +35,7 @@ public interface BookMapper {
 	
 	@Select("SELECT * FROM book WHERE book_owner = #{uId}")
 	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
+		@Result(property = "finalUpdateTime", column = "final_update_time", jdbcType=JdbcType.TIMESTAMP, javaType = java.sql.Timestamp.class)
 	})
 	List<Book> queryMineBooksByUserId(int uId);
 	
@@ -44,34 +45,10 @@ public interface BookMapper {
 	 */
 	@Select("SELECT * FROM book LEFT JOIN web_data ON book.bId = web_data.bId ORDER BY hot_index DESC, views DESC")
 	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
+		@Result(property = "finalUpdateTime", column = "final_update_time", jdbcType=JdbcType.TIMESTAMP, javaType = java.sql.Timestamp.class)
 	})
 	List<Book> getAllBooksOrderByHotIndexDescByViewsDesc();
 	
-	
-	@Select("SELECT * FROM book ORDER BY newDegree DESC")
-	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
-	})
-	List<Book> getAllBooksOrderByNewDegreeDesc();
-	
-	@Select("SELECT * FROM book ORDER BY newDegree ASC")
-	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
-	})
-	List<Book> getAllBooksOrderByNewDegreeAsc();
-	
-	@Select("SELECT * FROM book ORDER BY price DESC ")
-	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
-	})
-	List<Book> getAllBooksOrderByPriceDesc();
-	
-	@Select("SELECT * FROM book ORDER BY price ASC")
-	@Results({
-		@Result(property = "finalUpdateTime", column = "final_update_time")
-	})
-	List<Book> getAllBooksOrderByPriceAsc();
 	
 	/**
 	 * Insert
@@ -102,13 +79,14 @@ public interface BookMapper {
 			+ "onsale = #{onsale}, "
 			+ "isDel = #{isDel}, "
 			+ "price = #{price}, "
-			+ "img = #{img} "
+			+ "img = #{img}, "
+			+ "final_update_time = #{finalUpdateTime} "
 			+ "WHERE bId = #{bId}")
 	void updateBookDetail(Book book);
 	
 
 	@Update("UPDATE book SET img = #{img}, final_update_time = #{finalUpdateTime} WHERE bId = #{bId}")
-	void updateBookImage(int bId, String img, Date finalUpdateTime);
+	void updateBookImage(int bId, String img, Timestamp finalUpdateTime);
 	
 	
 	/**

@@ -6,32 +6,32 @@ import software.nju.edu.domain.entity.Book;
 
 public interface SortingService {
 	
-	List<Book> sortedByHotIndexASC(List<Book> bookList);
+	List<Book> sortedByHotIndexAsc(List<Book> bookList);
 	
-	List<Book> sortedByHotIndexDESC(List<Book> bookList);
+	List<Book> sortedByHotIndexDesc(List<Book> bookList);
 	
-	List<Book> sortedByClickThroughRateASC(List<Book> bookList);
+	List<Book> sortedByClickThroughRateAsc(List<Book> bookList);
 	
-	List<Book> sortedByClickThroughRateDESC(List<Book> bookList);
+	List<Book> sortedByClickThroughRateDesc(List<Book> bookList);
 	
-	List<Book> sortedByClicksASC(List<Book> bookList);
+	List<Book> sortedByClicksAsc(List<Book> bookList);
 	
-	List<Book> sortedByClicksDESC(List<Book> bookList);
+	List<Book> sortedByClicksDesc(List<Book> bookList);
 	
-	List<Book> sortedByViewsASC(List<Book> bookList);
+	List<Book> sortedByViewsAsc(List<Book> bookList);
 	
-	List<Book> sortedByViewsDESC(List<Book> bookList);
+	List<Book> sortedByViewsDesc(List<Book> bookList);
 	
-	List<Book> sortedByPriceASC(List<Book> bookList);
+	List<Book> sortedByPriceAsc(List<Book> bookList);
 	
-	List<Book> sortedByPriceDESC(List<Book> bookList);
+	List<Book> sortedByPriceDesc(List<Book> bookList);
 	
-	List<Book> sortedByCreditASC(List<Book> bookList);
+	List<Book> sortedByCreditAsc(List<Book> bookList);
 	
-	List<Book> sortedByCreditDESC(List<Book> bookList);
+	List<Book> sortedByCreditDesc(List<Book> bookList);
 	
-	List<Book> sortedByTimeASC(List<Book> bookList);
+	List<Book> sortedByTimeAsc(List<Book> bookList);
 	
-	List<Book> sortedByTimeDESC(List<Book> bookList);
+	List<Book> sortedByTimeDesc(List<Book> bookList);
 
 }

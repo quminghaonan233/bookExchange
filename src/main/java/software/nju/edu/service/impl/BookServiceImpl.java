@@ -1,5 +1,6 @@
 package software.nju.edu.service.impl;
 
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -11,6 +12,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 
 import software.nju.edu.domain.entity.Book;
+import software.nju.edu.domain.entity.SearchResult;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.mapper.UserMapper;
@@ -31,7 +33,7 @@ public class BookServiceImpl implements BookService {
 	private WebDataMapper webDataMapper;
 	
 	@Override
-	public void updateBookImage(int bId, String img, Date finalUpdateTime) {
+	public void updateBookImage(int bId, String img, Timestamp finalUpdateTime) {
 		bookMapper.updateBookImage(bId, img, finalUpdateTime);
 	}
 	
@@ -160,13 +162,10 @@ public class BookServiceImpl implements BookService {
 		
 	}
 	
-	public PageInfoUtil<Book> getBookListByPage(List<Book> bookList, int pageNum, int pageSize) {
+	public PageInfoUtil<SearchResult> getSearchResultListByPage(List<SearchResult> bookList, int pageNum, int pageSize) {
 		// PageHelper.startPage(pageNum, pageSize);		
 		// create PageInfo
-		
-		
-		PageInfoUtil<Book> pageInfo = new PageInfoUtil<Book>(bookList, pageNum, pageSize);
-		
+		PageInfoUtil<SearchResult> pageInfo = new PageInfoUtil<SearchResult>(bookList, pageNum, pageSize);
 		
 		System.out.println("pageInfo.toString():");
 		System.out.println(pageInfo);

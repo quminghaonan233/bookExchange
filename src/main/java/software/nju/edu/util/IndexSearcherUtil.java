@@ -2,6 +2,7 @@ package software.nju.edu.util;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +70,7 @@ public class IndexSearcherUtil {
 					resultBook.setIsDel((doc.get("isdel")==null)?0:Integer.valueOf(doc.get("isDel")));
 					resultBook.setPrice(doc.get("price")==null?0:Integer.valueOf(doc.get("price")));
 					resultBook.setImg(doc.get("img"));
+					resultBook.setFinalUpdateTime(Timestamp.valueOf(doc.get("finalUpdateTime")));
 					
 					// add result book into result book list
 					queryResultBookList.add(resultBook);

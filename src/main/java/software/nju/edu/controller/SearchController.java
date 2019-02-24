@@ -1,5 +1,6 @@
 package software.nju.edu.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import software.nju.edu.domain.entity.Book;
+import software.nju.edu.domain.entity.SearchResult;
+import software.nju.edu.domain.entity.WebData;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.SearchEngineOptimizationServiceImpl;
@@ -36,6 +39,35 @@ public class SearchController {
 	@Autowired
 	private WebDataServiceImpl webDataService;
 
+	public void creditListLinkToBookList(List<Book> bookList, List<Integer> creditList) {
+		System.out.println(bookList);
+		for (Book b : bookList) {
+			creditList.add(bookService.getCreditByBookOwner(b.getBook_owner()));
+		}
+		
+	}
+	
+	public void webDataListLinkToBookList(List<Book> bookList, List<WebData> webDataList) {
+		for (Book b: bookList) {
+			webDataList.add(webDataService.getWebDataByBookId(b.getbId()));
+		}
+	}
+	
+	public List<SearchResult> mergeSearchResultList(List<Book> bookList, List<Integer> creditList, List<WebData> webDataList) {
+		List<SearchResult> finalList = new ArrayList<SearchResult>();
+		//int size = bookList.size();
+		int localSize = 0;
+		for (Book b : bookList) {
+			int credit = creditList.get(localSize);
+			WebData webData = webDataList.get(localSize);
+			SearchResult sr = new SearchResult(b, credit, webData);
+			finalList.add(sr);
+			localSize ++;
+		}
+		return finalList;
+		
+	}
+	
 	@GetMapping("/searchAll")
 	public String searchBooksInAll(String uId, String key,
 			@RequestParam(value = "sort", defaultValue = "0") int sort,
@@ -43,6 +75,13 @@ public class SearchController {
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
 		List<Book> books = bookMapper.getAllBooks();
 		List<Book> queryResultBookList = null;
+		List<Integer> creditList = new ArrayList<Integer>();
+		List<WebData> webDataList = new ArrayList<WebData>();
+		
+		
+		
+		
+		
 		try {
 			queryResultBookList = searchEngineOptimizationService.start(books, key);
 		} catch (Exception e) {
@@ -51,22 +90,24 @@ public class SearchController {
 
 		int hitCounts = queryResultBookList.size();
 		
+		
 		switch(sort) {
 		case 0:
 			break;	
 		case 1:
-			queryResultBookList = sortingService.sortedByCreditASC(queryResultBookList);
+			queryResultBookList = sortingService.sortedByCreditAsc(queryResultBookList);
 			break;
 		case 2:
-			queryResultBookList = sortingService.sortedByPriceASC(queryResultBookList);
+			queryResultBookList = sortingService.sortedByCreditDesc(queryResultBookList);
 			break;
 		case 3:
-			queryResultBookList = sortingService.sortedByPriceDESC(queryResultBookList);
+			queryResultBookList = sortingService.sortedByPriceAsc(queryResultBookList);
 			break;
 		case 4:
-			queryResultBookList = sortingService.sortedByTimeASC(queryResultBookList);
-		case 5:
+			queryResultBookList = sortingService.sortedByPriceDesc(queryResultBookList);
 			break;
+		case 5:
+			queryResultBookList = sortingService.sortedByTimeAsc(queryResultBookList);
 		case 6:
 			break;
 		case 7:
@@ -85,15 +126,21 @@ public class SearchController {
 			break;
 		case 14:
 			break;
+		case 15:
+			break;
 		}
 
-		PageInfoUtil<Book> bookPageInfo = bookService.getBookListByPage(queryResultBookList, pageNum, pageSize);
+		creditListLinkToBookList(queryResultBookList, creditList);
+		webDataListLinkToBookList(queryResultBookList, webDataList);
+		List<SearchResult> searchResultList = mergeSearchResultList(queryResultBookList, creditList, webDataList);
+		PageInfoUtil<SearchResult> bookPageInfo = bookService.getSearchResultListByPage(searchResultList, pageNum, pageSize);
 
 		// update views for each book.
-		for (Book book : bookPageInfo.getList()) {
-			int bId = book.getbId();
+		for (SearchResult sr : bookPageInfo.getList()) {
+			int bId = sr.getBook().getbId();
 			webDataService.updateBookViews(bId);
 		}
+		
 		
 		model.addAttribute("pageInfo", bookPageInfo);
 		model.addAttribute("hitCounts", hitCounts);

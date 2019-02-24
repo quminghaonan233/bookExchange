@@ -1,22 +1,22 @@
 package software.nju.edu.domain.entity;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.sql.Timestamp;
 
-public class Book implements Serializable {	
+public class Book implements Serializable {
 	/**
 	 * version
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	/**
 	 * Attributes
 	 */
-	private int bId;           // Primary key
-	private String bookName; 
+	private int bId; // Primary key
+	private String bookName;
 	private int book_owner; // Foreign Key: uId
 	private String bookType;
-	private String publisher; 
+	private String publisher;
 	private String author;
 	private String newDegree;
 	private String address;
@@ -24,20 +24,20 @@ public class Book implements Serializable {
 	private int isDel;
 	private int price;
 	private String img;
-	private Date finalUpdateTime;
-	
+	private Timestamp finalUpdateTime;
+
 	// constructor without argument.
 	public Book() {
-		
+
 	}
-	
+
 	public Book(int bId, int price) {
 		this.bId = bId;
 		this.price = price;
 	}
-	
+
 	public Book(int bId, String bookName, int book_owner, String bookType, String publisher, String author,
-			String newDegree, String address, int onsale, int isDel, int price, String img, Date finalUpdateTime) {
+			String newDegree, String address, int onsale, int isDel, int price, String img, Timestamp finalUpdateTime) {
 		super();
 		this.bId = bId;
 		this.bookName = bookName;
@@ -59,27 +59,16 @@ public class Book implements Serializable {
 		this.bId = bId;
 		this.bookName = bookName;
 		this.book_owner = book_owner;
-		 
+
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Book{" +
-			   "bId=" + bId +
-			   "bookName=" + bookName +
-			   "book_owner=" + book_owner +
-			   "bookType=" + bookType +
-			   "publisher=" + publisher +
-			   "author=" + author +
-			   "newDegree=" + newDegree +
-			   "address=" + address +
-			   "onsale=" + onsale +
-			   "isDel=" + isDel +
-			   "price=" + price +
-			   "img=" + img +
-			   "finalUpdateTime=" + finalUpdateTime +
-			   "}";
-			   
+		return "Book{" + "bId=" + bId + ", bookName=" + bookName + ", book_owner=" + book_owner + ", bookType="
+				+ bookType + ", publisher=" + publisher + ", author=" + author + ", newDegree=" + newDegree
+				+ ", address=" + address + ", onsale=" + onsale + ", isDel=" + isDel + ", price=" + price + ", img="
+				+ img + ", finalUpdateTime=" + finalUpdateTime + "}";
+
 	}
 
 	// getters and setters
@@ -178,12 +167,12 @@ public class Book implements Serializable {
 	public void setImg(String img) {
 		this.img = img;
 	}
-	
-	public Date getFinalUpdateTime() {
+
+	public Timestamp getFinalUpdateTime() {
 		return finalUpdateTime;
 	}
 
-	public void setFinalUpdateTime(Date finalUpdateTime) {
+	public void setFinalUpdateTime(Timestamp finalUpdateTime) {
 		this.finalUpdateTime = finalUpdateTime;
 	}
 

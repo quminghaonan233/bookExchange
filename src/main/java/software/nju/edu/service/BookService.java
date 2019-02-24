@@ -1,5 +1,6 @@
 package software.nju.edu.service;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import software.nju.edu.domain.entity.Book;
 public interface BookService {
 
 	// update Book Image
-	public void updateBookImage(int bId, String img, Date finalUpdateTime);
+	public void updateBookImage(int bId, String img, Timestamp finalUpdateTime);
 	
 	public Book getBookById(int bId);
 	// get bookName
