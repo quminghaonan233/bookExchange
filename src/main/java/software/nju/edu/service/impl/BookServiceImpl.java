@@ -14,6 +14,7 @@ import com.github.pagehelper.PageInfo;
 import software.nju.edu.domain.entity.Book;
 import software.nju.edu.domain.entity.SearchResult;
 import software.nju.edu.domain.entity.User;
+import software.nju.edu.domain.entity.WebData;
 import software.nju.edu.mapper.BookMapper;
 import software.nju.edu.mapper.UserMapper;
 import software.nju.edu.mapper.WebDataMapper;
@@ -133,6 +134,26 @@ public class BookServiceImpl implements BookService {
 		// TODO Auto-generated method stub
 		User user = userMapper.getUserById(book_owner);
 		return user.getCredit();
+	}
+	
+	public float getHotIndexByBookId(int bId) {
+		WebData wd = webDataMapper.getWebDataByBookId(bId);
+		return wd.getHotIndex();
+	}
+	
+	public int getClicksByBookId(int bId) {
+		WebData wd = webDataMapper.getWebDataByBookId(bId);
+		return wd.getClicks();
+	}
+	
+	public int getViewsByBookId(int bId) {
+		WebData wd = webDataMapper.getWebDataByBookId(bId);
+		return wd.getViews();
+	}
+	
+	public float getClickThroughRateByBookId(int bId) {
+		WebData wd = webDataMapper.getWebDataByBookId(bId);
+		return wd.getClickThroughRate();
 	}
 	
 	public PageInfo<Book> getBookListByPage(int pageNum, int pageSize) {

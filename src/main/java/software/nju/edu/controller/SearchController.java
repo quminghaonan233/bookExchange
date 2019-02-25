@@ -108,11 +108,15 @@ public class SearchController {
 			break;
 		case 5:
 			queryResultBookList = sortingService.sortedByTimeAsc(queryResultBookList);
+			break;
 		case 6:
+			queryResultBookList = sortingService.sortedByTimeDesc(queryResultBookList);
 			break;
 		case 7:
+			queryResultBookList = sortingService.sortedByHotIndexAsc(queryResultBookList);
 			break;
 		case 8:
+			queryResultBookList = sortingService.sortedByHotIndexDesc(queryResultBookList);
 			break;
 		case 9:
 			break;

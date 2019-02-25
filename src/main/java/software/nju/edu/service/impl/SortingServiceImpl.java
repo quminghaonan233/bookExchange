@@ -122,7 +122,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByHotIndexAsc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find b1 -> webData -> hot-index
+				float h1 = bookService.getHotIndexByBookId(b1.getbId());
+				// find b2 -> webData -> hot-index
+				float h2 = bookService.getHotIndexByBookId(b2.getbId());
+				return Float.compare(h1, h2);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -130,7 +140,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByHotIndexDesc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find b1 -> webData -> hot-index
+				float h1 = bookService.getHotIndexByBookId(b1.getbId());
+				// find b2 -> webData -> hot-index
+				float h2 = bookService.getHotIndexByBookId(b2.getbId());
+				return Float.compare(h2, h1);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -138,7 +158,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByClicksAsc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find b1 -> webData -> clicks
+				int c1 = bookService.getClicksByBookId(b1.getbId());
+				// find b2 -> webData -> clicks
+				int c2 = bookService.getClicksByBookId(b2.getbId());
+				return Integer.compare(c1, c2);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -146,7 +176,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByClicksDesc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find b1 -> webData -> clicks
+				int c1 = bookService.getClicksByBookId(b1.getbId());
+				// find b2 -> webData -> clicks
+				int c2 = bookService.getClicksByBookId(b2.getbId());
+				return Integer.compare(c2, c1);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -154,7 +194,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByViewsAsc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find v1 -> webData -> views
+				int v1 = bookService.getViewsByBookId(b1.getbId());
+				// find v2 -> webData -> views
+				int v2 = bookService.getViewsByBookId(b2.getbId());
+				return Integer.compare(v1, v2);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -162,7 +212,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByViewsDesc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find v1 -> webData -> views
+				int v1 = bookService.getViewsByBookId(b1.getbId());
+				// find v2 -> webData -> views
+				int v2 = bookService.getViewsByBookId(b2.getbId());
+				return Integer.compare(v2, v1);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -170,7 +230,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByClickThroughRateAsc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find ctr1 -> webData -> hot-index
+				float ctr1 = bookService.getClickThroughRateByBookId(b1.getbId());
+				// find ctr2 -> webData -> hot-index
+				float ctr2 = bookService.getClickThroughRateByBookId(b2.getbId());
+				return Float.compare(ctr1, ctr2);
+				
+			}
+		});
+		return bookList;
 	}
 
 	/**
@@ -178,7 +248,17 @@ public class SortingServiceImpl implements SortingService {
 	 */
 	@Override
 	public List<Book> sortedByClickThroughRateDesc(List<Book> bookList) {
-		return null;
+		Collections.sort(bookList, new Comparator<Book>() {
+			public int compare(Book b1, Book b2) {
+				// find ctr1 -> webData -> hot-index
+				float ctr1 = bookService.getClickThroughRateByBookId(b1.getbId());
+				// find ctr2 -> webData -> hot-index
+				float ctr2 = bookService.getClickThroughRateByBookId(b2.getbId());
+				return Float.compare(ctr2, ctr1);
+				
+			}
+		});
+		return bookList;
 	}
 
 }
