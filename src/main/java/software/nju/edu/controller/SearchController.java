@@ -119,18 +119,22 @@ public class SearchController {
 			queryResultBookList = sortingService.sortedByHotIndexDesc(queryResultBookList);
 			break;
 		case 9:
+			queryResultBookList = sortingService.sortedByClicksAsc(queryResultBookList);
 			break;
 		case 10:
+			queryResultBookList = sortingService.sortedByClicksDesc(queryResultBookList);
 			break;
 		case 11:
+			queryResultBookList = sortingService.sortedByViewsAsc(queryResultBookList);
 			break;
 		case 12:
+			queryResultBookList = sortingService.sortedByViewsDesc(queryResultBookList);
 			break;
 		case 13:
+			queryResultBookList = sortingService.sortedByClickThroughRateAsc(queryResultBookList);
 			break;
 		case 14:
-			break;
-		case 15:
+			queryResultBookList = sortingService.sortedByClickThroughRateDesc(queryResultBookList);
 			break;
 		}
 

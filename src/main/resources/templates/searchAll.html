@@ -31,7 +31,12 @@
 							<div class="Popover">
 								<div class="SearchBar-input Input-wrapper Input-wrapper--grey">
 									<input type="hidden" id="hidden_uId"
-										th:attr="value=${user.uId}" /> <input type="text"
+										th:attr="value=${user.uId}" /> 
+									<input type="hidden" id="hidden_key"
+										th:attr="value=${key}" /> 	
+										
+										
+										<input type="text"
 										maxlength="100" autocomplete="off" role="combobox"
 										aria-expanded="false" aria-autocomplete="list"
 										aria-activedescendant="AutoComplete2--1" id="Popover1-toggle"
@@ -132,38 +137,39 @@
 						th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					信用
-					<button type="button" id="bt03" onclick="sortedByCreditAsc()">升序</button>
-					<button type="button" id="bt04" onclick="sortedByCreditDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(1)'">升序
+                                            </button>
+					<button type="button" th:onclick="'javascript:sortedByPara(2)'">降序</button>
 					</div>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					价格
-					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
-					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(3)'">升序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(4)'">降序</button>
 					</div>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					时间
-					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
-					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(5)'">升序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(6)'">降序</button>
 					</div>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					热度值
-					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
-					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(7)'">升序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(8)'">降序</button>
 					</div>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					点击数
-					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
-					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(9)'">升序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(10)'">降序</button>
 					</div>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					浏览数
-					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
-					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(11)'">升序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(12)'">降序</button>
 					</div>
 					<div style="float:left;width:12%;margin-right:1%;background-color:yellow">
 					点击率
-					<button type="button" id="bt01" onclick="sortedByPriceAsc()">升序</button>
-					<button type="button" id="bt02" onclick="sortedByPriceDesc()">降序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(13)'">升序</button>
+					<button type="button" th:onclick="'javascript:sortedByPara(14)'">降序</button>
 					</div>
 				</div>
 
@@ -218,39 +224,15 @@
 	    	
 	    }
 	    
-	    function sortedByDefault() {
-	    	location.href="/searchAll?uId="
-    			+document.getElementById("hidden_uId").value+"&key="
-    			+document.getElementById("Popover1-toggle").value
-    			+"&sort=0";
-	    }
+		function sortedByPara(status) {
+			location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("hidden_key").value+"&sort="+status;
+			
+		}
 	    
-	    function sortedByCreditAsc() {
-	    	location.href="/myMessage?uId="+document.getElementById("hidden_uId").value;
+	   
+	    
+
 	    	
-	    }
-	    
-	    function sortedByCreditDesc() {
-	    	location.href="/searchAll?uId="
-    			+document.getElementById("hidden_uId").value+"&key="
-    			+document.getElementById("Popover1-toggle").value
-    			+"&sort=2";
-	    }
-	    
-	    function sortedByPriceAsc() {
-	    	location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value+"&sort=3";
-	    	
-	    }
-	    
-	    function sortedByPriceDesc() {
-	    	location.href="/searchAll?uId="
-	    			+document.getElementById("hidden_uId").value+"&key="
-	    			+document.getElementById("Popover1-toggle").value
-	    			+"&sort=4";
-	    	
-	    }
-	    
-	    function sortedBy
 	    
 	</script>
 
