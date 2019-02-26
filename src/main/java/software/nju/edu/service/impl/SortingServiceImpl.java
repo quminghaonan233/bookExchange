@@ -16,10 +16,60 @@ public class SortingServiceImpl implements SortingService {
 
 	@Autowired
 	BookServiceImpl bookService;
-	
-	
+
+	public List<Book> sortedByPara(List<Book> books, int sort) {
+		switch (sort) {
+		case 0:
+			break;
+		case 1:
+			books = this.sortedByCreditAsc(books);
+			break;
+		case 2:
+			books = this.sortedByCreditDesc(books);
+			break;
+		case 3:
+			books = this.sortedByPriceAsc(books);
+			break;
+		case 4:
+			books = this.sortedByPriceDesc(books);
+			break;
+		case 5:
+			books = this.sortedByTimeAsc(books);
+			break;
+		case 6:
+			books = this.sortedByTimeDesc(books);
+			break;
+		case 7:
+			books = this.sortedByHotIndexAsc(books);
+			break;
+		case 8:
+			books = this.sortedByHotIndexDesc(books);
+			break;
+		case 9:
+			books = this.sortedByClicksAsc(books);
+			break;
+		case 10:
+			books = this.sortedByClicksDesc(books);
+			break;
+		case 11:
+			books = this.sortedByViewsAsc(books);
+			break;
+		case 12:
+			books = this.sortedByViewsDesc(books);
+			break;
+		case 13:
+			books = this.sortedByClickThroughRateAsc(books);
+			break;
+		case 14:
+			books = this.sortedByClickThroughRateDesc(books);
+			break;
+		}
+		return books;
+	}
+
 	/**
 	 * 按价格升序
+	 * 
 	 * @param bookList
 	 * @return
 	 */
@@ -27,7 +77,7 @@ public class SortingServiceImpl implements SortingService {
 	public List<Book> sortedByPriceAsc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
-				return ((Integer)b1.getPrice()).compareTo(b2.getPrice());
+				return ((Integer) b1.getPrice()).compareTo(b2.getPrice());
 			}
 		});
 //		for (Book b: bookList) {
@@ -35,9 +85,10 @@ public class SortingServiceImpl implements SortingService {
 //		}
 		return bookList;
 	}
-	
+
 	/**
 	 * 按价格降序
+	 * 
 	 * @param bookList
 	 * @return
 	 */
@@ -45,7 +96,7 @@ public class SortingServiceImpl implements SortingService {
 	public List<Book> sortedByPriceDesc(List<Book> bookList) {
 		Collections.sort(bookList, new Comparator<Book>() {
 			public int compare(Book b1, Book b2) {
-				return ((Integer)b2.getPrice()).compareTo(b1.getPrice());
+				return ((Integer) b2.getPrice()).compareTo(b1.getPrice());
 			}
 		});
 		return bookList;
@@ -67,7 +118,7 @@ public class SortingServiceImpl implements SortingService {
 		});
 		return bookList;
 	}
-	
+
 	/**
 	 * 按信用降序
 	 */
@@ -84,7 +135,7 @@ public class SortingServiceImpl implements SortingService {
 		});
 		return bookList;
 	}
-	
+
 	/**
 	 * 按发布时间升序
 	 */
@@ -98,9 +149,9 @@ public class SortingServiceImpl implements SortingService {
 			}
 		});
 		return bookList;
-		
+
 	}
-	
+
 	/**
 	 * 按发布时间降序
 	 */
@@ -114,7 +165,7 @@ public class SortingServiceImpl implements SortingService {
 			}
 		});
 		return bookList;
-		
+
 	}
 
 	/**
@@ -129,7 +180,7 @@ public class SortingServiceImpl implements SortingService {
 				// find b2 -> webData -> hot-index
 				float h2 = bookService.getHotIndexByBookId(b2.getbId());
 				return Float.compare(h1, h2);
-				
+
 			}
 		});
 		return bookList;
@@ -147,7 +198,7 @@ public class SortingServiceImpl implements SortingService {
 				// find b2 -> webData -> hot-index
 				float h2 = bookService.getHotIndexByBookId(b2.getbId());
 				return Float.compare(h2, h1);
-				
+
 			}
 		});
 		return bookList;
@@ -165,7 +216,7 @@ public class SortingServiceImpl implements SortingService {
 				// find b2 -> webData -> clicks
 				int c2 = bookService.getClicksByBookId(b2.getbId());
 				return Integer.compare(c1, c2);
-				
+
 			}
 		});
 		return bookList;
@@ -183,7 +234,7 @@ public class SortingServiceImpl implements SortingService {
 				// find b2 -> webData -> clicks
 				int c2 = bookService.getClicksByBookId(b2.getbId());
 				return Integer.compare(c2, c1);
-				
+
 			}
 		});
 		return bookList;
@@ -201,7 +252,7 @@ public class SortingServiceImpl implements SortingService {
 				// find v2 -> webData -> views
 				int v2 = bookService.getViewsByBookId(b2.getbId());
 				return Integer.compare(v1, v2);
-				
+
 			}
 		});
 		return bookList;
@@ -219,7 +270,7 @@ public class SortingServiceImpl implements SortingService {
 				// find v2 -> webData -> views
 				int v2 = bookService.getViewsByBookId(b2.getbId());
 				return Integer.compare(v2, v1);
-				
+
 			}
 		});
 		return bookList;
@@ -237,7 +288,7 @@ public class SortingServiceImpl implements SortingService {
 				// find ctr2 -> webData -> hot-index
 				float ctr2 = bookService.getClickThroughRateByBookId(b2.getbId());
 				return Float.compare(ctr1, ctr2);
-				
+
 			}
 		});
 		return bookList;
@@ -255,7 +306,7 @@ public class SortingServiceImpl implements SortingService {
 				// find ctr2 -> webData -> hot-index
 				float ctr2 = bookService.getClickThroughRateByBookId(b2.getbId());
 				return Float.compare(ctr2, ctr1);
-				
+
 			}
 		});
 		return bookList;

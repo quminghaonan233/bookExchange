@@ -44,44 +44,40 @@ public class SearchController {
 		for (Book b : bookList) {
 			creditList.add(bookService.getCreditByBookOwner(b.getBook_owner()));
 		}
-		
+
 	}
-	
+
 	public void webDataListLinkToBookList(List<Book> bookList, List<WebData> webDataList) {
-		for (Book b: bookList) {
+		for (Book b : bookList) {
 			webDataList.add(webDataService.getWebDataByBookId(b.getbId()));
 		}
 	}
-	
-	public List<SearchResult> mergeSearchResultList(List<Book> bookList, List<Integer> creditList, List<WebData> webDataList) {
+
+	public List<SearchResult> mergeSearchResultList(List<Book> bookList, List<Integer> creditList,
+			List<WebData> webDataList) {
 		List<SearchResult> finalList = new ArrayList<SearchResult>();
-		//int size = bookList.size();
+		// int size = bookList.size();
 		int localSize = 0;
 		for (Book b : bookList) {
 			int credit = creditList.get(localSize);
 			WebData webData = webDataList.get(localSize);
 			SearchResult sr = new SearchResult(b, credit, webData);
 			finalList.add(sr);
-			localSize ++;
+			localSize++;
 		}
 		return finalList;
-		
+
 	}
-	
+
 	@GetMapping("/searchAll")
-	public String searchBooksInAll(String uId, String key,
-			@RequestParam(value = "sort", defaultValue = "0") int sort,
+	public String searchBooksInAll(String uId, String key, @RequestParam(value = "sort", defaultValue = "0") int sort,
 			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
 		List<Book> books = bookMapper.getAllBooks();
 		List<Book> queryResultBookList = null;
 		List<Integer> creditList = new ArrayList<Integer>();
 		List<WebData> webDataList = new ArrayList<WebData>();
-		
-		
-		
-		
-		
+
 		try {
 			queryResultBookList = searchEngineOptimizationService.start(books, key);
 		} catch (Exception e) {
@@ -89,67 +85,21 @@ public class SearchController {
 		}
 
 		int hitCounts = queryResultBookList.size();
-		
-		
-		switch(sort) {
-		case 0:
-			break;	
-		case 1:
-			queryResultBookList = sortingService.sortedByCreditAsc(queryResultBookList);
-			break;
-		case 2:
-			queryResultBookList = sortingService.sortedByCreditDesc(queryResultBookList);
-			break;
-		case 3:
-			queryResultBookList = sortingService.sortedByPriceAsc(queryResultBookList);
-			break;
-		case 4:
-			queryResultBookList = sortingService.sortedByPriceDesc(queryResultBookList);
-			break;
-		case 5:
-			queryResultBookList = sortingService.sortedByTimeAsc(queryResultBookList);
-			break;
-		case 6:
-			queryResultBookList = sortingService.sortedByTimeDesc(queryResultBookList);
-			break;
-		case 7:
-			queryResultBookList = sortingService.sortedByHotIndexAsc(queryResultBookList);
-			break;
-		case 8:
-			queryResultBookList = sortingService.sortedByHotIndexDesc(queryResultBookList);
-			break;
-		case 9:
-			queryResultBookList = sortingService.sortedByClicksAsc(queryResultBookList);
-			break;
-		case 10:
-			queryResultBookList = sortingService.sortedByClicksDesc(queryResultBookList);
-			break;
-		case 11:
-			queryResultBookList = sortingService.sortedByViewsAsc(queryResultBookList);
-			break;
-		case 12:
-			queryResultBookList = sortingService.sortedByViewsDesc(queryResultBookList);
-			break;
-		case 13:
-			queryResultBookList = sortingService.sortedByClickThroughRateAsc(queryResultBookList);
-			break;
-		case 14:
-			queryResultBookList = sortingService.sortedByClickThroughRateDesc(queryResultBookList);
-			break;
-		}
+
+		queryResultBookList = sortingService.sortedByPara(queryResultBookList, sort);
 
 		creditListLinkToBookList(queryResultBookList, creditList);
 		webDataListLinkToBookList(queryResultBookList, webDataList);
 		List<SearchResult> searchResultList = mergeSearchResultList(queryResultBookList, creditList, webDataList);
-		PageInfoUtil<SearchResult> bookPageInfo = bookService.getSearchResultListByPage(searchResultList, pageNum, pageSize);
+		PageInfoUtil<SearchResult> bookPageInfo = bookService.getSearchResultListByPage(searchResultList, pageNum,
+				pageSize);
 
 		// update views for each book.
 		for (SearchResult sr : bookPageInfo.getList()) {
 			int bId = sr.getBook().getbId();
 			webDataService.updateBookViews(bId);
 		}
-		
-		
+
 		model.addAttribute("pageInfo", bookPageInfo);
 		model.addAttribute("hitCounts", hitCounts);
 		model.addAttribute("key", key);
@@ -158,17 +108,29 @@ public class SearchController {
 	}
 
 	@GetMapping("/searchMine")
-	public String searchBooksInMine(String uId, String key, Model model) {
+	public String searchBooksInMine(String uId, String key,
+			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
+			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
 
 		List<Book> books = bookService.getMineBooks(Integer.valueOf(uId));
 		List<Book> queryResultBookList = null;
+		List<Integer> creditList = new ArrayList<Integer>();
+		List<WebData> webDataList = new ArrayList<WebData>();
 		try {
 			queryResultBookList = searchEngineOptimizationService.start(books, key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
-		model.addAttribute("mineBookList", queryResultBookList);
+		int hitCounts = queryResultBookList.size();
+		creditListLinkToBookList(queryResultBookList, creditList);
+		webDataListLinkToBookList(queryResultBookList, webDataList);
+		List<SearchResult> searchResultList = mergeSearchResultList(queryResultBookList, creditList, webDataList);
+		PageInfoUtil<SearchResult> bookPageInfo = bookService.getSearchResultListByPage(searchResultList, pageNum,
+				pageSize);
+		model.addAttribute("pageInfo", bookPageInfo);
+		model.addAttribute("hitCounts", hitCounts);
+		model.addAttribute("key", key);
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		return "/searchMine";
 	}
