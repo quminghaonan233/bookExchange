@@ -69,6 +69,16 @@ public class SearchController {
 
 	}
 
+	/**
+	 * 
+	 * @param uId
+	 * @param key
+	 * @param sort
+	 * @param pageNum
+	 * @param pageSize
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/searchAll")
 	public String searchBooksInAll(String uId, String key, @RequestParam(value = "sort", defaultValue = "0") int sort,
 			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
@@ -107,27 +117,44 @@ public class SearchController {
 		return "/searchAll";
 	}
 
+	/**
+	 * 
+	 * @param uId
+	 * @param key
+	 * @param pageNum
+	 * @param pageSize
+	 * @param model
+	 * @return
+	 */
 	@GetMapping("/searchMine")
 	public String searchBooksInMine(String uId, String key,
 			@RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model) {
-
+		// 调用bookService，获取我发布的book
 		List<Book> books = bookService.getMineBooks(Integer.valueOf(uId));
+		// 3个待处理的List
 		List<Book> queryResultBookList = null;
 		List<Integer> creditList = new ArrayList<Integer>();
 		List<WebData> webDataList = new ArrayList<WebData>();
 		try {
+			// 调用 SEOService，根据key获取检索到的book
 			queryResultBookList = searchEngineOptimizationService.start(books, key);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 
+		// 匹配的book数量
 		int hitCounts = queryResultBookList.size();
+		// 根据检索结果bookList，绑定creditList
 		creditListLinkToBookList(queryResultBookList, creditList);
+		// 根据检索结果bookList，绑定webDataList
 		webDataListLinkToBookList(queryResultBookList, webDataList);
+		// 将3个List合并为1个List
 		List<SearchResult> searchResultList = mergeSearchResultList(queryResultBookList, creditList, webDataList);
 		PageInfoUtil<SearchResult> bookPageInfo = bookService.getSearchResultListByPage(searchResultList, pageNum,
 				pageSize);
+		
+		// add attribute into model.
 		model.addAttribute("pageInfo", bookPageInfo);
 		model.addAttribute("hitCounts", hitCounts);
 		model.addAttribute("key", key);

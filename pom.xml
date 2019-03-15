@@ -127,6 +127,15 @@
 
 
 		<!-- mybatis 分页 end -->
+		
+		<!-- redis start -->
+		<dependency>
+			<groupId>redis.clients</groupId>
+			<artifactId>jedis</artifactId>
+			<version>2.9.0</version>
+		</dependency>
+		
+		<!-- redis end -->
 
 	</dependencies>
 
