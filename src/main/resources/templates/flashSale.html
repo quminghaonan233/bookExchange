@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Index Hot</title>
+<title>Flash Sale</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link rel="stylesheet" type="text/css"
@@ -78,25 +78,6 @@
 	</div>
 	
 	<hr>
-
-	<table>
-		<tr>
-			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&pageNum=1'">首页</a></td>
-			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
-			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
-				th:href="'?uId=' + ${user.uId} + '&pageNum=' + ${navNum}" th:text=${navNum}
-				th:if="${navNum != pageInfo.pageNum}"></a> <span
-				style="font-weight: bold" th:text="${navNum}"
-				th:if="${navNum == pageInfo.pageNum}"></span></td>
-			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
-			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
-		</tr>
-	</table>
-	
 	<hr>
 	
 	
@@ -105,23 +86,13 @@
 			<div class="Topstory-container">
 				<div class="Topstory-mainColumn">
 					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
-						<a style="font-size:15px;"> >>热门书籍</a>
+						<a style="font-size:15px;"> >>超级秒杀</a>
 					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
 							<div class="">
 								<!-- 每个推荐书目标签 -->
-								<th:block th:each="book : ${pageInfo.list}">
-									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="${book.img}">
-										<div class="bookDescription">
-											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}+'&uId='+${user.uId}"></a>
-											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>
-											<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
-											<p class="bookPrice" th:text="'所需积分：'+${book.price}"></p>
-										</div>
-									</div>
-								</th:block>
+								
 							</div>
 						</div>
 					</div>
