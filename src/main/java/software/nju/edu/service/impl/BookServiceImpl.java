@@ -183,6 +183,13 @@ public class BookServiceImpl implements BookService {
 		
 	}
 	
+	/**
+	 * 获取搜索结果列表
+	 * @param bookList
+	 * @param pageNum
+	 * @param pageSize
+	 * @return
+	 */
 	public PageInfoUtil<SearchResult> getSearchResultListByPage(List<SearchResult> bookList, int pageNum, int pageSize) {
 		// PageHelper.startPage(pageNum, pageSize);		
 		// create PageInfo
@@ -193,6 +200,17 @@ public class BookServiceImpl implements BookService {
 		// by page
 		return pageInfo;
 		
+	}
+	
+	public PageInfo<Book> getFlashSaleBookListByPage(int pageNum, int pageSize) {
+		PageHelper.startPage(pageNum, pageSize);
+		// get Flash Sale Book List
+		// List<Book> bookList = bookMapper.getFlashSaleBookList();
+		List<Book> bookList = null;
+		// create PageInfo
+		PageInfo<Book> pageInfo = new PageInfo<Book>(bookList);
+		// return pageInfo
+		return pageInfo;
 	}
 	
 	
