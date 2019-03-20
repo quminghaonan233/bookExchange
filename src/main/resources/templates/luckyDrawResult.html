@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Lucky Draw</title>
+<title>Lucky Draw Result</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 <link rel="stylesheet" type="text/css"
@@ -102,15 +102,10 @@
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
 							<div class="">
-								<!-- 每个推荐书目标签 -->														
-								<th:block th:each="prize : ${prizeArray}">
-									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="${book.img}">
-										<div class="bookDescription">
-											<p class="prize" th:text="'积分：'+${prize}"></p>
-										</div>
-									</div>
-								</th:block>
+								<!-- 每个推荐书目标签 -->	
+								<p class="prize" th:text="'剩余积分：'+${user.score}"></p>	
+								<p class="prize" th:text="'获得积分：'+${prizeResult}"></p>													
+								
 								
 							</div>
 						</div>
