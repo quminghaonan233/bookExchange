@@ -136,6 +136,18 @@
 		</dependency>
 		
 		<!-- redis end -->
+		
+		
+		
+		<!-- alibaba start-->
+		<dependency>
+			<groupId>com.alibaba</groupId>
+			<artifactId>fastjson</artifactId>
+			<version>1.2.31</version>
+		</dependency>
+		
+		
+		<!-- alibaba end -->
 
 	</dependencies>
 
