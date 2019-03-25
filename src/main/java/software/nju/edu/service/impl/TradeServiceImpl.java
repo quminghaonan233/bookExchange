@@ -1,5 +1,7 @@
 package software.nju.edu.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,8 +35,20 @@ public class TradeServiceImpl implements TradeService {
 		case 3:
 			tradeMapper.updateTradeStatusAsApplicationFinished(tId);
 			break;
+		case 4:
+			tradeMapper.updateTradeStatusAsApplicationCanceled(tId);
+			break;
 		}
 		
 	}
+	
+	@Override
+	public List<Trade> getAllTradesByBuyerId(int buyerId) {
+		return tradeMapper.getAllTradesByBuyerId(buyerId);
+	}
 
+	@Override
+	public List<Trade> getAllTradesBySellerId(int sellerId) {
+		return tradeMapper.getAllTradesBySellerId(sellerId);
+	}
 }

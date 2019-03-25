@@ -33,8 +33,8 @@
 											<p class="description" th:text="'描述：'+${trade.description}"></p>
 											<div th:if=" ${trade.status} eq '0'">
 												<p class="status" th:text="'状态：申请中'"></p>
-												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:approveSell(\''+${trade.tId}+'\',\''+${trade.sellerId}+'\')'">同意交易</button>
-												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:refuseSell(\''+${trade.tId}+'\',\''+${trade.sellerId}+'\')'">拒绝交易</button>
+												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:approveToSell(\''+${trade.tId}+'\',\''+${trade.sellerId}+'\')'">同意交易</button>
+												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:refuseToSell(\''+${trade.tId}+'\',\''+${trade.sellerId}+'\')'">拒绝交易</button>
 											</div>
 											<div th:if=" ${trade.status} eq '1'">
 												<p class="status" th:text="'状态：申请成功，发货中'"></p>
@@ -58,14 +58,11 @@
 	</main>
 	
 	<script th:inline="javascript">
-	    function buySuccess(tId, uId){
-	        location.href="/changeTradeStatus?tId="+tId+"&uId="+uId+"&status=3";
+	    function approveToSell(tId, uId){
+	        location.href="/approveToSell?tId="+tId+"&uId="+uId;
 	    };
-	    function approveSell(tId, uId){
-	        location.href="/changeTradeStatus?tId="+tId+"&uId="+uId+"&status=1";
-	    };
-	    function refuseSell(tId, uId){
-	        location.href="/changeTradeStatus?tId="+tId+"&uId="+uId+"&status=2";
+	    function refuseToSell(tId, uId){
+	        location.href="/refuseToSell?tId="+tId+"&uId="+uId;
 	    };
 	</script> 
 </body>

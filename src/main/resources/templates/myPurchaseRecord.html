@@ -32,17 +32,20 @@
 											<p class="description" th:text="'描述：'+${trade.description}"></p>
 											<div th:if=" ${trade.status} eq '0'">
 												<p class="status" th:text="'状态：申请中'"></p>
-												<button style="border-style:none;color:green;" th:onclick="'javascript:cancelApplication(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">申请取消</button>
+												<button style="border-style:none;color:green;" th:onclick="'javascript:cancelApplication(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">取消申请</button>
 											</div>
 											<div th:if=" ${trade.status} eq '1'">
 												<p class="status" th:text="'状态：申请成功，发货中'"></p>
 												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:purchaseSuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">确认收货</button>
 											</div>
 											<div th:if=" ${trade.status} eq '2'">
-												<p class="status" th:text="'状态：拒绝'"></p>
+												<p class="status" th:text="'状态：卖家拒绝'"></p>
 											</div>
 											<div th:if=" ${trade.status} eq '3'">
 												<p class="status" th:text="'状态：收货完成'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '4'">
+												<p class="status" th:text="'状态：交易取消'"></p>
 											</div>
 										</div>
 									</div>
@@ -57,10 +60,10 @@
 	
 	<script th:inline="javascript">
 		function cancelApplication(tId, uId){
-			
+			location.href="/cancelApplication?tId="+tId+"&uId="+uId;
 		};
 	    function purchaseSuccess(tId, uId){
-	        location.href="/purchaseSuccess?tId="+tId+"&uId="+uId+"&status=3";
+	        location.href="/purchaseSuccess?tId="+tId+"&uId="+uId;
 	    };
 	</script> 
 </body>

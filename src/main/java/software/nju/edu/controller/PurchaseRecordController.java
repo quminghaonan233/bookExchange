@@ -14,20 +14,24 @@ import software.nju.edu.service.impl.TradeServiceImpl;
 @Controller
 public class PurchaseRecordController {
 	@Autowired
-	private TradeMapper tradeMapper;
-	@Autowired
 	private TradeServiceImpl tradeService;
 
 	@RequestMapping("/myPurchaseRecord")
 	public String myPurchaseRecord(String uId, Model model) {
-		List<Trade> purchaseList = tradeMapper.getAllTradesByBuyerId(Integer.valueOf(uId));
+		List<Trade> purchaseList = tradeService.getAllTradesByBuyerId(Integer.valueOf(uId));
 		model.addAttribute("buyList", purchaseList);
 		return "myPurchaseRecord";
 	}
 	
+	@RequestMapping("/cancelApplication")
+	public String cancelApplication(String tId, String uId, Model model) {
+		tradeService.updateTradeStatus(Integer.valueOf(tId), 4);
+		return "redirect:/myPurchaseRecord?uId="+uId;
+	}
+	
 	@RequestMapping("/purchaseSuccess")
-	public String purchaseSuccess(String tId, String uId, int status, Model model) {
-		tradeService.updateTradeStatus(Integer.valueOf(tId), status);
+	public String purchaseSuccess(String tId, String uId, Model model) {
+		tradeService.updateTradeStatus(Integer.valueOf(tId), 3);
 		return "redirect:/myPurchaseRecord?uId="+uId;
 	}
 	

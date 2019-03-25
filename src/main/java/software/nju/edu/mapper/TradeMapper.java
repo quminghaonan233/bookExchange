@@ -19,7 +19,7 @@ public interface TradeMapper {
 	@Select("SELECT * FROM trade WHERE buyerId = #{buyerId}")
 	List<Trade> getAllTradesByBuyerId(int buyerId);
 	
-	@Select("SELECT * FROM trade WHERE sellerId = #{sellerId}")
+	@Select("SELECT * FROM trade WHERE sellerId = #{sellerId} and status <> 4")
 	List<Trade> getAllTradesBySellerId(int sellerId);
 	
 	@Insert("INSERT INTO trade("
@@ -46,6 +46,9 @@ public interface TradeMapper {
 	
 	@Update("UPDATE trade SET status = 3 WHERE tId = #{tId}")
 	void updateTradeStatusAsApplicationFinished(int tId);
+	
+	@Update("UPDATE trade SET status = 4 WHERE tId = #{tId}")
+	void updateTradeStatusAsApplicationCanceled(int tId);
 	
 	
 
