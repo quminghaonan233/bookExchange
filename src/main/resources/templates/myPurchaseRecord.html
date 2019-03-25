@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<main role="main" class="App-main">
+		<div class="Topstory">
+			<div class="Topstory-container">
+				<div class="Topstory-mainColumn">
+					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
+						<a style="font-size:15px;"> >>我的购买</a>
+					</div>
+					<div id="TopstoryContent" class="Topstory-content">
+						<div class="Topstory-recommend">
+							<div class="">
+								<th:block th:each="trade : ${buyList}">									
+									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<div class="tradeDescription">
+											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
+											<p class="seller" th:text="'卖家：'+${trade.sellerName}"></p>
+											<p class="start" th:text="'开始时间：'+${trade.start}"></p>
+											<p class="end" th:text="'结束时间：'+${trade.end}"></p>
+											<p class="sendTo" th:text="'目的地：'+${trade.sendTo}"></p>
+											<p class="description" th:text="'描述：'+${trade.description}"></p>
+											<div th:if=" ${trade.status} eq '0'">
+												<p class="status" th:text="'状态：申请中'"></p>
+												<!-- <button style="border-style:none;color:green;" th:onclick="'javascript:test(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">申请取消</button> -->
+											</div>
+											<div th:if=" ${trade.status} eq '1'">
+												<p class="status" th:text="'状态：申请成功，发货中'"></p>
+												<!--<button type="submit" style="border-style:none;color:green;">申请取消</button>  -->
+												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:buySuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">确认收货</button>
+											</div>
+											<div th:if=" ${trade.status} eq '2'">
+												<p class="status" th:text="'状态：拒绝'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '3'">
+												<p class="status" th:text="'状态：收货完成'"></p>
+											</div>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</body>
+</html>
