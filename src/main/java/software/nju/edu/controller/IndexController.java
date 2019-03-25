@@ -15,6 +15,7 @@ import software.nju.edu.domain.entity.User;
 import software.nju.edu.service.impl.BookServiceImpl;
 import software.nju.edu.service.impl.UserServiceImpl;
 import software.nju.edu.service.impl.WebDataServiceImpl;
+import software.nju.edu.util.TokenUtil;
 
 @Controller
 public class IndexController {
@@ -27,18 +28,21 @@ public class IndexController {
 	@Autowired
 	
 	private WebDataServiceImpl webDataService;
-	
-	@RequestMapping("/")
-	public String toLogin(Model model){
-	    return "redirect:/login";
-	}
+
 	
 	@RequestMapping("/index")
 	public String hello(String uId, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model){		
+		//身份校验
+		TokenUtil util = TokenUtil.getInstance();
+//		String uId = util.getuIdbyToken(token);
+//		if(Integer.parseInt(uId) < 0) {
+//			return "login";
+//		}
 		// get book page info.
+
 		PageInfo<Book> bookPageInfo = bookService.getHotBookListByPage(pageNum, pageSize);
-		
+
 		// update views for each book.
 		for (Book book : bookPageInfo.getList()) {
 			int bId = book.getbId();

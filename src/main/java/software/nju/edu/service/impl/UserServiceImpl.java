@@ -19,6 +19,14 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 	
+	public boolean isUserNameDup(String userName) {
+		User u = userMapper.getUserByName(userName);
+		if(u != null) {
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public User getUserById(int uId) {
 		User u = userMapper.getUserById(uId);

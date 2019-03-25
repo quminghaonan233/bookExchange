@@ -2,9 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:fragment="commonHeader(title)">
     <title th:text="${title}"></title>
-    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" />
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    
 	<link rel="stylesheet" th:href="@{/css/TabTemplate.css}"
 		href="../../static/css/TabTemplate.css" />
+
 </head>
 <body>
 	<div th:fragment="UpperTab">
@@ -12,10 +14,12 @@
 				<div class="AppHeader-inner" style="margin-left:100px;">
 					<!-- 菜单栏 -->
 					<nav role="navigation" class="AppHeader-nav">
-						<a class="AppHeader-navItem is-active" th:href="'/index?uId='+${user.uId}" data-za-not-track-link="true">首页</a>
+						<a class="AppHeader-navItem is-active" th:href="'/index?token='+${user.uId}"data-za-not-track-link="true">首页</a>
 						<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
-						<a class="AppHeader-navItem" th:href="'/flashSale?uId='+${user.uId}" data-za-not-track-link="true">超级秒杀</a>
-						<a class="AppHeader-navItem" th:href="'/luckyDraw?uId='+${user.uId}" data-za-not-track-link="true">幸运抽奖</a>
+						<!-- <a class="AppHeader-navItem" th:href="'/flashSale?uId='+${user.uId}" data-za-not-track-link="true">超级秒杀</a>
+						<a class="AppHeader-navItem" th:href="'/luckyDraw?uId='+${user.uId}" data-za-not-track-link="true">幸运抽奖</a> -->
+						<a class="AppHeader-navItem" th:href="'/myPurchaseRecord?uId='+${user.uId}" data-za-not-track-link="true">购买记录</a>
+						<a class="AppHeader-navItem" th:href="'/mySaleRecord?uId='+${user.uId}" data-za-not-track-link="true">售卖记录</a>
 					</nav>
 					
 					<!-- 搜索框 -->
@@ -44,7 +48,7 @@
 	
 					<div class="AppHeader-userInfo" >
 						<!-- 我的消息 -->
-						<div>
+						<!-- <div>
 							<div class="Popover Messages AppHeader-messages">
 									<button type="submit" th:onclick="'javascript:myMessage()'" id="Popover16-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover16-content" class="Button Messages-icon Button--plain">
 										<span style="display: inline-flex; align-items: center;">​
@@ -56,7 +60,7 @@
 										<span class="Messages-count">2</span>
 									</button>
 							</div>
-						</div>
+						</div> -->
 						<!-- 用户个人信息 -->
 						<div class="AppHeader-profile">
 							<div class="Popover AppHeader-menu">
@@ -70,6 +74,7 @@
 					</div>
 				</div>
 			</header>
+	</div>
 	</div>
 </body>
 </html>

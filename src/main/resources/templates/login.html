@@ -4,8 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <title>Login</title>
-    <link rel="stylesheet" type="text/css" th:href="@{css/bootstrap.min.css}"/>
     <link rel="stylesheet" type="text/css" th:href="@{css/login.css}"/>
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+
+    <!-- <script type="text/javascript" th:inline="javascript">
+
+        /*<![CDATA[*/
+        
+        function init(){
+        	if(document.getElementById("token").value != null && document.getElementById("token").value != ""){
+        		var oDate = new Date();
+        		oDate.setDate(oDate.getDate() + 30);//有效期为30天
+        		document.cookie="software.nju.token="+document.getElementById("token").value+";expires=" + oDate;;
+        		location.href="index?token="+document.getElementById("token").value;
+        	}
+        }
+        
+
+        /*]]>*/
+
+
+    </script> -->
+    
 </head>
 <body>
 <div class="wrapper">
@@ -27,6 +47,7 @@
             <div style="float:left;">
             	<a class="register" href="/register">注册新账号</a>
             	<a class="failReason" th:text="${failError}"></a>
+            	<!-- <input id="token" type="hidden" th:attr="value=${token}"/> -->
             </div>
             <li>
                 <button type="submit">登陆</button>
