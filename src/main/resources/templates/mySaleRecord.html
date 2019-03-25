@@ -7,10 +7,11 @@
 <link rel="stylesheet" type="text/css"
 	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
 
-<link rel="stylesheet" th:href="@{/css/message.css}"/>
+<link rel="stylesheet" th:href="@{/css/mySaleRecord.css}"/>
 
 </head>
 <body>
+
 	<main role="main" class="App-main">
 		<div class="Topstory">
 			<div class="Topstory-container">
@@ -21,7 +22,7 @@
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
 							<div class="">
-								<th:block th:each="trade : ${sellList}">									
+								<th:block th:each="trade : ${saleList}">									
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
 										<div class="tradeDescription">
 											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
@@ -55,5 +56,17 @@
 			</div>
 		</div>
 	</main>
+	
+	<script th:inline="javascript">
+	    function buySuccess(tId, uId){
+	        location.href="/changeTradeStatus?tId="+tId+"&uId="+uId+"&status=3";
+	    };
+	    function approveSell(tId, uId){
+	        location.href="/changeTradeStatus?tId="+tId+"&uId="+uId+"&status=1";
+	    };
+	    function refuseSell(tId, uId){
+	        location.href="/changeTradeStatus?tId="+tId+"&uId="+uId+"&status=2";
+	    };
+	</script> 
 </body>
 </html>

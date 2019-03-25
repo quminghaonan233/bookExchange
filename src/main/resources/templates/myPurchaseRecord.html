@@ -1,8 +1,14 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Message</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<link rel="stylesheet" th:href="@{/css/myPurchaseRecord.css}"/>
+
 </head>
 <body>
 	<main role="main" class="App-main">
@@ -26,12 +32,11 @@
 											<p class="description" th:text="'描述：'+${trade.description}"></p>
 											<div th:if=" ${trade.status} eq '0'">
 												<p class="status" th:text="'状态：申请中'"></p>
-												<!-- <button style="border-style:none;color:green;" th:onclick="'javascript:test(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">申请取消</button> -->
+												<button style="border-style:none;color:green;" th:onclick="'javascript:cancelApplication(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">申请取消</button>
 											</div>
 											<div th:if=" ${trade.status} eq '1'">
 												<p class="status" th:text="'状态：申请成功，发货中'"></p>
-												<!--<button type="submit" style="border-style:none;color:green;">申请取消</button>  -->
-												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:buySuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">确认收货</button>
+												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:purchaseSuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">确认收货</button>
 											</div>
 											<div th:if=" ${trade.status} eq '2'">
 												<p class="status" th:text="'状态：拒绝'"></p>
@@ -49,5 +54,14 @@
 			</div>
 		</div>
 	</main>
+	
+	<script th:inline="javascript">
+		function cancelApplication(tId, uId){
+			
+		};
+	    function purchaseSuccess(tId, uId){
+	        location.href="/purchaseSuccess?tId="+tId+"&uId="+uId+"&status=3";
+	    };
+	</script> 
 </body>
 </html>

@@ -8,30 +8,27 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import software.nju.edu.domain.entity.Trade;
-import software.nju.edu.domain.entity.TradeCancel;
-import software.nju.edu.mapper.TradeCancelMapper;
 import software.nju.edu.mapper.TradeMapper;
-import software.nju.edu.service.impl.TradeCancelServiceImpl;
 import software.nju.edu.service.impl.TradeServiceImpl;
-import software.nju.edu.service.impl.UserServiceImpl;
 
 @Controller
 public class PurchaseRecordController {
 	@Autowired
 	private TradeMapper tradeMapper;
 	@Autowired
-	private TradeCancelMapper tradeCancelMapper;
-	@Autowired
-	private UserServiceImpl userService;
-	@Autowired
 	private TradeServiceImpl tradeService;
-	@Autowired
-	private TradeCancelServiceImpl tradeCancelService;
 
 	@RequestMapping("/myPurchaseRecord")
-	public String myMessage(String uId, Model model) {
-		
+	public String myPurchaseRecord(String uId, Model model) {
+		List<Trade> purchaseList = tradeMapper.getAllTradesByBuyerId(Integer.valueOf(uId));
+		model.addAttribute("buyList", purchaseList);
 		return "myPurchaseRecord";
+	}
+	
+	@RequestMapping("/purchaseSuccess")
+	public String purchaseSuccess(String tId, String uId, int status, Model model) {
+		tradeService.updateTradeStatus(Integer.valueOf(tId), status);
+		return "redirect:/myPurchaseRecord?uId="+uId;
 	}
 	
 }
