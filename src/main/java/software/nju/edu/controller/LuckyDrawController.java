@@ -31,14 +31,20 @@ public class LuckyDrawController {
 	
 	@GetMapping("/luckyDrawResult")
 	public String luckyDrawResult(String uId, Model model) {
-		// 积分扣除
-		
-		
 		double[] prob = {0.2, 0.3, 0.4, 0.09, 0.01};
 		int[] prize = {20, 50, 100, 200, 1000};
 		int prizeResult = randomDraw(prob, prize);
-		
+		// 积分扣除
+		int cut = 100;
+		int lastScore = userService.getScoreById(Integer.valueOf(uId));
+		if (userService.getScoreById(Integer.parseInt(uId)) >= 100)
+		    userService.cutScoreById(Integer.parseInt(uId), cut);
+		else {
+			prizeResult = 0;
+		}
 		// 积分增加
+		userService.addScoreById(Integer.parseInt(uId), prizeResult);
+		model.addAttribute("lastScore", lastScore);
 		model.addAttribute("prizeResult", prizeResult);
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		return "/luckyDrawResult";

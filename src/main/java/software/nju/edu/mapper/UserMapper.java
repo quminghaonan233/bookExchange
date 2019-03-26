@@ -26,7 +26,11 @@ public interface UserMapper {
 	
 	@Select("Select * FROM user where uId=#{uId}")
 	User getUserById(int uId);
+	
+	@Select("Select score FROM user where uId=#{uId}")
+	int getScoreById(int uId);
 
+	
 	/**
 	 * Select
 	 * @return
@@ -55,6 +59,15 @@ public interface UserMapper {
 	
 	@Update("UPDATE user SET passwd = #{passwd} WHERE uId = #{uId}")
 	void updatePasswd(User user);
+	
+	@Update("UPDATE user SET score = score - #{cut} WHERE uId = #{uId}")
+	void cutScoreById(int uId, int cut);
+	
+	@Update("UPDATE user SET score = #{score} WHERE uId = #{uId}")
+	void setScoreById(int uId, int score);
+	
+	@Update("UPDATE user SET score = score + #{add} WHERE uId = #{uId}")
+	void addScoreById(int uId, int add);
 	
 	/**
 	 * Update

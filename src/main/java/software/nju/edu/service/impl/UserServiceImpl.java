@@ -38,5 +38,28 @@ public class UserServiceImpl implements UserService {
 		String userName = userMapper.getUserNameByUserId(uId);
 		return userName;
 	}
+
+	@Override
+	public int getScoreById(int uId) {
+		// TODO Auto-generated method stub
+		int score = userMapper.getScoreById(uId);
+		return score;
+	}
+
+	@Override
+	public void cutScoreById(int uId, int cut) {
+		userMapper.cutScoreById(uId, cut);
+	}
+
+	@Override
+	public void setScoreById(int uId, int score) {
+		userMapper.setScoreById(uId, score);
+	}
+
+	@Override
+	public void addScoreById(int uId, int add) {
+		userMapper.addScoreById(uId, add);
+		
+	}
 	
 }

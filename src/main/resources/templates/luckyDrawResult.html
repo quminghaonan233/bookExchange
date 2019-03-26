@@ -103,8 +103,10 @@
 						<div class="Topstory-recommend">
 							<div class="">
 								<!-- 每个推荐书目标签 -->	
-								<p class="prize" th:text="'剩余积分：'+${user.score}"></p>	
+								<p class="prize" th:text="'原先积分：'+${lastScore}"></p>	
+								<p class="prize" th:text="'消耗积分：'+${100}"></p>			
 								<p class="prize" th:text="'获得积分：'+${prizeResult}"></p>													
+								<p class="prize" th:text="'剩余积分：'+${user.score}"></p>	
 								
 								
 							</div>
