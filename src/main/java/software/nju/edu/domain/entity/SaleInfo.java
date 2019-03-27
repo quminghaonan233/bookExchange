@@ -3,7 +3,7 @@ package software.nju.edu.domain.entity;
 import java.io.Serializable;
 import java.util.Date;
 
-public class purchaseInfo implements Serializable{
+public class SaleInfo implements Serializable{
 	/**
 	 * version
 	 */
@@ -24,7 +24,6 @@ public class purchaseInfo implements Serializable{
 	private String sendTo;
 	private String description;
 	private int status;
-	
 	public int gettId() {
 		return tId;
 	}

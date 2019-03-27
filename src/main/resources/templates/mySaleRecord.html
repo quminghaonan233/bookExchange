@@ -27,6 +27,7 @@
 							<div class="">
 								<th:block th:each="trade : ${saleList}">									
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<img class="bookImg" style="margin-top:30px;" th:src="${trade.book_src}">
 										<div class="tradeDescription">
 											<p class="bookName" th:text="'书名：'+${trade.bookName}"></p>
 											<p class="buyer" th:text="'买家：'+${trade.buyerName}"></p>
@@ -44,7 +45,7 @@
 											    <form enctype="multipart/form-data" method="post" action="/logisticsWriter">
 											    	<input type="hidden" name="uId" th:attr="value=${user.uId}" />
 											    	<input type="hidden" name="tId" th:attr="value=${trade.tId}" />
-											    	<hr>
+											    	<hr size=0.5 color=#cccccc style="border:1 dashed #5151A2">
 											    	<div>
 											    		<p>请输入物流信息：</p>
 											    	</div>
@@ -57,7 +58,18 @@
 											</div>
 											<div th:if=" ${trade.status} eq '5'">
 												<p class="status" th:text="'状态：已发货'"></p>
-											    <p>物流信息</p>
+												<div style="margin-left: -250px;">
+													<hr size=0.5 color=#cccccc style="border:1 dashed #5151A2">
+												    <div th:if=" ${trade.isInfoExist} eq '0'">
+														<p style="margin-left: 20px;" th:text="'暂无物流信息'"></p>
+													</div>
+													<div th:if=" ${trade.isInfoExist} eq '1'">
+														<p style="margin-left: 20px;" th:text="'物流信息:'"></p>
+														<th:block th:each="data : ${trade.lInfo}">	
+															<p th:text="${data}"></p>
+														</th:block>
+													</div>
+												</div>
 											</div>
 											<div th:if=" ${trade.status} eq '2'">
 												<p class="status" th:text="'状态：拒绝'"></p>

@@ -5,6 +5,12 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.List;
+
+import com.google.gson.Gson;
+
+import software.nju.edu.bean.Logistics;
+import software.nju.edu.bean.LogisticsData;
 
 public class LogisticsQueryUtil {
     public static final String QUERYURL = "http://www.kuaidi100.com/query?";
@@ -47,7 +53,22 @@ public class LogisticsQueryUtil {
  
     }
  
-//    public static void main(String[] args){
+    public static void main(String[] args){
 //        System.out.println(queryData("shentong", "3385490629653"));
-//    }
+        jsonHandler("shentong", "3385490629653");
+    }
+    
+    public static List<LogisticsData> jsonHandler(String logisticsCode, String logisticsNo) {
+    	String s = queryData(logisticsCode, logisticsNo);
+    	if(s == null || s.equals("")) {
+    		return null;
+    	}
+    	Gson gson = new Gson();
+    	Logistics logi = gson.fromJson(s, Logistics.class);
+    	if(logi.getMessage().equals("参数错误")) {
+    		return null;
+    	}else {
+    		return logi.getData();
+    	}
+    }
 }

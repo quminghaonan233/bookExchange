@@ -1,8 +1,17 @@
 package software.nju.edu.domain.entity;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class logisticsInfo {
+public class PurchaseInfo implements Serializable{
+	/**
+	 * version
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	/**
+	 * Attributes
+	 */
 	private int tId;           // Primary key
 	private int buyerId;
 	private String buyerName; 
@@ -15,9 +24,6 @@ public class logisticsInfo {
 	private String sendTo;
 	private String description;
 	private int status;
-	private String lName;
-	private String lNum;
-	
 	
 	public int gettId() {
 		return tId;
@@ -91,16 +97,8 @@ public class logisticsInfo {
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public String getlName() {
-		return lName;
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
-	public void setlName(String lName) {
-		this.lName = lName;
-	}
-	public String getlNum() {
-		return lNum;
-	}
-	public void setlNum(String lNum) {
-		this.lNum = lNum;
-	}
+
 }

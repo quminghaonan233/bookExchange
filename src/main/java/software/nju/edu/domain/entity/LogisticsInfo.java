@@ -1,18 +1,11 @@
 package software.nju.edu.domain.entity;
 
-import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
-public class saleInfo implements Serializable{
-	/**
-	 * version
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	/**
-	 * Attributes
-	 */
-	private int tId;           // Primary key
+public class LogisticsInfo {
+	private int lId;
+	private int tId;
 	private int buyerId;
 	private String buyerName; 
 	private int sellerId;
@@ -24,6 +17,12 @@ public class saleInfo implements Serializable{
 	private String sendTo;
 	private String description;
 	private int status;
+	private String lName;
+	private String lNum;
+	private int isInfoExist;
+	private List<String> lInfo;
+	private String book_src;
+	
 	public int gettId() {
 		return tId;
 	}
@@ -96,8 +95,54 @@ public class saleInfo implements Serializable{
 	public void setStatus(int status) {
 		this.status = status;
 	}
-	public static long getSerialversionuid() {
-		return serialVersionUID;
+	public String getlName() {
+		return lName;
 	}
-
+	public void setlName(String lName) {
+		this.lName = lName;
+	}
+	public String getlNum() {
+		return lNum;
+	}
+	public void setlNum(String lNum) {
+		this.lNum = lNum;
+	}
+	public int getlId() {
+		return lId;
+	}
+	public void setlId(int lId) {
+		this.lId = lId;
+	}
+	public void setTrade(Trade trade) {
+		this.tId = trade.gettId();
+		this.buyerId = trade.getBuyerId();
+		this.buyerName = trade.getBuyerName();
+		this.sellerId = trade.getSellerId();
+		this.sellerName = trade.getSellerName();
+		this.bId = trade.getbId();
+		this.bookName = trade.getBookName();
+		this.start = trade.getStart();
+		this.end = trade.getEnd();
+		this.sendTo = trade.getSendTo();
+		this.description = trade.getDescription();
+		this.status = trade.getStatus();
+	}
+	public int getIsInfoExist() {
+		return isInfoExist;
+	}
+	public void setIsInfoExist(int isInfoExist) {
+		this.isInfoExist = isInfoExist;
+	}
+	public List<String> getlInfo() {
+		return lInfo;
+	}
+	public void setlInfo(List<String> lInfo) {
+		this.lInfo = lInfo;
+	}
+	public String getBook_src() {
+		return book_src;
+	}
+	public void setBook_src(String book_src) {
+		this.book_src = book_src;
+	}
 }
