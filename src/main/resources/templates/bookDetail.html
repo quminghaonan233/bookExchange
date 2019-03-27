@@ -59,10 +59,10 @@
 										</form>
 									</div>
 
-									<div th:if="${isBookMine==true}" class="buttonContainer">
+									<!-- <div th:if="${isBookMine==true}" class="buttonContainer">
 										<button id="modifyImgButton" type="button"
 											style="color: green" th:onClick="'javascript:modifyImg()'">编辑图片</button>
-									</div>
+									</div> -->
 								</div>
 
 								<div style="float: right; width: 50%">
@@ -160,7 +160,7 @@
 		}
 
 		function modifyImg() {
-			if (modifyImgButton.textContent == "编辑图片") {
+/* 			if (modifyImgButton.textContent == "编辑图片") {
 				// 显示隐藏的input file
 				document.getElementById("file_div").style.visibility = "visible";
 				document.getElementById("submit_div").style.visibility = "visible";
@@ -172,7 +172,11 @@
 				document.getElementById("file_div").style.visibility = "hidden";
 				document.getElementById("image_container").style.backgroundImage = "url(" + bookImg +")";
 				modifyImgButton.textContent = "编辑图片";
-			}
+			} */
+			document.getElementById("file_div").style.visibility = "visible";
+			document.getElementById("submit_div").style.visibility = "visible";
+
+ 
 			// 图片修改
 			var preview = document.querySelector('#image_container');
 			var eleFile = document.querySelector('#image_file');
@@ -198,6 +202,7 @@
 		}
 
 		function modifyBook() {
+			modifyImg();
 			var bookName = document.getElementById("bookName");
 			var bookType = document.getElementById("bookType");
 			var bookAuthor = document.getElementById("bookAuthor");

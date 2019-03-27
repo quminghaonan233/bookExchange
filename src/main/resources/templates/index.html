@@ -48,9 +48,38 @@
 <body>
 	<div th:include="TabTemplate::UpperTab"></div>
 	
-	<hr>
+	
+	<main role="main" class="App-main">
+		<div class="Topstory">
+			<div class="Topstory-container">
+				<div class="Topstory-mainColumn">
+					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
+						<a style="font-size:15px;"> >>热门书籍</a>
+					</div>
+					<div id="TopstoryContent" class="Topstory-content">
+						<div class="Topstory-recommend">
+							<div class="">
+								<!-- 每个推荐书目标签 -->
+								<th:block th:each="book : ${pageInfo.list}">
+									<div class="Card TopstoryItem TopstoryItem-isRecommend">
+										<img class="bookImg" th:src="${book.img}">
+										<div class="bookDescription">
+											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}+'&uId='+${user.uId}"></a>
+											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>
+											<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
+											<p class="bookPrice" th:text="'所需积分：'+${book.price}"></p>
+										</div>
+									</div>
+								</th:block>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
 
-	<table>
+	<table style="width: 350px;margin-left: 9%;">
 		<tr>
 			<td th:if="${pageInfo.hasPreviousPage}"><a
 				th:href="'?uId=' + ${user.uId} + '&pageNum=1'">首页</a></td>
@@ -67,39 +96,6 @@
 				th:href="'?uId=' + ${user.uId} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
 		</tr>
 	</table>
-	
-	<hr>
-	
-	
-	<main role="main" class="App-main">
-		<div class="Topstory">
-			<div class="Topstory-container">
-				<div class="Topstory-mainColumn">
-					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
-						<a style="font-size:15px;"> >>热门书籍</a>
-					</div>
-					<div id="TopstoryContent" class="Topstory-content">
-						<div class="Topstory-recommend">
-							<div class="">
-								<!-- 每个推荐书目标签 -->
-								<th:block th:each="book : ${pageInfo.list}">
-									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="${book.img}">
-										<div class="bookDescription">
-											<a class="bookName" th:text="${book.bookName}" th:href="'/bookDetail?bId='+${book.bId}+'&uId='+${user.uId}"></a>
-											<p class="bookPublisher" th:text="'出版社：'+${book.publisher}"></p>
-											<p class="bookAuthor" th:text="'作者：'+${book.author}"></p>
-											<p class="bookPrice" th:text="'所需积分：'+${book.price}"></p>
-										</div>
-									</div>
-								</th:block>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</main>
 	
 
 	

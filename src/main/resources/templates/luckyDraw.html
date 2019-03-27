@@ -105,7 +105,7 @@
 								<!-- 每个推荐书目标签 -->														
 								<th:block th:each="prize : ${prizeArray}">
 									<div class="Card TopstoryItem TopstoryItem-isRecommend">
-										<img class="bookImg" src="${book.img}">
+										<img class="bookImg" th:src="${book.img}">
 										<div class="bookDescription">
 											<p class="prize" th:text="'积分：'+${prize}"></p>
 										</div>

@@ -14,82 +14,58 @@
 <body>
 	<div th:include="TabTemplate::UpperTab"></div>
 
-	<hr>
-
-	<table>
-		<tr>
-			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=1'">首页</a></td>
-			<td th:if="${pageInfo.hasPreviousPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
-			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}"
-				th:text=${navNum} th:if="${navNum != pageInfo.pageNum}"></a> <span
-				style="font-weight: bold" th:text="${navNum}"
-				th:if="${navNum == pageInfo.pageNum}"></span></td>
-			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
-			<td th:if="${pageInfo.hasNextPage}"><a
-				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
-		</tr>
-	</table>
-
-	<hr>
-
 	<main role="main" class="App-main">
 	<div class="Topstory">
 		<div class="Topstory-container">
 			<div class="Topstory-mainColumn">
 				<input type="hidden" id="hidden_key" th:attr="value=${key}" />
 				<div class="Card Topstory-noMarginCard Topstory-tabCard"
-					style="height: 200px">
+					style="height: 150px;padding-left:10px;">
 					<a style="font-size: 15px;" th:text="' >>'+${key}+'的搜索结果'"></a>
 					<p th:text="'合计出现 ' + ${hitCounts} +' 条相似记录'"></p>
-					<p
-						th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
-					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+					<p th:text="'以下是第 ' + ${pageInfo.startRow} + ' 条至第 ' + ${pageInfo.endRow} + ' 条'"></p>
+					<div style="float: left; width: 12%; margin-right: 1%">
 						信用
-						<button type="button" th:onclick="'javascript:sortedByPara(1)'">
-							Up</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(2)'">
-							Down</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(1)'">
+								升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(2)'">
+								降序</button>
 					</div>
 					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+						style="float: left; width: 12%; margin-right: 1%;">
 						价格
-						<button type="button" th:onclick="'javascript:sortedByPara(3)'">升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(4)'">降序</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(3)'">升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(4)'">降序</button>
 					</div>
 					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+						style="float: left; width: 12%; margin-right: 1%;">
 						时间
-						<button type="button" th:onclick="'javascript:sortedByPara(5)'">升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(6)'">降序</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(5)'">升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(6)'">降序</button>
 					</div>
 					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+						style="float: left; width: 12%; margin-right: 1%;">
 						热度值
-						<button type="button" th:onclick="'javascript:sortedByPara(7)'">升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(8)'">降序</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(7)'">升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(8)'">降序</button>
 					</div>
 					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+						style="float: left; width: 12%; margin-right: 1%;">
 						点击数
-						<button type="button" th:onclick="'javascript:sortedByPara(9)'">升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(10)'">降序</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(9)'">升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(10)'">降序</button>
 					</div>
 					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+						style="float: left; width: 12%; margin-right: 1%;">
 						浏览数
-						<button type="button" th:onclick="'javascript:sortedByPara(11)'">升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(12)'">降序</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(11)'">升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(12)'">降序</button>
 					</div>
 					<div
-						style="float: left; width: 12%; margin-right: 1%; background-color: yellow">
+						style="float: left; width: 12%; margin-right: 1%;">
 						点击率
-						<button type="button" th:onclick="'javascript:sortedByPara(13)'">升序</button>
-						<button type="button" th:onclick="'javascript:sortedByPara(14)'">降序</button>
+						<button type="button" style="color:blue" th:onclick="'javascript:sortedByPara(13)'">升序</button>
+						<button type="button" style="color:red" th:onclick="'javascript:sortedByPara(14)'">降序</button>
 					</div>
 				</div>
 
@@ -99,7 +75,7 @@
 							<!-- 每个推荐书目标签 -->
 							<th:block th:each="sr : ${pageInfo.list}">
 								<div class="Card TopstoryItem TopstoryItem-isRecommend">
-									<img class="bookImg" src="${sr.book.img}">
+									<img class="bookImg" th:src="${sr.book.img}">
 									<div class="bookDescription">
 										<div class="" style="float: left; width: 60%">
 											<a class="bookName" th:text="${sr.book.bookName}"
@@ -110,7 +86,7 @@
 											<p class="Credit" th:text="'卖家信用：'+${sr.credit}"></p>
 											<p class="bookPrice" th:text="'所需积分：'+${sr.book.price}"></p>
 										</div>
-										<div class="" style="float: left">
+										<div class="" style="float: left;margin-top:-15px;">
 											<p class="finalUpdateTime"
 												th:text="'发布时间：'+${sr.book.finalUpdateTime}"></p>
 											<p class="hotIndex" th:text="'热度值：'+${sr.webData.hotIndex}"></p>
@@ -131,7 +107,23 @@
 	</div>
 	</main>
 
-
+	<table style="width: 350px;margin-left: 9%;">
+		<tr>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=1'">首页</a></td>
+			<td th:if="${pageInfo.hasPreviousPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.prePage}">上一页</a></td>
+			<td th:each="navNum : ${pageInfo.navigatepageNums}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${navNum}"
+				th:text=${navNum} th:if="${navNum != pageInfo.pageNum}"></a> <span
+				style="font-weight: bold" th:text="${navNum}"
+				th:if="${navNum == pageInfo.pageNum}"></span></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.nextPage}">下一页</a></td>
+			<td th:if="${pageInfo.hasNextPage}"><a
+				th:href="'?uId=' + ${user.uId} + '&key=' + ${key} + '&pageNum=' + ${pageInfo.pages}">尾页</a></td>
+		</tr>
+	</table>
 
 
 

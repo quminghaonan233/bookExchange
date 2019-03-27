@@ -14,7 +14,6 @@
 	width: 20rem;
 	height: 20rem;
 	position: relative;
-	background-image: url(/img/book1.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 }
@@ -86,7 +85,7 @@
 							<div class="right-part" style="float: right">
 
 								<div class="contentDiv" id="image_container"
-									style="background-image: url(/img/book1.jpg)"></div>
+									style="background-image:/root/BookExchangeResource/BookImageSet/下载.jpg"></div>
 							</div>
 
 						</div>
@@ -100,11 +99,10 @@
 	<script type="text/javascript"
 		src="webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script th:inline="javascript">
-		function search() {
-			location.href = "/searchAll?uId="
-					+ document.getElementById("hidden_uId").value + "&key="
-					+ document.getElementById("Popover1-toggle").value;
-		};
+		
+		function search(){
+	        location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value;
+	    };
 
 		function myMessage() {
 			location.href = "/myMessage?uId="

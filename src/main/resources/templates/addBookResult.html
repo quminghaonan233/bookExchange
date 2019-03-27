@@ -77,6 +77,10 @@
 	    	
 	    }
 	    
+		function search(){
+	        location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value;
+	    };
+	    
 	    function addBook() {
 	    	location.href="/addBook";
 	    }

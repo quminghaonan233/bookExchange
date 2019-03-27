@@ -183,7 +183,7 @@
 							<!-- 每个推荐书目标签 -->
 							<th:block th:each="sr : ${pageInfo.list}">
 								<div class="Card TopstoryItem TopstoryItem-isRecommend">
-									<img class="bookImg" src="${sr.book.img}">
+									<img class="bookImg" th:src="${sr.book.img}">
 									<div class="bookDescription">
 										<div class="" style="float: left; width: 60%">
 											<a class="bookName" th:text="${sr.book.bookName}"
@@ -194,7 +194,7 @@
 											<p class="Credit" th:text="'卖家信用：'+${sr.credit}"></p>
 											<p class="bookPrice" th:text="'所需积分：'+${sr.book.price}"></p>
 										</div>
-										<div class="" style="float: left">
+										<div class="" style="float: left;margin-top:-15px;">
 											<p class="finalUpdateTime"
 												th:text="'发布时间：'+${sr.book.finalUpdateTime}"></p>
 											<p class="hotIndex" th:text="'热度值：'+${sr.webData.hotIndex}"></p>

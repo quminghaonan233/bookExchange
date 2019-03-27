@@ -85,6 +85,9 @@
 	    function purchaseSuccess(tId, uId){
 	        location.href="/purchaseSuccess?tId="+tId+"&uId="+uId;
 	    };
+		function search(){
+	        location.href="/searchAll?uId="+document.getElementById("hidden_uId").value+"&key="+document.getElementById("Popover1-toggle").value;
+	    };
 	</script> 
 </body>
 </html>
