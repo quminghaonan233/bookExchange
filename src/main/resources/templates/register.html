@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/register.css}"/>
+    <script type="text/javascript" th:src="@{/js/jquery-3.3.1.min.js}"></script>
+    
+</head>
+<body>
+<div class="wrapper">
+    <div class="header">Register</div>
+    <div class="formdiv">
+        <ul>
+            <li>
+                <div class="text">
+                    <span class="user"></span>
+                    <input id="userName" type="text" placeholder="请输入用户名">
+                </div>
+            </li>
+            <li>
+                <div class="password">
+                    <span class="secret"></span>
+                    <input id="password" type="password"  placeholder="请输入密码">
+                </div>
+            </li>
+            <li>
+                <div class="password">
+                    <span class="secret"></span>
+                    <input id="passwordConfirm" type="password" placeholder="再次请输入密码">
+                </div>
+            </li>
+            <div style="float:left;">
+            	<a id = "failReason" class="failReason" th:text="${failError}"></a>            </div>
+            <li>
+                <button th:onclick="'javascript:register()'" >注册</button>
+            </li>
+        </ul>
+    </div>
+</div>
+<script th:inline="javascript">
+		function register() {
+			var userName = document.getElementById("userName").value;
+			var password = document.getElementById("password").value;
+			var passwordConfirm = document.getElementById("passwordConfirm").value;
+			if(password != passwordConfirm){
+				document.getElementById("failReason").text = "密码不一致";
+			}
+			else{
+				location.href = "/registerResult?userName="+userName+"&password="+password;
+			}
+		};
+	</script>
+</body>
+</html>
