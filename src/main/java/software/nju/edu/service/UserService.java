@@ -9,4 +9,13 @@ public interface UserService {
 	public User getUserById(int uId);
 	
 	public String getUserName(int uid);
+	
+	public int getScoreById(int uId);
+	
+	public void cutScoreById(int uId, int cut);
+	
+	public void setScoreById(int uId, int score);
+	
+	public void addScoreById(int uId, int add);
+	
 }
