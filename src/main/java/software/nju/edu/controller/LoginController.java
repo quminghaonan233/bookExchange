@@ -47,11 +47,9 @@ public class LoginController {
 
 		String userName = lm.getUserName();
 		String passwd = lm.getPassword();
-		TokenUtil util = TokenUtil.getInstance();
 		
 		User u = userService.validateUser(userName, passwd);
 		if(u != null) {
-//			redir.addFlashAttribute("token", util.generateToken(u.getuId()));
 			return "redirect:/index?uId="+u.getuId();
 		}
 		else {
@@ -60,8 +58,13 @@ public class LoginController {
 		}
     }
     
-    @PostMapping("/register")
-    public String postForm(@ModelAttribute RegisterMessage lm,BindingResult bindingresult,RedirectAttributes redir) {
+    @GetMapping("/register")
+    public String register(Model model) {
+        return "register";
+    }
+    
+    @GetMapping("/registerResult")
+    public String registerResult(@ModelAttribute RegisterMessage lm,BindingResult bindingresult,RedirectAttributes redir) {
 
 		String userName = lm.getUserName();
 		String passwd = lm.getPassword();
@@ -71,6 +74,7 @@ public class LoginController {
 			return "redirect:/register";
 		}
 		else {
+			userService.createUser(userName, passwd);
 			return "redirect:/login";
 
 		}

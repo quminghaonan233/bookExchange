@@ -22,7 +22,7 @@ public class UserController {
 	 */
 	@RequestMapping("/myProfile")
 	public String myProfile(String uId, Model model) {
-		
+		System.out.println(uId);
 		model.addAttribute("user", userService.getUserById(Integer.valueOf(uId)));
 		return "myProfile";
 	}

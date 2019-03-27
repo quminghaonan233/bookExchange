@@ -17,5 +17,9 @@ public interface UserService {
 	public void setScoreById(int uId, int score);
 	
 	public void addScoreById(int uId, int add);
+		
+	public boolean isUserNameDup(String userName);
+	
+	public void createUser(String userName,String password);
 	
 }

@@ -34,11 +34,6 @@ public class IndexController {
 	public String hello(String uId, @RequestParam(value = "pageNum", defaultValue = "1") int pageNum,
 			@RequestParam(value = "pageSize", defaultValue = "5") int pageSize, Model model){		
 		//身份校验
-		TokenUtil util = TokenUtil.getInstance();
-//		String uId = util.getuIdbyToken(token);
-//		if(Integer.parseInt(uId) < 0) {
-//			return "login";
-//		}
 		// get book page info.
 
 		PageInfo<Book> bookPageInfo = bookService.getHotBookListByPage(pageNum, pageSize);

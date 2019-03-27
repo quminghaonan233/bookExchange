@@ -38,6 +38,9 @@
 										</div>
 									</div>
 								</th:block>
+								<span th:if="${#lists.isEmpty(myBookList)}" >
+									<a style="margin-left:20px">当前未发布过旧书, 点击 + 发布旧书</a>
+								</span>
 							</div>
 						</div>
 					</div>

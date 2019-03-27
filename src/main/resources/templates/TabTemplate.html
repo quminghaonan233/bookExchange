@@ -14,7 +14,7 @@
 				<div class="AppHeader-inner" style="margin-left:100px;">
 					<!-- 菜单栏 -->
 					<nav role="navigation" class="AppHeader-nav">
-						<a class="AppHeader-navItem is-active" th:href="'/index?token='+${user.uId}"data-za-not-track-link="true">首页</a>
+						<a class="AppHeader-navItem is-active" th:href="'/index?uId='+${user.uId}"data-za-not-track-link="true">首页</a>
 						<a class="AppHeader-navItem" th:href="'/myBook?uId='+${user.uId}" data-za-not-track-link="true">我的发布</a>
 						<!-- <a class="AppHeader-navItem" th:href="'/flashSale?uId='+${user.uId}" data-za-not-track-link="true">超级秒杀</a>
 						<a class="AppHeader-navItem" th:href="'/luckyDraw?uId='+${user.uId}" data-za-not-track-link="true">幸运抽奖</a> -->
@@ -64,7 +64,7 @@
 						<!-- 用户个人信息 -->
 						<div class="AppHeader-profile">
 							<div class="Popover AppHeader-menu">
-								<form method="get" th:action="'/myProfile?uId='+${user.uId}">
+								<form method="post" th:action="'/myProfile?uId='+${user.uId}">
 									<button type="submit" id="Popover17-toggle" aria-haspopup="true" aria-expanded="false" aria-owns="Popover17-content" class="Button AppHeader-profileEntry Button--plain">
 										<img class="Avatar AppHeader-profileAvatar" width="30" height="30" src="/img/userProfile.png">
 									</button>

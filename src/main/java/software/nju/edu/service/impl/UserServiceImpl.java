@@ -62,4 +62,14 @@ public class UserServiceImpl implements UserService {
 		
 	}
 	
+	@Override
+	public void createUser(String userName,String password) {
+		User u = new User();
+		u.setUserName(userName);
+		u.setPasswd(password);
+		u.setCredit(0);
+		u.setScore(0);
+		userMapper.addNewUser(u);
+	}
+	
 }

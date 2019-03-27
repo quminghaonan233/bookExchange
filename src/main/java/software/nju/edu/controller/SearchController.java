@@ -41,15 +41,19 @@ public class SearchController {
 
 	public void creditListLinkToBookList(List<Book> bookList, List<Integer> creditList) {
 		System.out.println(bookList);
-		for (Book b : bookList) {
-			creditList.add(bookService.getCreditByBookOwner(b.getBook_owner()));
+		if(bookList != null) {
+			for (Book b : bookList) {
+				creditList.add(bookService.getCreditByBookOwner(b.getBook_owner()));
+			}
 		}
 
 	}
 
 	public void webDataListLinkToBookList(List<Book> bookList, List<WebData> webDataList) {
-		for (Book b : bookList) {
-			webDataList.add(webDataService.getWebDataByBookId(b.getbId()));
+		if(bookList != null) {
+			for (Book b : bookList) {
+				webDataList.add(webDataService.getWebDataByBookId(b.getbId()));
+			}
 		}
 	}
 
@@ -58,12 +62,14 @@ public class SearchController {
 		List<SearchResult> finalList = new ArrayList<SearchResult>();
 		// int size = bookList.size();
 		int localSize = 0;
-		for (Book b : bookList) {
-			int credit = creditList.get(localSize);
-			WebData webData = webDataList.get(localSize);
-			SearchResult sr = new SearchResult(b, credit, webData);
-			finalList.add(sr);
-			localSize++;
+		if(bookList != null) {
+			for (Book b : bookList) {
+				int credit = creditList.get(localSize);
+				WebData webData = webDataList.get(localSize);
+				SearchResult sr = new SearchResult(b, credit, webData);
+				finalList.add(sr);
+				localSize++;
+			}
 		}
 		return finalList;
 
@@ -93,8 +99,12 @@ public class SearchController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		int hitCounts = 0;
+		if(queryResultBookList != null) {
+			hitCounts = queryResultBookList.size();
 
-		int hitCounts = queryResultBookList.size();
+		}
 
 		queryResultBookList = sortingService.sortedByPara(queryResultBookList, sort);
 

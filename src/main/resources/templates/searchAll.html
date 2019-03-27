@@ -40,6 +40,7 @@
 	<div class="Topstory">
 		<div class="Topstory-container">
 			<div class="Topstory-mainColumn">
+				<input type="hidden" id="hidden_key" th:attr="value=${key}" />
 				<div class="Card Topstory-noMarginCard Topstory-tabCard"
 					style="height: 200px">
 					<a style="font-size: 15px;" th:text="' >>'+${key}+'的搜索结果'"></a>
