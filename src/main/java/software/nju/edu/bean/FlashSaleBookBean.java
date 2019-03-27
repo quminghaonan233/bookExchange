@@ -13,6 +13,16 @@ public class FlashSaleBookBean {
 	private String author;
 	private String newDegree;
 	private String address;
+
+	private int onsale;
+	private int isDel;
+	private int price;
+	private String img;
+	private Timestamp finalUpdateTime;
+	
+	private int flashSalePrice;
+	private Date startTime;
+	private Date endTime;
 	public int getbId() {
 		return bId;
 	}
@@ -109,15 +119,6 @@ public class FlashSaleBookBean {
 	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
-	private int onsale;
-	private int isDel;
-	private int price;
-	private String img;
-	private Timestamp finalUpdateTime;
-	
-	private int flashSalePrice;
-	private Date startTime;
-	private Date endTime;
 	
 
 }
