@@ -1,12 +1,17 @@
 package software.nju.edu.controller;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import software.nju.edu.bean.LogisticsData;
 import software.nju.edu.domain.entity.LogisticsInfo;
@@ -69,7 +74,31 @@ public class PurchaseRecordController {
 	@RequestMapping("/purchaseSuccess")
 	public String purchaseSuccess(String tId, String uId, Model model) {
 		tradeService.updateTradeStatus(Integer.valueOf(tId), 3);
+		tradeService.updateTradeEndDate(Integer.valueOf(tId),new Date());
 		return "redirect:/myPurchaseRecord?uId="+uId;
 	}
+	
+    @PostMapping("/commentWriter")
+    public String postForm(HttpServletRequest request,Model model) {
+    	MultipartHttpServletRequest params = ((MultipartHttpServletRequest) request);
+		String uId = params.getParameter("uId");
+		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
+		
+		String tId = params.getParameter("tId");
+		String sellerId = params.getParameter("sellerId");
+		String grade = params.getParameter("grade");
+		if (grade.equals("选择评分")) {
+			return "redirect:/myPurchaseRecord?uId="+uId;
+		}
+		tradeService.updateTradeStatus(Integer.valueOf(tId), 6);
+		tradeService.updateTradeGrade(Integer.valueOf(tId), Integer.parseInt(grade));
+		
+
+		int oldCredit = userService.getUserCredit(Integer.parseInt(sellerId));
+		int newCredit = (int)((Integer.parseInt(grade)*20+oldCredit)/2);
+		userService.updateUserCredit(Integer.parseInt(sellerId),newCredit);
+		
+		return "redirect:/myPurchaseRecord?uId="+uId;
+    }
 	
 }

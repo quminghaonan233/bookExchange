@@ -22,4 +22,8 @@ public interface UserService {
 	
 	public void createUser(String userName,String password);
 	
+	void updateUserCredit(int uId,int credit);
+	
+	public int getUserCredit(int uId);
+	
 }

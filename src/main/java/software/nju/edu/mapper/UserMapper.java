@@ -86,6 +86,10 @@ public interface UserMapper {
 	@Delete("Delete FROM user WHERE uId = #{uId}")
 	void deleteUser(int uId);
 	
+	@Update("UPDATE user SET credit = #{credit} WHERE uId = #{uId}")
+	void updateUserCredit(@Param("uId")int uId,@Param("credit")int credit);
 	
+	@Select("SELECT credit FROM user WHERE uId = #{uId}")
+	int getUserCredit(@Param("uId")int uId);
 	
 }

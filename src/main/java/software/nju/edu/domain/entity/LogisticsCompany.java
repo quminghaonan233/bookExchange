@@ -1,5 +1,6 @@
 package software.nju.edu.domain.entity;
 
+import java.util.Date;
 
 public enum LogisticsCompany {
     SF("顺丰", 1, "shunfeng"),
@@ -13,11 +14,32 @@ public enum LogisticsCompany {
     TT("天天", 9, "tiantian"),
     DB("德邦", 10, "debangwuliu");
  
-    @SuppressWarnings("unused")
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public int getValue() {
+		return value;
+	}
+
+	public void setValue(int value) {
+		this.value = value;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
 	private String name;
-    @SuppressWarnings("unused")
 	private int value;
-    @SuppressWarnings("unused")
 	private String type;
     
     private LogisticsCompany(String name1, int companyID, String name2)

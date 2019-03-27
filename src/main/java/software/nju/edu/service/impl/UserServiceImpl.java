@@ -72,4 +72,13 @@ public class UserServiceImpl implements UserService {
 		userMapper.addNewUser(u);
 	}
 	
+	@Override
+	public void updateUserCredit(int uId,int credit) {
+		userMapper.updateUserCredit(uId,credit);
+	}
+	
+	@Override
+	public int  getUserCredit(int uId) {
+		return userMapper.getUserCredit(uId);
+	}
 }

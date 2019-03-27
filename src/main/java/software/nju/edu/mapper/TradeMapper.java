@@ -1,8 +1,10 @@
 package software.nju.edu.mapper;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -52,7 +54,13 @@ public interface TradeMapper {
 	
 	@Update("UPDATE trade SET status = 5 WHERE tId = #{tId}")
 	void updateTradeStatusAsLogistics(int tId);
-	
-	
 
+	@Update("UPDATE trade SET status = 6 WHERE tId = #{tId}")
+	void updateTradeStatusAsComment(int tId);
+	
+	@Update("UPDATE trade SET end = #{date} WHERE tId = #{tId}")
+	void updateTradeEndDate(@Param("tId")int tId, @Param("date")Date date);
+
+	@Update("UPDATE trade SET grade = #{grade} WHERE tId = #{tId}")
+	void updateTradeGrade(@Param("tId")int tId, @Param("grade")int grade);
 }

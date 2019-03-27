@@ -63,9 +63,30 @@
 											</div>
 											<div th:if=" ${trade.status} eq '3'">
 												<p class="status" th:text="'状态：已确认收货'"></p>
+												<form enctype="multipart/form-data" method="post" action="/commentWriter">
+											    	<input type="hidden" name="uId" th:attr="value=${user.uId}" />
+											    	<input type="hidden" name="tId" th:attr="value=${trade.tId}" />
+											    	<input type="hidden" name="sellerId" th:attr="value=${trade.sellerId}" />
+											    	<div>
+											    		<label style="margin">评价本次交易：</label>
+														<select class="form-control" style="height: 23px;" name="grade">
+															<option>选择评分</option>
+															<option  th:value="1" th:text="1"></option>
+															<option  th:value="2" th:text="2"></option>
+															<option  th:value="3" th:text="3"></option>
+															<option  th:value="4" th:text="4"></option>
+															<option  th:value="5" th:text="5"></option>
+														</select>
+												  		<button type="submit" style="border-style:none;color:green;">提交</button>
+												  	</div>
+											    </form>
 											</div>
 											<div th:if=" ${trade.status} eq '4'">
 												<p class="status" th:text="'状态：交易已取消'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '6'">
+												<p class="status" th:text="'状态：交易已完成'"></p>
+												<p class="status" th:text="'本次交易评分：'+${trade.grade}"></p>
 											</div>
 										</div>
 									</div>

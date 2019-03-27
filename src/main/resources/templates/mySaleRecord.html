@@ -50,8 +50,11 @@
 											    		<p>请输入物流信息：</p>
 											    	</div>
 											    	<div>
-														<input class="logisticsInput" type="text" name="lName" placeholder="物流名称">
-														<input class="logisticsInput" type="text" name="lNum" placeholder="物流单号">
+														<select class="form-control" style="height: 23px;" name="lcId">
+															<option>物流公司</option>
+															<option  th:each="list:${lcList}" th:value="${list.lcId}" th:text="${list.lcName}"></option>
+														</select>
+														<input class="logisticsInput" style="margin-left:10px;height: 23px;width: 200px;" type="text" name="lNum" placeholder="物流单号">
 												  		<button type="submit" style="border-style:none;color:green;">提交</button>
 												  	</div>
 											    </form>
@@ -76,6 +79,10 @@
 											</div>
 											<div th:if=" ${trade.status} eq '3'">
 												<p class="status" th:text="'状态：买家已确认收货'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '6'">
+												<p class="status" th:text="'状态：交易已完成'"></p>
+												<p class="status" th:text="'本次交易评分：'+${trade.grade}"></p>
 											</div>
 										</div>
 									</div>

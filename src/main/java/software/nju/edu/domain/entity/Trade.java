@@ -24,6 +24,7 @@ public class Trade implements Serializable {
 	private String sendTo;
 	private String description;
 	private int status;
+	private int grade;
 
 
 	// constructor without argument.
@@ -149,6 +150,14 @@ public class Trade implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public int getGrade() {
+		return grade;
+	}
+
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 	
 }

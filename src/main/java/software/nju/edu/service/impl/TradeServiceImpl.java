@@ -1,5 +1,6 @@
 package software.nju.edu.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,9 @@ public class TradeServiceImpl implements TradeService {
 		case 5:
 			tradeMapper.updateTradeStatusAsLogistics(tId);
 			break;
+		case 6:
+			tradeMapper.updateTradeStatusAsComment(tId);
+			break;
 		}
 		
 	}
@@ -53,5 +57,15 @@ public class TradeServiceImpl implements TradeService {
 	@Override
 	public List<Trade> getAllTradesBySellerId(int sellerId) {
 		return tradeMapper.getAllTradesBySellerId(sellerId);
+	}
+	
+	@Override
+	public void updateTradeEndDate(int tId, Date date) {
+		tradeMapper.updateTradeEndDate(tId,date);
+	}
+	
+	@Override
+	public void updateTradeGrade(int tId, int grade) {
+		tradeMapper.updateTradeGrade(tId,grade);
 	}
 }

@@ -22,6 +22,7 @@ public class LogisticsInfo {
 	private int isInfoExist;
 	private List<String> lInfo;
 	private String book_src;
+	private int grade;
 	
 	public int gettId() {
 		return tId;
@@ -126,6 +127,7 @@ public class LogisticsInfo {
 		this.sendTo = trade.getSendTo();
 		this.description = trade.getDescription();
 		this.status = trade.getStatus();
+		this.grade = trade.getGrade();
 	}
 	public int getIsInfoExist() {
 		return isInfoExist;
@@ -144,5 +146,11 @@ public class LogisticsInfo {
 	}
 	public void setBook_src(String book_src) {
 		this.book_src = book_src;
+	}
+	public int getGrade() {
+		return grade;
+	}
+	public void setGrade(int grade) {
+		this.grade = grade;
 	}
 }

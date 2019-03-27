@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import software.nju.edu.bean.LogisticsData;
+import software.nju.edu.domain.entity.LogisticsComapyInfo;
 import software.nju.edu.domain.entity.LogisticsInfo;
 import software.nju.edu.domain.entity.Trade;
 import software.nju.edu.service.impl.BookServiceImpl;
@@ -61,7 +62,8 @@ public class SaleRecordController {
 		}
 		model.addAttribute("saleList", buyList);
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
-		
+		List<LogisticsComapyInfo> lcList = new LogisticsComapyInfo().getAllLc();
+		model.addAttribute("lcList", lcList);
 		return "mySaleRecord";
 	}
 	
@@ -84,12 +86,12 @@ public class SaleRecordController {
 		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		
 		String tId = params.getParameter("tId");
-		String lName = params.getParameter("lName");
+		String lName = params.getParameter("lcId");
 		String lNum = params.getParameter("lNum");
-		if (lName.equals("") || lNum.equals("")) {
+		if (lName.equals("物流公司") || lNum.equals("")) {
 			return "redirect:/mySaleRecord?uId="+uId;
 		}
-		
+
 		tradeService.updateTradeStatus(Integer.valueOf(tId), 5);
 		logisticsService.addLogistics(Integer.parseInt(tId), lName, lNum);
 		
