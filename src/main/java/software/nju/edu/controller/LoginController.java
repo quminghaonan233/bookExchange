@@ -19,6 +19,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.alibaba.fastjson.JSONObject;
 
 import software.nju.edu.bean.LoginMessage;
+import software.nju.edu.bean.ModifyPassword;
 import software.nju.edu.bean.RegisterMessage;
 import software.nju.edu.domain.entity.User;
 import software.nju.edu.service.impl.UserServiceImpl;
@@ -80,25 +81,30 @@ public class LoginController {
 		}
     }
     
-//    @PostMapping("/loginAjax")
-//    @ResponseBody
-//    public Object loginAjax(@RequestBody LoginMessage loginMessage, HttpServletResponse resp) {
-//    	JSONObject jsonObject = new JSONObject();
-//        jsonObject.put("failError","用户名或密码错误");
-//    	
-//    	System.out.println(loginMessage.getUserName());
-//    	System.out.println(loginMessage.getPassword());
-//
-//    	return jsonObject;
-//        resp.setContentType("text/html;charset=UTF-8");
-//        try {
-//			resp.getWriter().println(jsonObject.toJSONString());
-//	        resp.getWriter().close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			System.out.println("error");
-//		}
-//
-//    }
+    @PostMapping("/modifyPassword")
+    @ResponseBody
+    public void loginAjax(@RequestBody ModifyPassword modifyMessage, HttpServletResponse resp) {
+    	JSONObject jsonObject = new JSONObject();
+    	if(userService.validateUserById(modifyMessage.getUserId(), modifyMessage.getPassword())) {
+    		userService.updatePassword(modifyMessage.getUserId(),modifyMessage.getNewPassword());
+    		jsonObject.put("success", "1");
+    	}
+    	else {
+            jsonObject.put("failError","原密码错误");
+    	}
+    	
+    	
+
+
+        resp.setContentType("text/html;charset=UTF-8");
+        try {
+			resp.getWriter().println(jsonObject.toJSONString());
+	        resp.getWriter().close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error");
+		}
+
+    }
     
 }

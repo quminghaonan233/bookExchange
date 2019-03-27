@@ -19,6 +19,21 @@ public class UserServiceImpl implements UserService {
 		return u;
 	}
 	
+	public boolean updatePassword(String userId,String password) {
+		User u = userMapper.getUserById(Integer.parseInt(userId));
+		u.setPasswd(password);
+		userMapper.updatePasswd(u);
+		return true;
+	}
+	
+	public boolean validateUserById(String userId,String password) {
+		User u = userMapper.getUserById(Integer.parseInt(userId));
+		if(u != null && u.getPasswd().equals(password)) {
+			return true;
+		}
+		return false;
+	}
+	
 	public boolean isUserNameDup(String userName) {
 		User u = userMapper.getUserByName(userName);
 		if(u != null) {
