@@ -3,6 +3,8 @@ package software.nju.edu.domain.entity;
 import java.io.Serializable;
 import java.util.Date;
 
+import software.nju.edu.bean.LogisticsInfo;
+
 public class Trade implements Serializable {
 	/**
 	 * version
@@ -24,6 +26,8 @@ public class Trade implements Serializable {
 	private String sendTo;
 	private String description;
 	private int status;
+	private LogisticsInfo li;
+
 
 	// constructor without argument.
 	public Trade() {
@@ -148,6 +152,14 @@ public class Trade implements Serializable {
 
 	public void setStatus(int status) {
 		this.status = status;
+	}
+
+	public LogisticsInfo getLi() {
+		return li;
+	}
+
+	public void setLi(LogisticsInfo li) {
+		this.li = li;
 	}	
 	
 }

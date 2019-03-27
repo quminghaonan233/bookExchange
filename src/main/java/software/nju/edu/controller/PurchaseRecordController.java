@@ -8,18 +8,21 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import software.nju.edu.domain.entity.Trade;
-import software.nju.edu.mapper.TradeMapper;
 import software.nju.edu.service.impl.TradeServiceImpl;
+import software.nju.edu.service.impl.UserServiceImpl;
 
 @Controller
 public class PurchaseRecordController {
 	@Autowired
 	private TradeServiceImpl tradeService;
+	@Autowired
+	private UserServiceImpl userService;
 
 	@RequestMapping("/myPurchaseRecord")
 	public String myPurchaseRecord(String uId, Model model) {
 		List<Trade> purchaseList = tradeService.getAllTradesByBuyerId(Integer.valueOf(uId));
 		model.addAttribute("buyList", purchaseList);
+		model.addAttribute("user", userService.getUserById(Integer.parseInt(uId)));
 		return "myPurchaseRecord";
 	}
 	

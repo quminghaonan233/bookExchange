@@ -11,13 +11,16 @@
 
 </head>
 <body>
-
+	<div th:include="TabTemplate::UpperTab"></div>
+	
+	<hr>
+	
 	<main role="main" class="App-main">
 		<div class="Topstory">
 			<div class="Topstory-container">
 				<div class="Topstory-mainColumn">
 					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
-						<a style="font-size:15px;"> >>我的售卖</a>
+						<a style="font-size:15px;"> >>售卖记录</a>
 					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
@@ -37,14 +40,30 @@
 												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:refuseToSell(\''+${trade.tId}+'\',\''+${trade.sellerId}+'\')'">拒绝交易</button>
 											</div>
 											<div th:if=" ${trade.status} eq '1'">
-												<p class="status" th:text="'状态：申请成功，发货中'"></p>
-												<!-- <button type="submit" style="border-style:none;color:green;">申请取消</button>  -->
+												<p class="status" th:text="'状态：已同意售卖'"></p>
+											    <form enctype="multipart/form-data" method="post" action="/logisticsWriter">
+											    	<input type="hidden" name="uId" th:attr="value=${user.uId}" />
+											    	<input type="hidden" name="tId" th:attr="value=${trade.tId}" />
+											    	<hr>
+											    	<div>
+											    		<p>请输入物流信息：</p>
+											    	</div>
+											    	<div>
+														<input class="logisticsInput" type="text" name="lName" placeholder="物流名称">
+														<input class="logisticsInput" type="text" name="lNum" placeholder="物流单号">
+												  		<button type="submit" style="border-style:none;color:green;">提交</button>
+												  	</div>
+											    </form>
+											</div>
+											<div th:if=" ${trade.status} eq '5'">
+												<p class="status" th:text="'状态：已发货'"></p>
+											    <p>物流信息</p>
 											</div>
 											<div th:if=" ${trade.status} eq '2'">
 												<p class="status" th:text="'状态：拒绝'"></p>
 											</div>
 											<div th:if=" ${trade.status} eq '3'">
-												<p class="status" th:text="'状态：收货完成'"></p>
+												<p class="status" th:text="'状态：买家已确认收货'"></p>
 											</div>
 										</div>
 									</div>

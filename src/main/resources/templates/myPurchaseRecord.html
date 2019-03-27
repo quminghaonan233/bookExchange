@@ -11,12 +11,16 @@
 
 </head>
 <body>
+	<div th:include="TabTemplate::UpperTab"></div>
+	
+	<hr>
+	
 	<main role="main" class="App-main">
 		<div class="Topstory">
 			<div class="Topstory-container">
 				<div class="Topstory-mainColumn">
 					<div class="Card Topstory-noMarginCard Topstory-tabCard" style="height:30px">
-						<a style="font-size:15px;"> >>我的购买</a>
+						<a style="font-size:15px;"> >>购买记录</a>
 					</div>
 					<div id="TopstoryContent" class="Topstory-content">
 						<div class="Topstory-recommend">
@@ -35,17 +39,21 @@
 												<button style="border-style:none;color:green;" th:onclick="'javascript:cancelApplication(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">取消申请</button>
 											</div>
 											<div th:if=" ${trade.status} eq '1'">
-												<p class="status" th:text="'状态：申请成功，发货中'"></p>
+												<p class="status" th:text="'状态：申请成功，等待卖家发货'"></p>
+											</div>
+											<div th:if=" ${trade.status} eq '5'">
+												<p class="status" th:text="'状态：卖家已发货'"></p>
+												<p>物流信息</p>
 												<button type="submit" style="border-style:none;color:green;" th:onclick="'javascript:purchaseSuccess(\''+${trade.tId}+'\',\''+${trade.buyerId}+'\')'">确认收货</button>
 											</div>
 											<div th:if=" ${trade.status} eq '2'">
-												<p class="status" th:text="'状态：卖家拒绝'"></p>
+												<p class="status" th:text="'状态：卖家已拒绝'"></p>
 											</div>
 											<div th:if=" ${trade.status} eq '3'">
-												<p class="status" th:text="'状态：收货完成'"></p>
+												<p class="status" th:text="'状态：已确认收货'"></p>
 											</div>
 											<div th:if=" ${trade.status} eq '4'">
-												<p class="status" th:text="'状态：交易取消'"></p>
+												<p class="status" th:text="'状态：交易已取消'"></p>
 											</div>
 										</div>
 									</div>

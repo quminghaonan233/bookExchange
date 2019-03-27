@@ -38,6 +38,9 @@ public class TradeServiceImpl implements TradeService {
 		case 4:
 			tradeMapper.updateTradeStatusAsApplicationCanceled(tId);
 			break;
+		case 5:
+			tradeMapper.updateTradeStatusAsLogistics(tId);
+			break;
 		}
 		
 	}

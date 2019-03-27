@@ -50,6 +50,9 @@ public interface TradeMapper {
 	@Update("UPDATE trade SET status = 4 WHERE tId = #{tId}")
 	void updateTradeStatusAsApplicationCanceled(int tId);
 	
+	@Update("UPDATE trade SET status = 5 WHERE tId = #{tId}")
+	void updateTradeStatusAsLogistics(int tId);
+	
 	
 
 }
