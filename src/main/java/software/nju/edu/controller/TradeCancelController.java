@@ -12,8 +12,6 @@ import software.nju.edu.mapper.TradeCancelMapper;
 @Controller
 public class TradeCancelController {
 	
-	@Autowired
-	private TradeCancelMapper tradeCancelMapper;
 	
 	@RequestMapping("/tradeCancelSubmit")
 	public String hello(@ModelAttribute TradeMessage tradeMessage, Model model){

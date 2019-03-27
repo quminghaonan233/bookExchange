@@ -4,12 +4,21 @@ import java.util.Date;
 
 public class logisticsInfo {
 	private int tId;           // Primary key
-	private int buyerId;       // Foreign key: uId
+	private int buyerId;
 	private String buyerName; 
-	private int sellerId;      // Foreign key: uId
+	private int sellerId;
 	private String sellerName;
-	private int bId;           // Foreign key: bId
+	private int bId;
 	private String bookName;
+	private Date start;
+	private Date end;
+	private String sendTo;
+	private String description;
+	private int status;
+	private String lName;
+	private String lNum;
+	
+	
 	public int gettId() {
 		return tId;
 	}
@@ -94,11 +103,4 @@ public class logisticsInfo {
 	public void setlNum(String lNum) {
 		this.lNum = lNum;
 	}
-	private Date start;
-	private Date end;
-	private String sendTo;
-	private String description;
-	private int status;
-	private String lName;
-	private String lNum;
 }

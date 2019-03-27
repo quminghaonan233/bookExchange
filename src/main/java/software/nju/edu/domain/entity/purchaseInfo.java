@@ -13,6 +13,18 @@ public class purchaseInfo implements Serializable{
 	 * Attributes
 	 */
 	private int tId;           // Primary key
+	private int buyerId;
+	private String buyerName; 
+	private int sellerId;
+	private String sellerName;
+	private int bId;
+	private String bookName;
+	private Date start;
+	private Date end;
+	private String sendTo;
+	private String description;
+	private int status;
+	
 	public int gettId() {
 		return tId;
 	}
@@ -88,15 +100,5 @@ public class purchaseInfo implements Serializable{
 	public static long getSerialversionuid() {
 		return serialVersionUID;
 	}
-	private int buyerId;       // Foreign key: uId
-	private String buyerName; 
-	private int sellerId;      // Foreign key: uId
-	private String sellerName;
-	private int bId;           // Foreign key: bId
-	private String bookName;
-	private Date start;
-	private Date end;
-	private String sendTo;
-	private String description;
-	private int status;
+
 }
