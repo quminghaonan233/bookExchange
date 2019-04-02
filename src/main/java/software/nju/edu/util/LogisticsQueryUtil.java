@@ -8,6 +8,7 @@ import java.net.URL;
 import java.util.List;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 import software.nju.edu.bean.Logistics;
 import software.nju.edu.bean.LogisticsData;
@@ -63,7 +64,7 @@ public class LogisticsQueryUtil {
     	if(s == null || s.equals("")) {
     		return null;
     	}
-    	Gson gson = new Gson();
+    	Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();    	
     	Logistics logi = gson.fromJson(s, Logistics.class);
     	if(logi.getMessage().equals("参数错误")) {
     		return null;
