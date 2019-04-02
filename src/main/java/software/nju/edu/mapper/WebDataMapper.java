@@ -2,6 +2,7 @@ package software.nju.edu.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
@@ -41,4 +42,6 @@ public interface WebDataMapper {
 	@Update("UPDATE web_data SET click_through_rate = #{clickThroughRate}, hot_index = #{hotIndex} WHERE bId = #{bId}")
 	void updateWebData(WebData webData);
 
+	@Delete("DELETE FROM web_data WHERE bId=#{bId}")
+	void deletebId(int bId);
 }

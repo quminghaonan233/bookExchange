@@ -100,6 +100,7 @@ public class BookDetailController {
 	@RequestMapping("/bookDel")
 	public String bookDel(String bId, String uId, Model model) {
 		// 调删除接口
+		webDataService.deletebId(Integer.parseInt(bId));
 		bookService.deleteBook(Integer.parseInt(bId));
 		return "redirect:/index?uId=" + uId;
 	}

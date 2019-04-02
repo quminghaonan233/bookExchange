@@ -50,5 +50,9 @@ public class WebDataServiceImpl implements WebDataService {
 		webDataMapper.updateWebData(webData);
 
 	}
+	
+	public void deletebId(int bId) {
+		webDataMapper.deletebId(bId);
+	}
 
 }
