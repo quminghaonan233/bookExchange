@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -31,7 +32,7 @@ public interface BookMapper {
 	Book getBookDetail(int bId);
 	
 	@Select("SELECT COUNT(*) FROM book WHERE bId = #{bId} AND book_owner = #{uId}")
-	int queryMineBooksByBookIdAndUserId(int bId, int uId);
+	int queryMineBooksByBookIdAndUserId(@Param("bId")int bId, @Param("uId")int uId);
 	
 	@Select("SELECT * FROM book WHERE book_owner = #{uId}")
 	@Results({
